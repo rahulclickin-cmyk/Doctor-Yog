@@ -1,0 +1,425 @@
+import React from 'react';
+import { motion } from 'motion/react';
+import { Phone, Calendar, ArrowRight, CheckCircle2, Award, Users, Globe, MapPin, Heart, Shield, Zap } from 'lucide-react';
+import { IMAGES, CONTACT } from '../constants';
+import { Link } from 'react-router-dom';
+
+export default function Home() {
+  return (
+    <div className="flex flex-col">
+      {/* Hero Section */}
+      <section className="relative h-screen flex items-center justify-center overflow-hidden">
+        <div className="absolute inset-0 z-0">
+          <img 
+            src={IMAGES.hero} 
+            alt="Himalayan Yoga" 
+            className="w-full h-full object-cover"
+            referrerPolicy="no-referrer"
+          />
+          <div className="absolute inset-0 bg-black/40" />
+        </div>
+        
+        <div className="relative z-10 max-w-5xl mx-auto px-4 text-center text-white">
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+          >
+            <h1 className="text-5xl md:text-7xl font-serif mb-6 drop-shadow-lg">
+              DoctorYog – Holistic Wellness Foundation
+            </h1>
+            <p className="text-xl md:text-2xl font-light mb-10 text-orange-50 drop-shadow-md">
+              Rooted in the Himalayas · Rishikesh · Ancient Healing for Modern Life
+            </p>
+            <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
+              <Link to="/contact#register" className="btn-primary text-lg px-10">
+                Register Now
+              </Link>
+              <a 
+                href={`https://wa.me/${CONTACT.whatsapp.replace('+', '')}`} 
+                target="_blank" 
+                rel="noopener noreferrer" 
+                className="btn-outline border-white text-white hover:bg-white hover:text-primary text-lg px-10 flex items-center gap-2"
+              >
+                <Phone size={20} /> Talk on WhatsApp
+              </a>
+            </div>
+          </motion.div>
+        </div>
+        
+        <div className="absolute bottom-10 left-1/2 -translate-x-1/2 animate-bounce">
+          <div className="w-6 h-10 border-2 border-white/50 rounded-full flex justify-center p-1">
+            <div className="w-1 h-2 bg-white rounded-full" />
+          </div>
+        </div>
+      </section>
+
+      {/* Highlight Section */}
+      <section className="py-20 bg-white">
+        <div className="max-w-7xl mx-auto px-4">
+          <div className="bg-gradient-to-r from-orange-600 to-orange-400 rounded-3xl overflow-hidden shadow-2xl flex flex-col lg:flex-row">
+            <div className="lg:w-1/2 p-8 md:p-16 text-white flex flex-col justify-center">
+              <div className="inline-block bg-white/20 backdrop-blur-sm px-4 py-1 rounded-full text-sm font-bold mb-6 tracking-wider uppercase">
+                Featured Program
+              </div>
+              <h2 className="text-3xl md:text-5xl font-serif mb-6 leading-tight">
+                🌿 Integrated Yoga Therapy, Ayurveda & Healing Training
+              </h2>
+              <div className="flex items-center gap-3 mb-8 text-xl font-medium bg-black/10 p-4 rounded-xl border border-white/10">
+                <Calendar className="text-orange-200" />
+                <span>10 April – 20 April | 11 Days Intensive Program</span>
+              </div>
+              
+              <ul className="space-y-4 mb-10">
+                {[
+                  "Learn Yoga as complete healing science",
+                  "Combine Yoga + Ayurveda + Marma + Acupressure",
+                  "Root cause diagnosis training",
+                  "Practical therapy application"
+                ].map((item, i) => (
+                  <li key={i} className="flex items-start gap-3">
+                    <CheckCircle2 className="text-orange-200 mt-1 flex-shrink-0" />
+                    <span className="text-lg opacity-90">{item}</span>
+                  </li>
+                ))}
+              </ul>
+              
+              <div className="flex flex-wrap gap-4">
+                <Link to="/contact#register" className="bg-white text-orange-600 px-8 py-4 rounded-full font-bold hover:bg-orange-50 transition-colors shadow-lg">
+                  Register Now
+                </Link>
+                <button className="bg-transparent border-2 border-white text-white px-8 py-4 rounded-full font-bold hover:bg-white/10 transition-colors">
+                  Download Brochure
+                </button>
+              </div>
+            </div>
+            <div className="lg:w-1/2 relative min-h-[400px]">
+              <img 
+                src={IMAGES.yoga1} 
+                alt="Yoga Training" 
+                className="absolute inset-0 w-full h-full object-cover"
+                referrerPolicy="no-referrer"
+              />
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Why Choose Integrated Yoga Therapy? */}
+      <section className="py-20 bg-white overflow-hidden">
+        <div className="max-w-7xl mx-auto px-4">
+          <div className="text-center mb-16">
+            <h2 className="text-4xl md:text-5xl font-serif mb-4">Why Choose Integrated Yoga Therapy?</h2>
+            <p className="text-lg text-slate-600 max-w-2xl mx-auto">Our unique methodology combines multiple ancient sciences for a comprehensive healing experience.</p>
+          </div>
+
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+            {[
+              {
+                title: "Holistic Science",
+                desc: "We don't just treat symptoms; we look at the body as a whole system of energy and biology.",
+                icon: <Heart className="text-orange-500" />
+              },
+              {
+                title: "Ancient Wisdom",
+                desc: "Rooted in authentic Himalayan traditions passed down through generations of masters.",
+                icon: <Award className="text-orange-500" />
+              },
+              {
+                title: "Modern Application",
+                desc: "Techniques adapted for modern lifestyle diseases like stress, obesity, and chronic pain.",
+                icon: <Zap className="text-orange-500" />
+              },
+              {
+                title: "Proven Results",
+                desc: "Thousands of students have experienced life-changing transformations through our programs.",
+                icon: <Shield className="text-orange-500" />
+              }
+            ].map((item, i) => (
+              <div key={i} className="p-8 bg-orange-50 rounded-3xl border border-orange-100 hover:shadow-lg transition-shadow">
+                <div className="w-12 h-12 bg-white rounded-2xl flex items-center justify-center mb-6 shadow-sm">
+                  {item.icon}
+                </div>
+                <h3 className="text-xl font-bold mb-3">{item.title}</h3>
+                <p className="text-slate-600 text-sm leading-relaxed">{item.desc}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Unique Positioning */}
+      <section className="py-20 bg-orange-50">
+        <div className="max-w-7xl mx-auto px-4 text-center">
+          <h2 className="text-4xl md:text-5xl font-serif mb-4 text-slate-800">Doctor Yog Healing Method</h2>
+          <p className="text-lg text-slate-600 mb-16 max-w-2xl mx-auto">A systematic approach to holistic transformation rooted in ancient wisdom.</p>
+          
+          <div className="grid md:grid-cols-3 gap-8">
+            {[
+              {
+                step: "Step 1",
+                title: "Root Cause Diagnosis",
+                desc: "Face reading • Body alignment • Energy analysis",
+                icon: "🔍"
+              },
+              {
+                step: "Step 2",
+                title: "Personalized Plan",
+                desc: "Yoga • Ayurveda • Detox • Meditation • Yajna",
+                icon: "📋"
+              },
+              {
+                step: "Step 3",
+                title: "Transformation",
+                desc: "7 / 14 / 21 Days Programs",
+                icon: "🦋"
+              }
+            ].map((item, i) => (
+              <motion.div 
+                key={i}
+                whileHover={{ y: -10 }}
+                className="bg-white p-10 rounded-3xl shadow-xl border border-orange-100 flex flex-col items-center"
+              >
+                <div className="text-5xl mb-6">{item.icon}</div>
+                <div className="text-primary font-bold uppercase tracking-widest text-sm mb-2">{item.step}</div>
+                <h3 className="text-2xl font-serif mb-4">{item.title}</h3>
+                <p className="text-slate-600 leading-relaxed">{item.desc}</p>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Retreats Preview */}
+      <section className="py-20 bg-white">
+        <div className="max-w-7xl mx-auto px-4">
+          <div className="flex flex-col md:flex-row justify-between items-end mb-12 gap-6">
+            <div>
+              <h2 className="text-4xl md:text-5xl font-serif mb-4">Retreats Preview</h2>
+              <p className="text-lg text-slate-600">Experience deep healing in the serene lap of the Himalayas.</p>
+            </div>
+            <Link to="/retreats" className="btn-outline flex items-center gap-2">
+              View All Retreats <ArrowRight size={18} />
+            </Link>
+          </div>
+          
+          <div className="grid sm:grid-cols-2 lg:grid-cols-5 gap-6">
+            {[
+              { title: "Detox Retreat", img: IMAGES.retreat1 },
+              { title: "Panchakarma", img: IMAGES.retreat2 },
+              { title: "Stress Healing", img: IMAGES.yoga2 },
+              { title: "Diabetes Healing", img: IMAGES.yoga3 },
+              { title: "Pain Management", img: IMAGES.yoga4 }
+            ].map((retreat, i) => (
+              <motion.div 
+                key={i}
+                whileHover={{ scale: 1.03 }}
+                className="group relative h-[400px] rounded-2xl overflow-hidden shadow-lg cursor-pointer"
+              >
+                <img 
+                  src={retreat.img} 
+                  alt={retreat.title} 
+                  className="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                  referrerPolicy="no-referrer"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent" />
+                <div className="absolute bottom-0 left-0 right-0 p-6">
+                  <h3 className="text-xl font-bold text-white mb-2">{retreat.title}</h3>
+                  <div className="h-1 w-0 bg-primary transition-all duration-300 group-hover:w-full" />
+                </div>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Personalized Yoga Therapy Section (New) */}
+      <section className="py-20 bg-white">
+        <div className="max-w-7xl mx-auto px-4">
+          <div className="flex flex-col lg:flex-row gap-16 items-center">
+            <div className="lg:w-1/2">
+              <div className="inline-block bg-orange-100 text-primary px-4 py-1 rounded-full text-sm font-bold mb-6">
+                Available Online
+              </div>
+              <h2 className="text-4xl md:text-6xl font-serif mb-6 leading-tight">
+                Personalized Yoga Therapy – Your Journey
+              </h2>
+              <p className="text-xl text-primary font-medium mb-8">Tailored One-on-One Care</p>
+              
+              <div className="flex flex-wrap gap-4 mb-10">
+                {["1 hr", "$10", "Mae Sa", "Online", "Rishikesh"].map((tag, i) => (
+                  <span key={i} className="px-4 py-2 border border-orange-200 rounded-lg text-slate-600 font-medium italic">
+                    {tag}
+                  </span>
+                ))}
+              </div>
+
+              <Link to="/contact#register" className="btn-primary px-10 py-4 text-lg">
+                Register Now
+              </Link>
+
+              <div className="mt-12 pt-12 border-t border-orange-100">
+                <h3 className="text-2xl font-serif mb-4">Service Description</h3>
+                <p className="text-slate-600 leading-relaxed">
+                  Experience a truly personalized yoga therapy class designed just for you. Each session is one-on-one, allowing us to focus entirely on your individual physical and mental condition. Whether you're struggling with back pain, weight gain, high stress or anxiety, or other lifestyle-related issues, our approach meets you where you are. Every body is unique, so we adapt the practice to your needs—taking into account your fitness level, any injuries or health concerns, and even your daily routine. This compassionate, customized care ensures you feel heard and supported at every step.
+                </p>
+              </div>
+            </div>
+            
+            <div className="lg:w-1/2 bg-orange-50/50 p-8 md:p-12 rounded-[3rem] border border-orange-100">
+              <h3 className="text-2xl font-serif mb-8">Upcoming Sessions</h3>
+              <div className="space-y-6">
+                {[
+                  { day: "Tuesday, 31 Mar", time: "2:00 pm", duration: "1 hr", loc: "Mae Sa", instructor: "Doctor Shakti" },
+                  { day: "Wednesday, 1 Apr", time: "2:00 pm", duration: "1 hr", loc: "Mae Sa", instructor: "Doctor Shakti" },
+                  { day: "Thursday, 2 Apr", time: "2:00 pm", duration: "1 hr", loc: "Mae Sa", instructor: "Doctor Shakti" },
+                  { day: "Friday, 3 Apr", time: "2:00 pm", duration: "1 hr", loc: "Mae Sa", instructor: "Doctor Shakti" },
+                  { day: "Friday, 3 Apr", time: "2:00 pm", duration: "1 hr", loc: "Online", instructor: "Doctor Shakti" },
+                  { day: "Friday, 3 Apr", time: "2:00 pm", duration: "1 hr", loc: "Rishikesh", instructor: "Doctor Shakti" }
+                ].map((session, i) => (
+                  <div key={i} className="flex flex-col md:flex-row md:items-center justify-between p-4 bg-white rounded-2xl shadow-sm border border-orange-50">
+                    <div className="font-bold text-primary italic mb-2 md:mb-0">{session.day}</div>
+                    <div className="flex flex-col text-sm text-slate-500">
+                      <span>{session.time}</span>
+                      <span>{session.duration}</span>
+                    </div>
+                    <div className="flex flex-col text-sm text-slate-500 text-right">
+                      <span className="flex items-center justify-end gap-1"><MapPin size={14} /> {session.loc}</span>
+                      <span>{session.instructor}</span>
+                    </div>
+                  </div>
+                ))}
+              </div>
+              <button className="w-full mt-8 text-primary font-bold hover:underline">Load all sessions</button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Experience the Himalayas */}
+      <section className="py-20 bg-white">
+        <div className="max-w-7xl mx-auto px-4">
+          <div className="grid lg:grid-cols-2 gap-16 items-center">
+            <div className="order-2 lg:order-1 grid grid-cols-2 gap-4">
+              <img src={IMAGES.gallery1} alt="Rishikesh" className="rounded-2xl shadow-lg h-64 w-full object-cover" referrerPolicy="no-referrer" />
+              <img src={IMAGES.gallery2} alt="Yoga Session" className="rounded-2xl shadow-lg h-64 w-full object-cover mt-8" referrerPolicy="no-referrer" />
+              <img src={IMAGES.gallery3} alt="Meditation" className="rounded-2xl shadow-lg h-64 w-full object-cover -mt-8" referrerPolicy="no-referrer" />
+              <img src={IMAGES.gallery4} alt="Nature" className="rounded-2xl shadow-lg h-64 w-full object-cover" referrerPolicy="no-referrer" />
+            </div>
+            <div className="order-1 lg:order-2">
+              <h2 className="text-4xl md:text-5xl font-serif mb-6">Experience the Healing Power of the Himalayas</h2>
+              <p className="text-lg text-slate-600 mb-8 leading-relaxed">
+                Rishikesh is not just a location; it's a spiritual energy center. At Doctor Yog, we harness this natural vibration to accelerate your healing process. Our foundation provides a sanctuary where the sound of the Ganges and the fresh mountain air become part of your therapy.
+              </p>
+              <div className="space-y-4 mb-10">
+                {[
+                  "Serene riverside meditation spots",
+                  "Organic Sattvic meals prepared with local herbs",
+                  "Traditional Himalayan healing atmosphere",
+                  "Quiet spaces for self-reflection and study"
+                ].map((item, i) => (
+                  <div key={i} className="flex items-center gap-3">
+                    <div className="w-2 h-2 bg-primary rounded-full" />
+                    <span className="text-slate-700 font-medium">{item}</span>
+                  </div>
+                ))}
+              </div>
+              <Link to="/contact#register" className="btn-primary inline-block">
+                Plan Your Visit
+              </Link>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Testimonials */}
+      <section className="py-20 bg-orange-50/30">
+        <div className="max-w-7xl mx-auto px-4">
+          <div className="text-center mb-16">
+            <h2 className="text-4xl md:text-5xl font-serif mb-4">Healing Stories</h2>
+            <p className="text-lg text-slate-600 max-w-2xl mx-auto">Real experiences from our students who found transformation through Doctor Yog.</p>
+          </div>
+
+          <div className="grid md:grid-cols-3 gap-8">
+            {[
+              {
+                name: "Sarah Johnson",
+                role: "Yoga Student",
+                text: "The integrated approach at Doctor Yog completely changed my perspective on health. My chronic back pain is gone, and I feel more energetic than ever.",
+                img: "https://picsum.photos/seed/sarah/100/100"
+              },
+              {
+                name: "Michael Chen",
+                role: "Retreat Participant",
+                text: "Rishikesh is magical, but Dr. Shakti's guidance made it life-changing. The personalized therapy sessions were exactly what I needed for my stress relief.",
+                img: "https://picsum.photos/seed/michael/100/100"
+              },
+              {
+                name: "Elena Rodriguez",
+                role: "Healing Program Graduate",
+                text: "I've tried many yoga centers, but the scientific depth here is unmatched. Combining Ayurveda with Yoga therapy is a game-changer for holistic health.",
+                img: "https://picsum.photos/seed/elena/100/100"
+              }
+            ].map((testimonial, i) => (
+              <div key={i} className="bg-white p-8 rounded-3xl shadow-lg border border-orange-100 relative">
+                <div className="text-orange-300 text-6xl absolute top-4 right-8 font-serif opacity-50">"</div>
+                <p className="text-slate-600 italic mb-8 relative z-10 leading-relaxed">
+                  {testimonial.text}
+                </p>
+                <div className="flex items-center gap-4">
+                  <img src={testimonial.img} alt={testimonial.name} className="w-12 h-12 rounded-full object-cover" referrerPolicy="no-referrer" />
+                  <div>
+                    <div className="font-bold text-slate-800">{testimonial.name}</div>
+                    <div className="text-sm text-primary">{testimonial.role}</div>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* About Dr. Shakti */}
+      <section className="py-20 bg-slate-900 text-white overflow-hidden">
+        <div className="max-w-7xl mx-auto px-4">
+          <div className="flex flex-col lg:flex-row items-center gap-16">
+            <div className="lg:w-1/2 relative">
+              <div className="absolute -top-10 -left-10 w-40 h-40 bg-primary/20 rounded-full blur-3xl" />
+              <div className="absolute -bottom-10 -right-10 w-40 h-40 bg-orange-500/20 rounded-full blur-3xl" />
+              <img 
+                src={IMAGES.drShakti} 
+                alt="Dr. Shakti" 
+                className="relative z-10 rounded-3xl shadow-2xl border-2 border-white/10 w-full max-w-md mx-auto"
+                referrerPolicy="no-referrer"
+              />
+            </div>
+            <div className="lg:w-1/2">
+              <h2 className="text-4xl md:text-5xl font-serif mb-8">Meet Dr. Shakti</h2>
+              <p className="text-xl text-orange-100 mb-10 leading-relaxed italic">
+                "Healing is not just about curing a disease; it's about returning to your natural state of harmony."
+              </p>
+              
+              <div className="grid grid-cols-2 gap-8 mb-12">
+                {[
+                  { icon: <Award className="text-primary" />, label: "19+ years experience" },
+                  { icon: <Globe className="text-primary" />, label: "PhD Yoga" },
+                  { icon: <Users className="text-primary" />, label: "5000+ lives transformed" },
+                  { icon: <CheckCircle2 className="text-primary" />, label: "International training" }
+                ].map((stat, i) => (
+                  <div key={i} className="flex items-center gap-3">
+                    <div className="p-2 bg-white/5 rounded-lg">{stat.icon}</div>
+                    <span className="font-medium">{stat.label}</span>
+                  </div>
+                ))}
+              </div>
+              
+              <Link to="/about" className="btn-primary inline-block">
+                Know More About Dr. Shakti
+              </Link>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+  );
+}
