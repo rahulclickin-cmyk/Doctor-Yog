@@ -1,9 +1,15 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { IMAGES } from '../constants';
-import { Facebook, Instagram, Twitter, Youtube, Mail, Phone, MapPin } from 'lucide-react';
+import { IMAGES, SOCIAL } from '../constants';
+import { Facebook, Instagram, Youtube, Mail, Phone, MapPin } from 'lucide-react';
 
 export default function Footer() {
+  const socialLinks = [
+    { Icon: Facebook, url: SOCIAL.facebook },
+    { Icon: Instagram, url: SOCIAL.instagram },
+    { Icon: Youtube, url: SOCIAL.youtube },
+  ];
+
   return (
     <footer className="bg-slate-900 text-white pt-20 pb-10">
       <div className="max-w-7xl mx-auto px-4">
@@ -17,8 +23,14 @@ export default function Footer() {
               Holistic Wellness Foundation rooted in the Himalayas. Ancient healing wisdom for modern life transformation.
             </p>
             <div className="flex gap-4">
-              {[Facebook, Instagram, Twitter, Youtube].map((Icon, i) => (
-                <a key={i} href="#" className="p-2 bg-white/5 rounded-full hover:bg-primary transition-colors">
+              {socialLinks.map(({ Icon, url }, i) => (
+                <a 
+                  key={i} 
+                  href={url} 
+                  target="_blank" 
+                  rel="noopener noreferrer" 
+                  className="p-2 bg-white/5 rounded-full hover:bg-primary transition-colors"
+                >
                   <Icon size={20} />
                 </a>
               ))}
@@ -68,8 +80,13 @@ export default function Footer() {
           </div>
         </div>
 
-        <div className="pt-8 border-t border-white/10 text-center text-slate-500 text-sm">
+        <div className="pt-8 border-t border-white/10 flex flex-col md:flex-row justify-between items-center gap-4 text-slate-500 text-sm">
           <p>© {new Date().getFullYear()} DoctorYog Holistic Wellness Foundation. All rights reserved.</p>
+          <div className="flex flex-wrap justify-center gap-6">
+            <Link to="/privacy-policy" className="hover:text-primary transition-colors">Privacy Policy</Link>
+            <Link to="/terms-conditions" className="hover:text-primary transition-colors">Terms & Conditions</Link>
+            <Link to="/refund-policy" className="hover:text-primary transition-colors">Refund Policy</Link>
+          </div>
         </div>
       </div>
     </footer>

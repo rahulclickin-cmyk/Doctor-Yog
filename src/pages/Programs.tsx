@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import { CheckCircle2, ChevronDown, Calendar, Users, GraduationCap, Euro } from 'lucide-react';
-import { IMAGES } from '../constants';
+import { IMAGES, CONTACT } from '../constants';
 import { Link } from 'react-router-dom';
 
 const curriculum = [
@@ -24,170 +24,123 @@ const schedule = [
 ];
 
 export default function Programs() {
-  const [openIndex, setOpenIndex] = useState<number | null>(0);
+  const programs = [
+    {
+      id: 'yoga-therapy',
+      title: "Integrated Yoga Therapy",
+      desc: "11-day intensive program combining Yoga, Ayurveda, and Healing Science.",
+      image: IMAGES.yoga1,
+      duration: "11 Days",
+      price: "460€"
+    },
+    {
+      id: 'ayurveda',
+      title: "Ayurveda & Marma Science",
+      desc: "Master the ancient art of Ayurvedic healing and vital energy points.",
+      image: IMAGES.yoga2,
+      duration: "7 Days",
+      price: "350€"
+    },
+    {
+      id: 'detox',
+      title: "Detox & Holistic Healing",
+      desc: "Purify your body and mind with traditional Himalayan detox methods.",
+      image: IMAGES.retreat1,
+      duration: "5 Days",
+      price: "280€"
+    },
+    {
+      id: 'pain-management',
+      title: "Therapeutic Pain Management",
+      desc: "Scientific yoga protocols for chronic pain and structural alignment.",
+      image: IMAGES.yoga4,
+      duration: "10 Days",
+      price: "420€"
+    }
+  ];
 
   return (
-    <div className="pt-24 pb-20">
+    <div className="pt-24 pb-20 bg-slate-50">
       <div className="max-w-7xl mx-auto px-4">
         {/* Header */}
         <div className="text-center mb-16">
-          <div className="inline-block bg-primary/10 text-primary px-4 py-1 rounded-full text-sm font-bold mb-4 uppercase tracking-wider">
-            Intensive Training
-          </div>
-          <h1 className="text-5xl md:text-6xl font-serif mb-6">Integrated Yoga Therapy Training</h1>
-          <p className="text-xl text-slate-600 max-w-3xl mx-auto">
-            A comprehensive 11-day program combining Yoga, Ayurveda, and Healing Science for modern therapists.
-          </p>
-        </div>
-
-        {/* Overview Section */}
-        <div className="grid lg:grid-cols-2 gap-16 items-center mb-24">
-          <div>
-            <h2 className="text-3xl font-serif mb-6">Overview</h2>
-            <p className="text-lg text-slate-600 mb-8 leading-relaxed">
-              This program is designed to bridge the gap between ancient healing wisdom and modern therapeutic needs. You will learn to diagnose the root cause of ailments and apply integrated healing methods.
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+          >
+            <h1 className="text-5xl md:text-6xl font-serif mb-6">Our Training Programs</h1>
+            <p className="text-xl text-slate-600 max-w-3xl mx-auto">
+              Professional certification courses rooted in authentic Himalayan wisdom and modern therapeutic science.
             </p>
-            <div className="grid grid-cols-2 gap-6">
-              {[
-                { icon: <CheckCircle2 className="text-primary" />, text: "Yoga + Ayurveda" },
-                { icon: <CheckCircle2 className="text-primary" />, text: "Healing Science" },
-                { icon: <CheckCircle2 className="text-primary" />, text: "Root Cause Diagnosis" },
-                { icon: <CheckCircle2 className="text-primary" />, text: "Practical Therapy" }
-              ].map((item, i) => (
-                <div key={i} className="flex items-center gap-3">
-                  {item.icon}
-                  <span className="font-medium text-slate-700">{item.text}</span>
-                </div>
-              ))}
-            </div>
-          </div>
-          <div className="relative">
-            <img src={IMAGES.yoga5} alt="Training" className="rounded-3xl shadow-2xl" referrerPolicy="no-referrer" />
-            <div className="absolute -bottom-6 -right-6 bg-white p-6 rounded-2xl shadow-xl border border-orange-100 hidden md:block">
-              <div className="text-primary font-bold text-2xl">10 - 20 April</div>
-              <div className="text-slate-500">Intensive Program</div>
-            </div>
-          </div>
+          </motion.div>
         </div>
 
-        {/* What You Will Learn */}
-        <section className="mb-24 bg-orange-50 p-12 rounded-[3rem]">
-          <h2 className="text-3xl font-serif mb-12 text-center">What You Will Learn</h2>
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-            {[
-              { title: "Ashtanga Yoga", desc: "The eight limbs of yoga for holistic balance." },
-              { title: "Disease Understanding", desc: "Deep dive into common modern ailments." },
-              { title: "Marma + Acupressure", desc: "Energy point healing techniques." },
-              { title: "Therapeutic Yoga", desc: "Designing custom plans for patients." }
-            ].map((item, i) => (
-              <div key={i} className="bg-white p-8 rounded-2xl shadow-md">
-                <h3 className="text-xl font-bold mb-3 text-primary">{item.title}</h3>
-                <p className="text-slate-600">{item.desc}</p>
-              </div>
-            ))}
-          </div>
-        </section>
-
-        {/* Curriculum Accordion */}
-        <div className="grid lg:grid-cols-2 gap-16 mb-24">
-          <div>
-            <h2 className="text-3xl font-serif mb-8">Curriculum</h2>
-            <div className="space-y-4">
-              {curriculum.map((item, i) => (
-                <div key={i} className="border border-orange-100 rounded-xl overflow-hidden bg-white">
-                  <button 
-                    onClick={() => setOpenIndex(openIndex === i ? null : i)}
-                    className="w-full flex items-center justify-between p-5 text-left hover:bg-orange-50 transition-colors"
-                  >
-                    <div className="flex items-center gap-4">
-                      <span className="bg-primary/10 text-primary font-bold px-3 py-1 rounded-lg text-sm">{item.day}</span>
-                      <span className="font-bold text-slate-800">{item.title}</span>
+        {/* Programs Grid */}
+        <div className="grid md:grid-cols-2 gap-8">
+          {programs.map((program, i) => (
+            <motion.div
+              key={program.id}
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: i * 0.1 }}
+              className="bg-white rounded-[2.5rem] overflow-hidden shadow-xl border border-orange-50 group hover:shadow-2xl transition-all"
+            >
+              <div className="flex flex-col lg:flex-row">
+                <div className="lg:w-2/5 relative h-64 lg:h-auto overflow-hidden">
+                  <img 
+                    src={program.image} 
+                    alt={program.title} 
+                    className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                    referrerPolicy="no-referrer"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-r from-black/20 to-transparent" />
+                </div>
+                <div className="lg:w-3/5 p-8 md:p-10 flex flex-col">
+                  <div className="flex items-center gap-2 text-primary font-bold text-sm uppercase tracking-widest mb-4">
+                    <Calendar size={16} />
+                    <span>{program.duration}</span>
+                  </div>
+                  <h2 className="text-3xl font-serif mb-4 text-slate-800">{program.title}</h2>
+                  <p className="text-slate-600 mb-8 flex-grow leading-relaxed">
+                    {program.desc}
+                  </p>
+                  <div className="flex items-center justify-between mt-auto">
+                    <div>
+                      <span className="text-sm text-slate-400 block uppercase tracking-tighter">Starting from</span>
+                      <span className="text-2xl font-bold text-slate-800">{program.price}</span>
                     </div>
-                    <ChevronDown className={cn("transition-transform", openIndex === i && "rotate-180")} />
-                  </button>
-                  <AnimatePresence>
-                    {openIndex === i && (
-                      <motion.div 
-                        initial={{ height: 0 }}
-                        animate={{ height: 'auto' }}
-                        exit={{ height: 0 }}
-                        className="overflow-hidden"
-                      >
-                        <div className="p-5 pt-0 text-slate-600 border-t border-orange-50">
-                          {item.content}
-                        </div>
-                      </motion.div>
-                    )}
-                  </AnimatePresence>
+                    <Link 
+                      to={`/programs/${program.id}`}
+                      className="bg-primary text-white px-8 py-3 rounded-full font-bold hover:bg-orange-600 transition-colors shadow-lg shadow-orange-100"
+                    >
+                      View Details
+                    </Link>
+                  </div>
                 </div>
-              ))}
-            </div>
-          </div>
-
-          {/* Daily Schedule Table */}
-          <div>
-            <h2 className="text-3xl font-serif mb-8">Daily Schedule</h2>
-            <div className="bg-white rounded-2xl shadow-xl overflow-hidden border border-orange-100">
-              <table className="w-full">
-                <thead className="bg-primary text-white">
-                  <tr>
-                    <th className="p-4 text-left">Time</th>
-                    <th className="p-4 text-left">Activity</th>
-                  </tr>
-                </thead>
-                <tbody className="divide-y divide-orange-50">
-                  {schedule.map((item, i) => (
-                    <tr key={i} className="hover:bg-orange-50 transition-colors">
-                      <td className="p-4 font-bold text-primary">{item.time}</td>
-                      <td className="p-4 text-slate-700">{item.activity}</td>
-                    </tr>
-                  ))}
-                </tbody>
-              </table>
-            </div>
-          </div>
+              </div>
+            </motion.div>
+          ))}
         </div>
 
-        {/* Who Can Join & Pricing */}
-        <div className="grid md:grid-cols-2 gap-12">
-          <div className="bg-slate-900 text-white p-12 rounded-[2rem]">
-            <div className="flex items-center gap-3 mb-6">
-              <Users className="text-primary" size={32} />
-              <h2 className="text-3xl font-serif">Who Can Join</h2>
+        {/* Call to Action */}
+        <div className="mt-20 bg-slate-900 rounded-[3rem] p-12 text-center text-white relative overflow-hidden">
+          <div className="absolute top-0 right-0 w-64 h-64 bg-primary/20 rounded-full blur-3xl -mr-32 -mt-32" />
+          <div className="relative z-10">
+            <h2 className="text-3xl md:text-4xl font-serif mb-6">Not sure which program is right for you?</h2>
+            <p className="text-lg text-slate-400 mb-10 max-w-2xl mx-auto">
+              Our experts can help you choose the best path based on your goals and experience level.
+            </p>
+            <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
+              <Link to="/contact" className="btn-primary px-10">Contact Us</Link>
+              <a 
+                href={`https://wa.me/${CONTACT.whatsapp.replace('+', '')}`}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="btn-outline border-white text-white hover:bg-white hover:text-slate-900 px-10"
+              >
+                Talk to an Expert
+              </a>
             </div>
-            <ul className="space-y-4">
-              {["Yoga teachers looking to specialize", "Therapists and healers", "Beginners with a passion for healing", "Anyone interested in self-transformation"].map((item, i) => (
-                <li key={i} className="flex items-center gap-3">
-                  <GraduationCap className="text-primary w-5 h-5" />
-                  <span className="text-lg opacity-90">{item}</span>
-                </li>
-              ))}
-            </ul>
-          </div>
-
-          <div className="bg-white p-12 rounded-[2rem] shadow-2xl border-2 border-primary/20 relative overflow-hidden">
-            <div className="absolute top-0 right-0 bg-primary text-white px-6 py-2 rounded-bl-2xl font-bold">
-              Best Value
-            </div>
-            <div className="flex items-center gap-3 mb-8">
-              <Euro className="text-primary" size={32} />
-              <h2 className="text-3xl font-serif">Pricing</h2>
-            </div>
-            <div className="space-y-6 mb-10">
-              <div className="flex justify-between items-center pb-4 border-b border-orange-100">
-                <span className="text-slate-600">Full Program</span>
-                <span className="text-3xl font-bold text-slate-800">460€</span>
-              </div>
-              <div className="flex justify-between items-center pb-4 border-b border-orange-100">
-                <span className="text-primary font-bold">Early Bird (Limited)</span>
-                <span className="text-3xl font-bold text-primary">400€</span>
-              </div>
-              <div className="flex justify-between items-center">
-                <span className="text-slate-600">Booking Amount</span>
-                <span className="text-2xl font-bold text-slate-800">100€</span>
-              </div>
-            </div>
-            <Link to="/contact#register" className="btn-primary w-full text-xl py-4 text-center block">Register Now</Link>
           </div>
         </div>
       </div>

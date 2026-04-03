@@ -1,10 +1,16 @@
 import React from 'react';
 import { motion } from 'motion/react';
 import { Phone, Calendar, ArrowRight, CheckCircle2, Award, Users, Globe, MapPin, Heart, Shield, Zap } from 'lucide-react';
+import { useTranslation } from 'react-i18next';
 import { IMAGES, CONTACT } from '../constants';
 import { Link } from 'react-router-dom';
+import ScrollingAnnouncement from '../components/ScrollingAnnouncement';
+import TestimonialCarousel from '../components/TestimonialCarousel';
+import YogaPoses from '../components/YogaPoses';
 
 export default function Home() {
+  const { t } = useTranslation();
+
   return (
     <div className="flex flex-col">
       {/* Hero Section */}
@@ -26,14 +32,14 @@ export default function Home() {
             transition={{ duration: 0.8 }}
           >
             <h1 className="text-5xl md:text-7xl font-serif mb-6 drop-shadow-lg">
-              DoctorYog – Holistic Wellness Foundation
+              {t('hero.title')}
             </h1>
             <p className="text-xl md:text-2xl font-light mb-10 text-orange-50 drop-shadow-md">
-              Rooted in the Himalayas · Rishikesh · Ancient Healing for Modern Life
+              {t('hero.subtitle')}
             </p>
             <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-              <Link to="/contact#register" className="btn-primary text-lg px-10">
-                Register Now
+              <Link to="/reserve" className="btn-primary text-lg px-10">
+                {t('hero.register')}
               </Link>
               <a 
                 href={`https://wa.me/${CONTACT.whatsapp.replace('+', '')}`} 
@@ -41,7 +47,7 @@ export default function Home() {
                 rel="noopener noreferrer" 
                 className="btn-outline border-white text-white hover:bg-white hover:text-primary text-lg px-10 flex items-center gap-2"
               >
-                <Phone size={20} /> Talk on WhatsApp
+                <Phone size={20} /> {t('hero.whatsapp')}
               </a>
             </div>
           </motion.div>
@@ -54,29 +60,26 @@ export default function Home() {
         </div>
       </section>
 
+      <ScrollingAnnouncement />
+
       {/* Highlight Section */}
       <section className="py-20 bg-white">
         <div className="max-w-7xl mx-auto px-4">
           <div className="bg-gradient-to-r from-orange-600 to-orange-400 rounded-3xl overflow-hidden shadow-2xl flex flex-col lg:flex-row">
             <div className="lg:w-1/2 p-8 md:p-16 text-white flex flex-col justify-center">
               <div className="inline-block bg-white/20 backdrop-blur-sm px-4 py-1 rounded-full text-sm font-bold mb-6 tracking-wider uppercase">
-                Featured Program
+                {t('featured.badge')}
               </div>
               <h2 className="text-3xl md:text-5xl font-serif mb-6 leading-tight">
-                🌿 Integrated Yoga Therapy, Ayurveda & Healing Training
+                🌿 {t('featured.title')}
               </h2>
               <div className="flex items-center gap-3 mb-8 text-xl font-medium bg-black/10 p-4 rounded-xl border border-white/10">
                 <Calendar className="text-orange-200" />
-                <span>10 April – 20 April | 11 Days Intensive Program</span>
+                <span>{t('featured.date')}</span>
               </div>
               
               <ul className="space-y-4 mb-10">
-                {[
-                  "Learn Yoga as complete healing science",
-                  "Combine Yoga + Ayurveda + Marma + Acupressure",
-                  "Root cause diagnosis training",
-                  "Practical therapy application"
-                ].map((item, i) => (
+                {(t('featured.bullets', { returnObjects: true }) as string[]).map((item, i) => (
                   <li key={i} className="flex items-start gap-3">
                     <CheckCircle2 className="text-orange-200 mt-1 flex-shrink-0" />
                     <span className="text-lg opacity-90">{item}</span>
@@ -85,11 +88,11 @@ export default function Home() {
               </ul>
               
               <div className="flex flex-wrap gap-4">
-                <Link to="/contact#register" className="bg-white text-orange-600 px-8 py-4 rounded-full font-bold hover:bg-orange-50 transition-colors shadow-lg">
-                  Register Now
+                <Link to="/reserve" className="bg-white text-orange-600 px-8 py-4 rounded-full font-bold hover:bg-orange-50 transition-colors shadow-lg">
+                  {t('hero.register')}
                 </Link>
                 <button className="bg-transparent border-2 border-white text-white px-8 py-4 rounded-full font-bold hover:bg-white/10 transition-colors">
-                  Download Brochure
+                  {t('featured.brochure')}
                 </button>
               </div>
             </div>
@@ -109,41 +112,23 @@ export default function Home() {
       <section className="py-20 bg-white overflow-hidden">
         <div className="max-w-7xl mx-auto px-4">
           <div className="text-center mb-16">
-            <h2 className="text-4xl md:text-5xl font-serif mb-4">Why Choose Integrated Yoga Therapy?</h2>
-            <p className="text-lg text-slate-600 max-w-2xl mx-auto">Our unique methodology combines multiple ancient sciences for a comprehensive healing experience.</p>
+            <h2 className="text-4xl md:text-5xl font-serif mb-4">{t('why.title')}</h2>
+            <p className="text-lg text-slate-600 max-w-2xl mx-auto">{t('why.subtitle')}</p>
           </div>
 
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-            {[
-              {
-                title: "Holistic Science",
-                desc: "We don't just treat symptoms; we look at the body as a whole system of energy and biology.",
-                icon: <Heart className="text-orange-500" />
-              },
-              {
-                title: "Ancient Wisdom",
-                desc: "Rooted in authentic Himalayan traditions passed down through generations of masters.",
-                icon: <Award className="text-orange-500" />
-              },
-              {
-                title: "Modern Application",
-                desc: "Techniques adapted for modern lifestyle diseases like stress, obesity, and chronic pain.",
-                icon: <Zap className="text-orange-500" />
-              },
-              {
-                title: "Proven Results",
-                desc: "Thousands of students have experienced life-changing transformations through our programs.",
-                icon: <Shield className="text-orange-500" />
-              }
-            ].map((item, i) => (
-              <div key={i} className="p-8 bg-orange-50 rounded-3xl border border-orange-100 hover:shadow-lg transition-shadow">
-                <div className="w-12 h-12 bg-white rounded-2xl flex items-center justify-center mb-6 shadow-sm">
-                  {item.icon}
+            {(t('why.items', { returnObjects: true }) as any[]).map((item, i) => {
+              const icons = [<Heart className="text-orange-500" />, <Award className="text-orange-500" />, <Zap className="text-orange-500" />, <Shield className="text-orange-500" />];
+              return (
+                <div key={i} className="p-8 bg-orange-50 rounded-3xl border border-orange-100 hover:shadow-lg transition-shadow">
+                  <div className="w-12 h-12 bg-white rounded-2xl flex items-center justify-center mb-6 shadow-sm">
+                    {icons[i]}
+                  </div>
+                  <h3 className="text-xl font-bold mb-3">{item.title}</h3>
+                  <p className="text-slate-600 text-sm leading-relaxed">{item.desc}</p>
                 </div>
-                <h3 className="text-xl font-bold mb-3">{item.title}</h3>
-                <p className="text-slate-600 text-sm leading-relaxed">{item.desc}</p>
-              </div>
-            ))}
+              );
+            })}
           </div>
         </div>
       </section>
@@ -254,7 +239,7 @@ export default function Home() {
                 ))}
               </div>
 
-              <Link to="/contact#register" className="btn-primary px-10 py-4 text-lg">
+              <Link to="/reserve" className="btn-primary px-10 py-4 text-lg">
                 Register Now
               </Link>
 
@@ -324,7 +309,7 @@ export default function Home() {
                   </div>
                 ))}
               </div>
-              <Link to="/contact#register" className="btn-primary inline-block">
+              <Link to="/reserve" className="btn-primary inline-block">
                 Plan Your Visit
               </Link>
             </div>
@@ -332,52 +317,9 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Testimonials */}
-      <section className="py-20 bg-orange-50/30">
-        <div className="max-w-7xl mx-auto px-4">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl md:text-5xl font-serif mb-4">Healing Stories</h2>
-            <p className="text-lg text-slate-600 max-w-2xl mx-auto">Real experiences from our students who found transformation through Doctor Yog.</p>
-          </div>
+      <TestimonialCarousel />
 
-          <div className="grid md:grid-cols-3 gap-8">
-            {[
-              {
-                name: "Sarah Johnson",
-                role: "Yoga Student",
-                text: "The integrated approach at Doctor Yog completely changed my perspective on health. My chronic back pain is gone, and I feel more energetic than ever.",
-                img: "https://picsum.photos/seed/sarah/100/100"
-              },
-              {
-                name: "Michael Chen",
-                role: "Retreat Participant",
-                text: "Rishikesh is magical, but Dr. Shakti's guidance made it life-changing. The personalized therapy sessions were exactly what I needed for my stress relief.",
-                img: "https://picsum.photos/seed/michael/100/100"
-              },
-              {
-                name: "Elena Rodriguez",
-                role: "Healing Program Graduate",
-                text: "I've tried many yoga centers, but the scientific depth here is unmatched. Combining Ayurveda with Yoga therapy is a game-changer for holistic health.",
-                img: "https://picsum.photos/seed/elena/100/100"
-              }
-            ].map((testimonial, i) => (
-              <div key={i} className="bg-white p-8 rounded-3xl shadow-lg border border-orange-100 relative">
-                <div className="text-orange-300 text-6xl absolute top-4 right-8 font-serif opacity-50">"</div>
-                <p className="text-slate-600 italic mb-8 relative z-10 leading-relaxed">
-                  {testimonial.text}
-                </p>
-                <div className="flex items-center gap-4">
-                  <img src={testimonial.img} alt={testimonial.name} className="w-12 h-12 rounded-full object-cover" referrerPolicy="no-referrer" />
-                  <div>
-                    <div className="font-bold text-slate-800">{testimonial.name}</div>
-                    <div className="text-sm text-primary">{testimonial.role}</div>
-                  </div>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
+      <YogaPoses />
 
       {/* About Dr. Shakti */}
       <section className="py-20 bg-slate-900 text-white overflow-hidden">

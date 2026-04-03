@@ -1,8 +1,16 @@
+import { TreePine, Dog, Zap, Triangle, Sun, Moon } from 'lucide-react';
+
 export const CONTACT = {
   location: "Rishikesh, India",
   phone: "+91 85328 18447",
   whatsapp: "+918532818447",
   email: "shaktidoctoryog7@gmail.com"
+};
+
+export const SOCIAL = {
+  instagram: "https://www.instagram.com/shaktis_doctoryog/",
+  facebook: "https://www.facebook.com/doctoryogrishikesh/",
+  youtube: "https://www.youtube.com/channel/UCvuUvoN9xELaJTjOP3bxKsw/videos"
 };
 
 export const IMAGES = {
@@ -25,3 +33,73 @@ export const IMAGES = {
   gallery8: "https://darkslateblue-tarsier-292000.hostingersite.com/wp-content/uploads/2026/03/WhatsApp-Image-2026-03-23-at-20.32.23.jpeg",
   logo: "https://darkslateblue-tarsier-292000.hostingersite.com/wp-content/uploads/2026/03/Doctor-Yog.png"
 };
+
+export const TESTIMONIALS = [
+  {
+    id: 1,
+    name: "Elena Rodriguez",
+    role: "Yoga Practitioner, Spain",
+    quote: "My time at Doctor Yog was transformative. Dr. Shakti's deep knowledge of Marma Science helped me recover from a chronic back injury that years of therapy couldn't fix.",
+    image: "https://picsum.photos/seed/elena/100/100"
+  },
+  {
+    id: 2,
+    name: "Dr. Arvind Kumar",
+    role: "Ayurvedic Doctor, India",
+    quote: "As a fellow professional, I was impressed by the scientific approach Dr. Shakti takes. The Integrated Yoga Therapy training is a must for anyone serious about holistic healing.",
+    image: "https://picsum.photos/seed/arvind/100/100"
+  },
+  {
+    id: 3,
+    name: "Sarah Jenkins",
+    role: "Wellness Coach, USA",
+    quote: "Rishikesh is magical, but Doctor Yog makes it practical. I learned techniques for detox and healing that I now use daily with my own clients. Truly life-changing.",
+    image: "https://picsum.photos/seed/sarah/100/100"
+  },
+  {
+    id: 4,
+    name: "Marco Rossi",
+    role: "Yoga Teacher, Italy",
+    quote: "The Marma Science workshop was a revelation. It's the missing link in modern yoga practice. Dr. Shakti is a true master of his craft.",
+    image: "https://picsum.photos/seed/marco/100/100"
+  }
+];
+
+export const YOGA_POSES = [
+  {
+    name: "Tree Pose",
+    sanskritName: "Vrikshasana",
+    benefits: ["Improves balance", "Strengthens legs", "Calms the mind"],
+    icon: TreePine
+  },
+  {
+    name: "Downward Dog",
+    sanskritName: "Adho Mukha Svanasana",
+    benefits: ["Energizes body", "Stretches spine", "Relieves stress"],
+    icon: Dog
+  },
+  {
+    name: "Cobra Pose",
+    sanskritName: "Bhujangasana",
+    benefits: ["Strengthens spine", "Opens chest", "Improves digestion"],
+    icon: Zap
+  },
+  {
+    name: "Triangle Pose",
+    sanskritName: "Trikonasana",
+    benefits: ["Stretches legs", "Improves digestion", "Reduces anxiety"],
+    icon: Triangle
+  },
+  {
+    name: "Sun Salutation",
+    sanskritName: "Surya Namaskar",
+    benefits: ["Full body workout", "Improves flexibility", "Boosts immunity"],
+    icon: Sun
+  },
+  {
+    name: "Corpse Pose",
+    sanskritName: "Savasana",
+    benefits: ["Deep relaxation", "Lowers blood pressure", "Reduces fatigue"],
+    icon: Moon
+  }
+];
