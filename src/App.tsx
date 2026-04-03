@@ -19,6 +19,7 @@ import Contact from './pages/Contact';
 import WhatsAppButton from './components/WhatsAppButton';
 import AIChatbot from './components/AIChatbot';
 import MobileBottomNav from './components/MobileBottomNav';
+import { ErrorBoundary } from './components/ErrorBoundary';
 
 function ScrollToTop() {
   const { pathname, hash } = useLocation();
@@ -39,35 +40,37 @@ function ScrollToTop() {
 
 export default function App() {
   return (
-    <Router>
-      <ScrollToTop />
-      <div className="min-h-screen flex flex-col pb-16 lg:pb-0">
-        <Navbar />
-        <main className="flex-grow">
-          <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="/retreats" element={<Retreats />} />
-            <Route path="/about" element={<About />} />
-            <Route path="/book" element={<BookClass />} />
-            <Route path="/programs" element={<Programs />} />
-            <Route path="/programs/:type" element={<ProgramDetail />} />
-            <Route path="/reserve" element={<Reservation />} />
-            <Route path="/contact" element={<Contact />} />
-            <Route path="/contact/gallery" element={<Gallery />} />
-            <Route path="/contact/blogs" element={<Blogs />} />
-            <Route path="/contact/faqs" element={<FAQs />} />
-            <Route path="/privacy-policy" element={<PrivacyPolicy />} />
-            <Route path="/terms-conditions" element={<TermsConditions />} />
-            <Route path="/refund-policy" element={<RefundPolicy />} />
-            {/* Fallback to home */}
-            <Route path="*" element={<Home />} />
-          </Routes>
-        </main>
-        <Footer />
-        <WhatsAppButton />
-        <AIChatbot />
-        <MobileBottomNav />
-      </div>
-    </Router>
+    <ErrorBoundary>
+      <Router>
+        <ScrollToTop />
+        <div className="min-h-screen flex flex-col pb-16 lg:pb-0">
+          <Navbar />
+          <main className="flex-grow">
+            <Routes>
+              <Route path="/" element={<Home />} />
+              <Route path="/retreats" element={<Retreats />} />
+              <Route path="/about" element={<About />} />
+              <Route path="/book" element={<BookClass />} />
+              <Route path="/programs" element={<Programs />} />
+              <Route path="/programs/:type" element={<ProgramDetail />} />
+              <Route path="/reserve" element={<Reservation />} />
+              <Route path="/contact" element={<Contact />} />
+              <Route path="/contact/gallery" element={<Gallery />} />
+              <Route path="/contact/blogs" element={<Blogs />} />
+              <Route path="/contact/faqs" element={<FAQs />} />
+              <Route path="/privacy-policy" element={<PrivacyPolicy />} />
+              <Route path="/terms-conditions" element={<TermsConditions />} />
+              <Route path="/refund-policy" element={<RefundPolicy />} />
+              {/* Fallback to home */}
+              <Route path="*" element={<Home />} />
+            </Routes>
+          </main>
+          <Footer />
+          <WhatsAppButton />
+          <AIChatbot />
+          <MobileBottomNav />
+        </div>
+      </Router>
+    </ErrorBoundary>
   );
 }

@@ -2,6 +2,9 @@ import React, { useState } from 'react';
 import { motion } from 'motion/react';
 import { Send, CheckCircle2, AlertCircle, Loader2, Calendar, User, Mail, Phone, MessageSquare, BookOpen } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
+import { collection, addDoc, serverTimestamp } from 'firebase/firestore';
+import { db } from '../lib/firebase';
+import { handleFirestoreError, OperationType } from '../lib/firestoreUtils';
 
 export default function Reservation() {
   const { t } = useTranslation();
@@ -19,26 +22,19 @@ export default function Reservation() {
     e.preventDefault();
     setStatus('loading');
 
-    const apiUrl = import.meta.env.VITE_API_URL || '';
-
     try {
-      const response = await fetch(`${apiUrl}/api/reserve`, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(formData),
+      const path = 'reservations';
+      await addDoc(collection(db, path), {
+        ...formData,
+        createdAt: serverTimestamp()
       });
-
-      if (response.ok) {
-        setStatus('success');
-        setFormData({ name: '', email: '', phone: '', program: '', date: '', message: '' });
-      } else {
-        setStatus('error');
-      }
+      
+      setStatus('success');
+      setFormData({ name: '', email: '', phone: '', program: '', date: '', message: '' });
     } catch (error) {
       console.error('Reservation error:', error);
       setStatus('error');
+      handleFirestoreError(error, OperationType.CREATE, 'reservations');
     }
   };
 

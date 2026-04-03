@@ -1,0 +1,51 @@
+{
+  "entities": {
+    "Reservation": {
+      "title": "Reservation",
+      "description": "A reservation for a yoga program.",
+      "type": "object",
+      "properties": {
+        "name": { "type": "string", "description": "Full name of the person." },
+        "email": { "type": "string", "format": "email", "description": "Email address." },
+        "phone": { "type": "string", "description": "Phone number." },
+        "program": { "type": "string", "description": "Selected program." },
+        "date": { "type": "string", "format": "date", "description": "Preferred start date." },
+        "message": { "type": "string", "description": "Additional message." },
+        "createdAt": { "type": "string", "format": "date-time", "description": "Timestamp of creation." }
+      },
+      "required": ["name", "email", "phone", "program", "date"]
+    },
+    "Contact": {
+      "title": "Contact",
+      "description": "A detailed contact or reservation inquiry.",
+      "type": "object",
+      "properties": {
+        "firstName": { "type": "string" },
+        "lastName": { "type": "string" },
+        "countryCode": { "type": "string" },
+        "phone": { "type": "string" },
+        "email": { "type": "string", "format": "email" },
+        "gender": { "type": "string" },
+        "country": { "type": "string" },
+        "duration": { "type": "string" },
+        "retreat": { "type": "string" },
+        "accommodation": { "type": "string" },
+        "arrivalDate": { "type": "string", "format": "date" },
+        "comments": { "type": "string" },
+        "formType": { "type": "string" },
+        "createdAt": { "type": "string", "format": "date-time" }
+      },
+      "required": ["firstName", "lastName", "phone", "email", "gender", "country", "duration", "retreat", "accommodation", "arrivalDate", "comments"]
+    }
+  },
+  "firestore": {
+    "/reservations/{reservationId}": {
+      "schema": "Reservation",
+      "description": "Collection of basic reservations."
+    },
+    "/contacts/{contactId}": {
+      "schema": "Contact",
+      "description": "Collection of detailed contact inquiries."
+    }
+  }
+}

@@ -2,6 +2,9 @@ import React, { useState } from 'react';
 import { motion } from 'motion/react';
 import { Mail, Phone, MapPin, Clock, Send, Facebook, Instagram, Youtube, CheckCircle2, AlertCircle, Loader2 } from 'lucide-react';
 import { CONTACT, SOCIAL } from '../constants';
+import { collection, addDoc, serverTimestamp } from 'firebase/firestore';
+import { db } from '../lib/firebase';
+import { handleFirestoreError, OperationType } from '../lib/firestoreUtils';
 
 export default function Contact() {
   const [formData, setFormData] = useState({
@@ -34,42 +37,33 @@ export default function Contact() {
     e.preventDefault();
     setStatus('loading');
 
-    const apiUrl = import.meta.env.VITE_API_URL || '';
-
     try {
-      const response = await fetch(`${apiUrl}/api/reserve`, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-          ...formData,
-          formType: 'Contact/Detailed Reservation'
-        }),
+      const path = 'contacts';
+      await addDoc(collection(db, path), {
+        ...formData,
+        formType: 'Contact/Detailed Reservation',
+        createdAt: serverTimestamp()
       });
 
-      if (response.ok) {
-        setStatus('success');
-        setFormData({
-          firstName: '',
-          lastName: '',
-          countryCode: '+91',
-          phone: '',
-          email: '',
-          gender: '',
-          country: '',
-          duration: '',
-          retreat: '',
-          accommodation: '',
-          arrivalDate: '',
-          comments: ''
-        });
-      } else {
-        setStatus('error');
-      }
+      setStatus('success');
+      setFormData({
+        firstName: '',
+        lastName: '',
+        countryCode: '+91',
+        phone: '',
+        email: '',
+        gender: '',
+        country: '',
+        duration: '',
+        retreat: '',
+        accommodation: '',
+        arrivalDate: '',
+        comments: ''
+      });
     } catch (error) {
       console.error('Submission error:', error);
       setStatus('error');
+      handleFirestoreError(error, OperationType.CREATE, 'contacts');
     }
   };
 

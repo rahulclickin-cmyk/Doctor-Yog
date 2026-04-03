@@ -1,0 +1,91 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    
+    // ===============================================================
+    // Assumed Data Model
+    // ===============================================================
+    //
+    // Collection: reservations
+    // Fields:
+    //   - name: string (required, 1-100 chars)
+    //   - email: string (required, valid email)
+    //   - phone: string (required, 5-20 chars)
+    //   - program: string (required)
+    //   - date: string (required, ISO date)
+    //   - message: string (optional, max 1000 chars)
+    //   - createdAt: timestamp (required)
+    //
+    // Collection: contacts
+    // Fields:
+    //   - firstName: string (required)
+    //   - lastName: string (required)
+    //   - email: string (required)
+    //   - phone: string (required)
+    //   - ... other fields ...
+    //   - createdAt: timestamp (required)
+    //
+    // ===============================================================
+
+    // ===============================================================
+    // Helper Functions
+    // ===============================================================
+    function isAuthenticated() {
+      return request.auth != null;
+    }
+
+    function isAdmin() {
+      return isAuthenticated() &&
+        (get(/databases/$(database)/documents/users/$(request.auth.uid)).data.role == 'admin' ||
+          (request.auth.token.email == "clickindma@gmail.com" && request.auth.token.email_verified == true));
+    }
+
+    function isValidEmail(email) {
+      return email is string && email.matches("^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,}$");
+    }
+
+    function hasOnlyAllowedFields(allowedFields) {
+      return request.resource.data.keys().hasOnly(allowedFields);
+    }
+
+    // ===============================================================
+    // Collection Rules
+    // ===============================================================
+
+    match /reservations/{reservationId} {
+      function isValidReservation(data) {
+        return data.name is string && data.name.size() > 0 && data.name.size() < 100 &&
+               data.email is string && isValidEmail(data.email) &&
+               data.phone is string && data.phone.size() >= 5 && data.phone.size() <= 20 &&
+               data.program is string &&
+               data.date is string &&
+               (!('message' in data) || (data.message is string && data.message.size() <= 1000)) &&
+               data.createdAt is timestamp;
+      }
+
+      // Public can create reservations (unauthenticated allowed for this specific business case)
+      allow create: if isValidReservation(request.resource.data) && hasOnlyAllowedFields(['name', 'email', 'phone', 'program', 'date', 'message', 'createdAt']);
+      
+      // Only admin can read/list/update/delete
+      allow read, list, update, delete: if isAdmin();
+    }
+
+    match /contacts/{contactId} {
+      function isValidContact(data) {
+        return data.firstName is string && data.firstName.size() > 0 &&
+               data.lastName is string && data.lastName.size() > 0 &&
+               data.email is string && isValidEmail(data.email) &&
+               data.phone is string && data.phone.size() >= 5 &&
+               data.createdAt is timestamp;
+      }
+
+      allow create: if isValidContact(request.resource.data);
+      allow read, list, update, delete: if isAdmin();
+    }
+
+    match /users/{userId} {
+      allow read: if isAuthenticated() && (request.auth.uid == userId || isAdmin());
+      allow create, update: if isAdmin();
+    }
+  }
+}
