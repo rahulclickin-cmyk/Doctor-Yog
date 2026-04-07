@@ -34,6 +34,8 @@ export default function Navbar() {
         { name: 'Ayurveda Training', path: '/programs/ayurveda' },
         { name: 'Detox Healing', path: '/programs/detox' },
         { name: 'Pain Management', path: '/programs/pain-management' },
+        { name: '100 Hour TTC', path: '/programs/100hr-ttc' },
+        { name: '200 Hour TTC', path: '/programs/200hr-ttc' },
       ]
     },
     { 

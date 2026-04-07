@@ -3,6 +3,7 @@ import { motion, AnimatePresence } from 'motion/react';
 import { CheckCircle2, ChevronDown, Calendar, Users, GraduationCap, Euro } from 'lucide-react';
 import { IMAGES, CONTACT } from '../constants';
 import { Link } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 
 const curriculum = [
   { day: "Day 1-2", title: "Foundations of Yoga Therapy", content: "Introduction to healing science, history of yoga therapy, and basic anatomical principles." },
@@ -24,6 +25,18 @@ const schedule = [
 ];
 
 export default function Programs() {
+  const { i18n } = useTranslation();
+  
+  const getPrice = (baseINR: number) => {
+    // Simple mock conversion for demonstration
+    if (i18n.language === 'en') {
+      return `$${Math.round(baseINR / 83)}`;
+    } else if (i18n.language === 'es') {
+      return `€${Math.round(baseINR / 90)}`;
+    }
+    return `₹${baseINR}`;
+  };
+
   const programs = [
     {
       id: 'yoga-therapy',
@@ -31,7 +44,7 @@ export default function Programs() {
       desc: "11-day intensive program combining Yoga, Ayurveda, and Healing Science.",
       image: IMAGES.yoga1,
       duration: "11 Days",
-      price: "460€"
+      price: getPrice(38000)
     },
     {
       id: 'ayurveda',
@@ -39,7 +52,7 @@ export default function Programs() {
       desc: "Master the ancient art of Ayurvedic healing and vital energy points.",
       image: IMAGES.yoga2,
       duration: "7 Days",
-      price: "350€"
+      price: getPrice(29000)
     },
     {
       id: 'detox',
@@ -47,7 +60,7 @@ export default function Programs() {
       desc: "Purify your body and mind with traditional Himalayan detox methods.",
       image: IMAGES.retreat1,
       duration: "5 Days",
-      price: "280€"
+      price: getPrice(23000)
     },
     {
       id: 'pain-management',
@@ -55,7 +68,23 @@ export default function Programs() {
       desc: "Scientific yoga protocols for chronic pain and structural alignment.",
       image: IMAGES.yoga4,
       duration: "10 Days",
-      price: "420€"
+      price: getPrice(35000)
+    },
+    {
+      id: '100hr-ttc',
+      title: "100 Hour Yoga Teacher Training",
+      desc: "Foundational training in traditional Hatha and Ashtanga Vinyasa yoga.",
+      image: IMAGES.gallery2,
+      duration: "14 Days",
+      price: getPrice(45000)
+    },
+    {
+      id: '200hr-ttc',
+      title: "200 Hour Yoga Teacher Training",
+      desc: "Comprehensive certification course covering asana, philosophy, anatomy, and teaching methodology.",
+      image: IMAGES.gallery3,
+      duration: "28 Days",
+      price: getPrice(85000)
     }
   ];
 

@@ -94,7 +94,7 @@ export default function AIChatbot() {
       console.error('Chat error details:', error);
       setMessages(prev => [...prev, { 
         role: 'assistant', 
-        content: "Namaste. I'm having a little trouble connecting right now. Please message us on WhatsApp at +91 85328 18447 for a quick reply! We are always here to help you." 
+        content: "Namaste. I'm having a little trouble connecting right now. Please send a message/email to Doctor Yog so we can track who tries to reach." 
       }]);
     } finally {
       setIsLoading(false);

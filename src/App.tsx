@@ -16,7 +16,6 @@ import Gallery from './pages/Gallery';
 import Blogs from './pages/Blogs';
 import FAQs from './pages/FAQs';
 import Contact from './pages/Contact';
-import WhatsAppButton from './components/WhatsAppButton';
 import AIChatbot from './components/AIChatbot';
 import MobileBottomNav from './components/MobileBottomNav';
 import { ErrorBoundary } from './components/ErrorBoundary';
@@ -66,7 +65,6 @@ export default function App() {
             </Routes>
           </main>
           <Footer />
-          <WhatsAppButton />
           <AIChatbot />
           <MobileBottomNav />
         </div>

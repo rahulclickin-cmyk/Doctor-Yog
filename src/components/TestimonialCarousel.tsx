@@ -1,22 +1,20 @@
-import React, { useState } from 'react';
-import { motion, AnimatePresence } from 'motion/react';
-import { ChevronLeft, ChevronRight, Quote } from 'lucide-react';
+import React, { useEffect, useState } from 'react';
+import { Quote } from 'lucide-react';
 import { TESTIMONIALS } from '../constants';
 
 export default function TestimonialCarousel() {
   const [currentIndex, setCurrentIndex] = useState(0);
 
-  const next = () => {
-    setCurrentIndex((prev) => (prev + 1) % TESTIMONIALS.length);
-  };
-
-  const prev = () => {
-    setCurrentIndex((prev) => (prev - 1 + TESTIMONIALS.length) % TESTIMONIALS.length);
-  };
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setCurrentIndex((prev) => (prev + 1) % TESTIMONIALS.length);
+    }, 5000);
+    return () => clearInterval(timer);
+  }, []);
 
   return (
-    <section className="py-20 bg-orange-50/50">
-      <div className="max-w-4xl mx-auto px-4">
+    <section className="py-20 bg-orange-50/50 overflow-hidden">
+      <div className="max-w-7xl mx-auto px-4">
         <div className="text-center mb-12">
           <h2 className="text-3xl md:text-4xl font-serif text-primary mb-4">Healing Stories</h2>
           <p className="text-slate-600 max-w-2xl mx-auto">
@@ -25,53 +23,46 @@ export default function TestimonialCarousel() {
         </div>
 
         <div className="relative">
-          <div className="overflow-hidden bg-white rounded-3xl shadow-xl shadow-orange-200/20 p-8 md:p-12 border border-orange-100">
-            <AnimatePresence mode="wait">
-              <motion.div
-                key={currentIndex}
-                initial={{ opacity: 0, x: 20 }}
-                animate={{ opacity: 1, x: 0 }}
-                exit={{ opacity: 0, x: -20 }}
-                transition={{ duration: 0.4 }}
-                className="flex flex-col items-center text-center"
+          <div 
+            className="flex transition-transform duration-1000 ease-in-out gap-6"
+            style={{ transform: `translateX(-${currentIndex * (100 / (window.innerWidth >= 1024 ? 3 : window.innerWidth >= 768 ? 2 : 1))}%)` }}
+          >
+            {TESTIMONIALS.map((testimonial, i) => (
+              <div 
+                key={i} 
+                className="w-full md:w-[calc(50%-12px)] lg:w-[calc(33.333%-16px)] flex-shrink-0 bg-white rounded-3xl shadow-xl shadow-orange-200/20 p-8 border border-orange-100 flex flex-col"
               >
-                <Quote size={48} className="text-primary/20 mb-6" />
-                <p className="text-xl md:text-2xl text-slate-700 italic mb-8 leading-relaxed">
-                  "{TESTIMONIALS[currentIndex].quote}"
+                <Quote size={32} className="text-primary/20 mb-4" />
+                <p className="text-lg text-slate-700 italic mb-8 flex-grow">
+                  "{testimonial.quote}"
                 </p>
                 
-                <div className="flex items-center gap-4">
+                <div className="flex items-center gap-4 mt-auto">
                   <img 
-                    src={TESTIMONIALS[currentIndex].image} 
-                    alt={TESTIMONIALS[currentIndex].name}
-                    className="w-16 h-16 rounded-full object-cover border-2 border-primary/20"
+                    src={testimonial.image} 
+                    alt={testimonial.name}
+                    className="w-14 h-14 rounded-full object-cover border-2 border-primary/20"
                     referrerPolicy="no-referrer"
                   />
-                  <div className="text-left">
-                    <h4 className="font-bold text-slate-900">{TESTIMONIALS[currentIndex].name}</h4>
-                    <p className="text-sm text-primary font-medium">{TESTIMONIALS[currentIndex].role}</p>
+                  <div>
+                    <h4 className="font-bold text-slate-900">{testimonial.name}</h4>
+                    <p className="text-sm text-primary font-medium">{testimonial.role}</p>
                   </div>
                 </div>
-              </motion.div>
-            </AnimatePresence>
+              </div>
+            ))}
           </div>
 
-          {/* Navigation */}
-          <div className="flex justify-center gap-4 mt-8">
-            <button 
-              onClick={prev}
-              className="p-3 rounded-full bg-white border border-orange-200 text-primary hover:bg-primary hover:text-white transition-colors shadow-sm"
-              aria-label="Previous testimonial"
-            >
-              <ChevronLeft size={24} />
-            </button>
-            <button 
-              onClick={next}
-              className="p-3 rounded-full bg-white border border-orange-200 text-primary hover:bg-primary hover:text-white transition-colors shadow-sm"
-              aria-label="Next testimonial"
-            >
-              <ChevronRight size={24} />
-            </button>
+          {/* Indicators */}
+          <div className="flex justify-center gap-2 mt-10">
+            {TESTIMONIALS.map((_, i) => (
+              <button
+                key={i}
+                onClick={() => setCurrentIndex(i)}
+                className={`w-3 h-3 rounded-full transition-colors ${i === currentIndex ? 'bg-primary' : 'bg-orange-200'}`}
+                aria-label={`Go to slide ${i + 1}`}
+              />
+            ))}
           </div>
         </div>
       </div>

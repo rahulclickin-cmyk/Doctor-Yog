@@ -1,8 +1,8 @@
 @import "tailwindcss";
 
 @theme {
-  --color-primary: #f97316;
-  --color-secondary: #fb923c;
+  --color-primary: #b45309; /* amber-700, duller orange */
+  --color-secondary: #d97706; /* amber-600 */
   --font-serif: "Playfair Display", serif;
   --font-sans: "Inter", sans-serif;
 }

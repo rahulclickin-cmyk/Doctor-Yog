@@ -208,6 +208,8 @@ export default function Contact() {
                         name="phone"
                         value={formData.phone}
                         onChange={handleChange}
+                        pattern="[0-9\-\+\s\(\)]*"
+                        minLength={10}
                         required 
                         className="w-full px-4 py-3 rounded-lg border border-slate-300 focus:border-teal-600 outline-none transition-colors" 
                       />

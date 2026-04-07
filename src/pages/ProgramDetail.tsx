@@ -88,6 +88,42 @@ const programsData: Record<string, any> = {
       { name: "James W.", role: "Physiotherapist", text: "As a physiotherapist, I found the structural alignment protocols very useful for my practice.", img: "https://picsum.photos/seed/james/100/100" },
       { name: "Meera G.", role: "Chronic Pain Patient", text: "My chronic lower back pain is finally under control. The modified asanas made all the difference.", img: "https://picsum.photos/seed/meera/100/100" }
     ]
+  },
+  '100hr-ttc': {
+    title: "100 Hour Yoga Teacher Training",
+    subtitle: "Foundational training in traditional Hatha and Ashtanga Vinyasa yoga.",
+    image: IMAGES.gallery2,
+    duration: "14 Days",
+    price: "₹45000",
+    earlyBird: "₹40000",
+    overview: "This 100-hour course is the first half of the 200-hour TTC. It is perfect for beginners who want to deepen their practice or those who cannot commit to a full 28-day course at once.",
+    highlights: ["Hatha Yoga", "Ashtanga Vinyasa", "Pranayama", "Meditation"],
+    curriculum: [
+      { day: "Week 1", title: "Foundations", content: "Introduction to Hatha Yoga, basic asanas, and alignment principles." },
+      { day: "Week 2", title: "Deepening Practice", content: "Introduction to Ashtanga Vinyasa, pranayama techniques, and basic philosophy." }
+    ],
+    testimonials: [
+      { name: "Anna S.", role: "Yoga Student", text: "A perfect introduction to authentic yoga. The teachers are incredibly knowledgeable.", img: "https://picsum.photos/seed/anna/100/100" }
+    ]
+  },
+  '200hr-ttc': {
+    title: "200 Hour Yoga Teacher Training",
+    subtitle: "Comprehensive certification course covering asana, philosophy, anatomy, and teaching methodology.",
+    image: IMAGES.gallery3,
+    duration: "28 Days",
+    price: "₹85000",
+    earlyBird: "₹75000",
+    overview: "A complete immersion into the yogic lifestyle. This Yoga Alliance certified course prepares you to teach yoga globally with confidence and deep understanding.",
+    highlights: ["Yoga Alliance Certified", "Anatomy & Physiology", "Teaching Methodology", "Yogic Philosophy"],
+    curriculum: [
+      { day: "Week 1", title: "Foundations & Alignment", content: "Deep dive into Hatha Yoga asanas, alignment, and adjustments." },
+      { day: "Week 2", title: "Ashtanga & Anatomy", content: "Primary series of Ashtanga Vinyasa, functional anatomy, and physiology." },
+      { day: "Week 3", title: "Philosophy & Pranayama", content: "Patanjali Yoga Sutras, advanced pranayama, and meditation techniques." },
+      { day: "Week 4", title: "Teaching Methodology", content: "Practicum, class sequencing, and business of yoga." }
+    ],
+    testimonials: [
+      { name: "Michael B.", role: "Certified Yoga Teacher", text: "This course completely transformed my life. I feel fully prepared to teach and share this ancient wisdom.", img: "https://picsum.photos/seed/michael/100/100" }
+    ]
   }
 };
 

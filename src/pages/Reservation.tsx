@@ -123,6 +123,8 @@ export default function Reservation() {
                     name="phone"
                     value={formData.phone}
                     onChange={handleChange}
+                    pattern="[0-9\-\+\s\(\)]*"
+                    minLength={10}
                     placeholder="+91 00000 00000"
                     className="w-full px-5 py-4 rounded-2xl bg-slate-50 border border-slate-200 focus:border-primary focus:ring-2 focus:ring-primary/20 outline-none transition-all"
                   />

@@ -41,14 +41,9 @@ export default function Home() {
               <Link to="/reserve" className="btn-primary text-lg px-10">
                 {t('hero.register')}
               </Link>
-              <a 
-                href={`https://wa.me/${CONTACT.whatsapp.replace('+', '')}`} 
-                target="_blank" 
-                rel="noopener noreferrer" 
-                className="btn-outline border-white text-white hover:bg-white hover:text-primary text-lg px-10 flex items-center gap-2"
-              >
-                <Phone size={20} /> {t('hero.whatsapp')}
-              </a>
+              <Link to="/contact" className="btn-outline border-white text-white hover:bg-white hover:text-primary text-lg px-10 flex items-center gap-2">
+                Contact Us
+              </Link>
             </div>
           </motion.div>
         </div>
@@ -88,12 +83,12 @@ export default function Home() {
               </ul>
               
               <div className="flex flex-wrap gap-4">
-                <Link to="/reserve" className="bg-white text-orange-600 px-8 py-4 rounded-full font-bold hover:bg-orange-50 transition-colors shadow-lg">
-                  {t('hero.register')}
+                <Link to="/programs" className="bg-white text-orange-600 px-8 py-4 rounded-full font-bold hover:bg-orange-50 transition-colors shadow-lg">
+                  Learn More
                 </Link>
-                <button className="bg-transparent border-2 border-white text-white px-8 py-4 rounded-full font-bold hover:bg-white/10 transition-colors">
+                <a href="/brochure.pdf" download className="bg-transparent border-2 border-white text-white px-8 py-4 rounded-full font-bold hover:bg-white/10 transition-colors text-center">
                   {t('featured.brochure')}
-                </button>
+                </a>
               </div>
             </div>
             <div className="lg:w-1/2 relative min-h-[400px]">
@@ -103,6 +98,48 @@ export default function Home() {
                 className="absolute inset-0 w-full h-full object-cover"
                 referrerPolicy="no-referrer"
               />
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* About Dr. Shakti (Moved to 3rd Section) */}
+      <section className="py-20 bg-slate-900 text-white overflow-hidden">
+        <div className="max-w-7xl mx-auto px-4">
+          <div className="flex flex-col lg:flex-row items-center gap-16">
+            <div className="lg:w-1/2 relative">
+              <div className="absolute -top-10 -left-10 w-40 h-40 bg-primary/20 rounded-full blur-3xl" />
+              <div className="absolute -bottom-10 -right-10 w-40 h-40 bg-orange-500/20 rounded-full blur-3xl" />
+              <img 
+                src={IMAGES.drShakti} 
+                alt="Dr. Shakti" 
+                className="relative z-10 rounded-3xl shadow-2xl border-2 border-white/10 w-full max-w-md mx-auto"
+                referrerPolicy="no-referrer"
+              />
+            </div>
+            <div className="lg:w-1/2">
+              <h2 className="text-4xl md:text-5xl font-serif mb-8">Meet Dr. Shakti</h2>
+              <p className="text-xl text-orange-100 mb-10 leading-relaxed italic">
+                "Healing is not just about curing a disease; it's about returning to your natural state of harmony."
+              </p>
+              
+              <div className="grid grid-cols-2 gap-8 mb-12">
+                {[
+                  { icon: <Award className="text-primary" />, label: "19+ years experience" },
+                  { icon: <Globe className="text-primary" />, label: "PhD Yoga" },
+                  { icon: <Users className="text-primary" />, label: "5000+ lives transformed" },
+                  { icon: <CheckCircle2 className="text-primary" />, label: "International training" }
+                ].map((stat, i) => (
+                  <div key={i} className="flex items-center gap-3">
+                    <div className="p-2 bg-white/5 rounded-lg">{stat.icon}</div>
+                    <span className="font-medium">{stat.label}</span>
+                  </div>
+                ))}
+              </div>
+              
+              <Link to="/about" className="btn-primary inline-block">
+                Know More About Dr. Shakti
+              </Link>
             </div>
           </div>
         </div>
@@ -193,7 +230,7 @@ export default function Home() {
               { title: "Detox Retreat", img: IMAGES.retreat1 },
               { title: "Panchakarma", img: IMAGES.retreat2 },
               { title: "Stress Healing", img: IMAGES.yoga2 },
-              { title: "Diabetes Healing", img: IMAGES.yoga3 },
+              { title: "Diabetes Treatment / Chronic Disease", img: IMAGES.yoga3 },
               { title: "Pain Management", img: IMAGES.yoga4 }
             ].map((retreat, i) => (
               <motion.div 
@@ -233,9 +270,9 @@ export default function Home() {
               
               <div className="flex flex-wrap gap-4 mb-10">
                 {["1 hr", "$10", "Mae Sa", "Online", "Rishikesh"].map((tag, i) => (
-                  <span key={i} className="px-4 py-2 border border-orange-200 rounded-lg text-slate-600 font-medium italic">
+                  <button key={i} className="px-4 py-2 border border-orange-200 rounded-lg text-slate-600 font-medium italic hover:bg-primary hover:text-white hover:border-primary transition-colors focus:bg-primary focus:text-white focus:border-primary">
                     {tag}
-                  </span>
+                  </button>
                 ))}
               </div>
 
@@ -275,7 +312,7 @@ export default function Home() {
                   </div>
                 ))}
               </div>
-              <button className="w-full mt-8 text-primary font-bold hover:underline">Load all sessions</button>
+              <Link to="/book" className="block text-center w-full mt-8 text-primary font-bold hover:underline">Load all sessions</Link>
             </div>
           </div>
         </div>
@@ -321,45 +358,46 @@ export default function Home() {
 
       <YogaPoses />
 
-      {/* About Dr. Shakti */}
-      <section className="py-20 bg-slate-900 text-white overflow-hidden">
+      {/* Who is this for? */}
+      <section className="py-20 bg-white">
         <div className="max-w-7xl mx-auto px-4">
-          <div className="flex flex-col lg:flex-row items-center gap-16">
-            <div className="lg:w-1/2 relative">
-              <div className="absolute -top-10 -left-10 w-40 h-40 bg-primary/20 rounded-full blur-3xl" />
-              <div className="absolute -bottom-10 -right-10 w-40 h-40 bg-orange-500/20 rounded-full blur-3xl" />
-              <img 
-                src={IMAGES.drShakti} 
-                alt="Dr. Shakti" 
-                className="relative z-10 rounded-3xl shadow-2xl border-2 border-white/10 w-full max-w-md mx-auto"
-                referrerPolicy="no-referrer"
-              />
-            </div>
-            <div className="lg:w-1/2">
-              <h2 className="text-4xl md:text-5xl font-serif mb-8">Meet Dr. Shakti</h2>
-              <p className="text-xl text-orange-100 mb-10 leading-relaxed italic">
-                "Healing is not just about curing a disease; it's about returning to your natural state of harmony."
-              </p>
-              
-              <div className="grid grid-cols-2 gap-8 mb-12">
-                {[
-                  { icon: <Award className="text-primary" />, label: "19+ years experience" },
-                  { icon: <Globe className="text-primary" />, label: "PhD Yoga" },
-                  { icon: <Users className="text-primary" />, label: "5000+ lives transformed" },
-                  { icon: <CheckCircle2 className="text-primary" />, label: "International training" }
-                ].map((stat, i) => (
-                  <div key={i} className="flex items-center gap-3">
-                    <div className="p-2 bg-white/5 rounded-lg">{stat.icon}</div>
-                    <span className="font-medium">{stat.label}</span>
-                  </div>
-                ))}
-              </div>
-              
-              <Link to="/about" className="btn-primary inline-block">
-                Know More About Dr. Shakti
-              </Link>
-            </div>
+          <div className="text-center mb-16">
+            <h2 className="text-4xl md:text-5xl font-serif mb-4">Who Is This Program For?</h2>
+            <p className="text-lg text-slate-600 max-w-2xl mx-auto">Our teachings are designed to meet you exactly where you are on your journey.</p>
           </div>
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+            {[
+              { title: "Beginners", desc: "Start your journey with a strong, safe foundation in authentic yoga.", icon: "🌱" },
+              { title: "Yoga Teachers", desc: "Deepen your knowledge of therapy, anatomy, and ancient texts.", icon: "🧘‍♀️" },
+              { title: "Lifestyle Change", desc: "Overcome chronic stress, poor habits, and find lasting balance.", icon: "⚖️" },
+              { title: "Spiritual Seekers", desc: "Advance your practice through deep meditation and philosophy.", icon: "✨" }
+            ].map((item, i) => (
+              <div key={i} className="p-8 bg-orange-50 rounded-3xl border border-orange-100 text-center hover:-translate-y-2 transition-transform">
+                <div className="text-5xl mb-4">{item.icon}</div>
+                <h3 className="text-xl font-bold mb-3">{item.title}</h3>
+                <p className="text-slate-600 text-sm">{item.desc}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Newsletter Subscription */}
+      <section className="py-20 bg-primary text-white">
+        <div className="max-w-4xl mx-auto px-4 text-center">
+          <h2 className="text-3xl md:text-4xl font-serif mb-4">Join Our Healing Community</h2>
+          <p className="text-orange-100 mb-8 text-lg">Subscribe to receive free wellness tips, guided meditations, and updates on upcoming retreats.</p>
+          <form className="flex flex-col sm:flex-row gap-4 max-w-2xl mx-auto" onSubmit={(e) => { e.preventDefault(); alert('Subscribed successfully!'); }}>
+            <input 
+              type="email" 
+              placeholder="Enter your email address" 
+              required
+              className="flex-grow px-6 py-4 rounded-full text-slate-900 focus:outline-none focus:ring-2 focus:ring-orange-300"
+            />
+            <button type="submit" className="bg-slate-900 text-white px-8 py-4 rounded-full font-bold hover:bg-slate-800 transition-colors whitespace-nowrap">
+              Subscribe Now
+            </button>
+          </form>
         </div>
       </section>
     </div>

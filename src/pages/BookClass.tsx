@@ -200,6 +200,8 @@ export default function BookClass() {
                     <option value="stress">Stress Healing</option>
                     <option value="diabetes">Diabetes Healing</option>
                     <option value="pain">Pain Management</option>
+                    <option value="100hr-ttc">100 Hour TTC</option>
+                    <option value="200hr-ttc">200 Hour TTC</option>
                   </select>
                 </div>
               </div>

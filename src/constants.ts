@@ -70,36 +70,42 @@ export const YOGA_POSES = [
     name: "Tree Pose",
     sanskritName: "Vrikshasana",
     benefits: ["Improves balance", "Strengthens legs", "Calms the mind"],
-    icon: TreePine
+    icon: TreePine,
+    videoUrl: "https://www.youtube.com/watch?v=Dic293YNJI8"
   },
   {
     name: "Downward Dog",
     sanskritName: "Adho Mukha Svanasana",
     benefits: ["Energizes body", "Stretches spine", "Relieves stress"],
-    icon: Dog
+    icon: Dog,
+    videoUrl: "https://www.youtube.com/watch?v=EC7RGJ975iM"
   },
   {
     name: "Cobra Pose",
     sanskritName: "Bhujangasana",
     benefits: ["Strengthens spine", "Opens chest", "Improves digestion"],
-    icon: Zap
+    icon: Zap,
+    videoUrl: "https://www.youtube.com/watch?v=fOdrW7nf9gw"
   },
   {
     name: "Triangle Pose",
     sanskritName: "Trikonasana",
     benefits: ["Stretches legs", "Improves digestion", "Reduces anxiety"],
-    icon: Triangle
+    icon: Triangle,
+    videoUrl: "https://www.youtube.com/watch?v=upFVtuIgVDw"
   },
   {
     name: "Sun Salutation",
     sanskritName: "Surya Namaskar",
     benefits: ["Full body workout", "Improves flexibility", "Boosts immunity"],
-    icon: Sun
+    icon: Sun,
+    videoUrl: "https://www.youtube.com/watch?v=1mOAShE0m2o"
   },
   {
     name: "Corpse Pose",
     sanskritName: "Savasana",
     benefits: ["Deep relaxation", "Lowers blood pressure", "Reduces fatigue"],
-    icon: Moon
+    icon: Moon,
+    videoUrl: "https://www.youtube.com/watch?v=1bJwEw_k_0E"
   }
 ];

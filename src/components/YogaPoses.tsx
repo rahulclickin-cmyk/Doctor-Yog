@@ -47,9 +47,9 @@ export default function YogaPoses() {
                   
                   <div className="pt-6 border-t border-orange-50 flex items-center justify-between">
                     <span className="text-xs font-bold text-orange-400 uppercase tracking-widest">Therapeutic</span>
-                    <button className="text-primary hover:text-secondary transition-colors">
-                      <Info size={20} />
-                    </button>
+                    <a href={YOGA_POSES[i].videoUrl || `https://www.youtube.com/results?search_query=${pose.name}+yoga+pose`} target="_blank" rel="noopener noreferrer" className="text-primary hover:text-secondary transition-colors flex items-center gap-1 text-sm font-bold">
+                      Watch Video
+                    </a>
                   </div>
                 </div>
               </motion.div>
