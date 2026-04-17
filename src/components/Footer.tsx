@@ -11,7 +11,7 @@ export default function Footer() {
   ];
 
   return (
-    <footer className="bg-slate-900 text-white pt-20 pb-10">
+    <footer className="bg-tertiary text-white pt-16 pb-10">
       <div className="max-w-7xl mx-auto px-4">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-16">
           {/* Brand */}
@@ -44,7 +44,7 @@ export default function Footer() {
               <li><Link to="/" className="hover:text-primary transition-colors">Home</Link></li>
               <li><Link to="/retreats" className="hover:text-primary transition-colors">Retreats</Link></li>
               <li><Link to="/about" className="hover:text-primary transition-colors">About Us</Link></li>
-              <li><Link to="/contact#register" className="hover:text-primary transition-colors">Register Now</Link></li>
+              <li><Link to="/reserve" className="hover:text-primary transition-colors">Register Now</Link></li>
               <li><Link to="/programs" className="hover:text-primary transition-colors">Programs</Link></li>
             </ul>
           </div>
@@ -78,6 +78,31 @@ export default function Footer() {
               </li>
             </ul>
           </div>
+        </div>
+
+        {/* New Redesigned Newsletter Section */}
+        <div className="mb-16 p-8 md:p-10 bg-[#F5E1C8] rounded-2xl text-black">
+          <h2 className="text-3xl md:text-4xl font-bold mb-8">Subscribe to get exclusive updates</h2>
+          <form className="space-y-6" onSubmit={(e) => { e.preventDefault(); alert('Subscribed successfully!'); }}>
+            <div className="flex flex-col md:flex-row items-end gap-6">
+              <div className="flex-grow space-y-2">
+                <label className="text-sm font-medium block">Email *</label>
+                <input 
+                  type="email" 
+                  placeholder="e.g., email@example.com" 
+                  required
+                  className="w-full px-6 py-4 rounded-full bg-[#FDF5EB] text-slate-900 border-none focus:ring-2 focus:ring-orange-300 outline-none"
+                />
+              </div>
+              <button type="submit" className="bg-white text-black px-8 py-4 rounded-lg font-medium text-lg leading-tight hover:bg-white/90 transition-colors shadow-sm border border-black/5 min-w-[200px]">
+                Join Our Mailing<br />List
+              </button>
+            </div>
+            <div className="flex items-center gap-3">
+              <input type="checkbox" id="subscribe-check" className="w-5 h-5 rounded border-black/20 text-primary focus:ring-primary" required />
+              <label htmlFor="subscribe-check" className="text-sm md:text-base">I want to subscribe to your mailing list.</label>
+            </div>
+          </form>
         </div>
 
         <div className="pt-8 border-t border-white/10 flex flex-col md:flex-row justify-between items-center gap-4 text-slate-500 text-sm">

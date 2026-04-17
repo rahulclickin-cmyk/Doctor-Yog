@@ -17,7 +17,6 @@ export default function YogaPoses() {
 
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
           {(t('poses.items', { returnObjects: true }) as any[]).map((pose, i) => {
-            const Icon = YOGA_POSES[i].icon;
             return (
               <motion.div 
                 key={i}
@@ -27,8 +26,14 @@ export default function YogaPoses() {
                 transition={{ delay: i * 0.1 }}
                 className="bg-white rounded-3xl overflow-hidden shadow-xl border border-orange-100 group"
               >
-                <div className="h-64 relative overflow-hidden flex items-center justify-center bg-orange-100/50">
-                  <Icon size={80} className="text-primary opacity-80 transition-transform duration-500 group-hover:scale-110" />
+                <div className="h-64 relative overflow-hidden">
+                  <img 
+                    src={YOGA_POSES[i].image} 
+                    alt={pose.name} 
+                    className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                    referrerPolicy="no-referrer"
+                  />
+                  <div className="absolute inset-0 bg-black/20 group-hover:bg-black/10 transition-colors" />
                   <div className="absolute top-4 right-4 bg-white/90 backdrop-blur-sm px-3 py-1 rounded-full text-xs font-bold text-primary shadow-sm">
                     {YOGA_POSES[i].sanskritName}
                   </div>
@@ -39,7 +44,7 @@ export default function YogaPoses() {
                   <div className="space-y-3 mb-6">
                     {(pose.benefits as string[]).map((benefit, j) => (
                       <div key={j} className="flex items-start gap-2 text-sm text-slate-600">
-                        <CheckCircle2 size={16} className="text-orange-500 mt-0.5 flex-shrink-0" />
+                        <CheckCircle2 size={16} className="text-primary mt-0.5 flex-shrink-0" />
                         <span>{benefit}</span>
                       </div>
                     ))}

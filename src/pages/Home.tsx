@@ -1,8 +1,8 @@
-import React from 'react';
-import { motion } from 'motion/react';
+import React, { useState, useEffect } from 'react';
+import { motion, AnimatePresence } from 'motion/react';
 import { Phone, Calendar, ArrowRight, CheckCircle2, Award, Users, Globe, MapPin, Heart, Shield, Zap } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
-import { IMAGES, CONTACT } from '../constants';
+import { IMAGES, CONTACT, HERO_SLIDES } from '../constants';
 import { Link } from 'react-router-dom';
 import ScrollingAnnouncement from '../components/ScrollingAnnouncement';
 import TestimonialCarousel from '../components/TestimonialCarousel';
@@ -11,18 +11,50 @@ import YogaPoses from '../components/YogaPoses';
 export default function Home() {
   const { t } = useTranslation();
 
+  const drShaktiImages = [
+    IMAGES.drShakti,
+    IMAGES.yoga1,
+    IMAGES.yoga2,
+    IMAGES.yoga3,
+    IMAGES.yoga4,
+    IMAGES.yoga5,
+  ];
+
+  const [currentImageIndex, setCurrentImageIndex] = useState(0);
+  const [currentHeroSlide, setCurrentHeroSlide] = useState(0);
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setCurrentImageIndex((prev) => (prev + 1) % drShaktiImages.length);
+    }, 4000);
+    const heroTimer = setInterval(() => {
+      setCurrentHeroSlide((prev) => (prev + 1) % HERO_SLIDES.length);
+    }, 5000);
+    return () => {
+      clearInterval(timer);
+      clearInterval(heroTimer);
+    };
+  }, [drShaktiImages.length]);
+
   return (
     <div className="flex flex-col">
       {/* Hero Section */}
       <section className="relative h-screen flex items-center justify-center overflow-hidden">
         <div className="absolute inset-0 z-0">
-          <img 
-            src={IMAGES.hero} 
-            alt="Himalayan Yoga" 
-            className="w-full h-full object-cover"
-            referrerPolicy="no-referrer"
-          />
-          <div className="absolute inset-0 bg-black/40" />
+          <AnimatePresence mode="wait">
+            <motion.img 
+              key={currentHeroSlide}
+              src={HERO_SLIDES[currentHeroSlide]} 
+              alt="Himalayan Yoga" 
+              initial={{ opacity: 0, scale: 1.1 }}
+              animate={{ opacity: 1, scale: 1 }}
+              exit={{ opacity: 0, scale: 1.05 }}
+              transition={{ duration: 1.5, ease: "easeInOut" }}
+              className="absolute inset-0 w-full h-full object-cover"
+              referrerPolicy="no-referrer"
+            />
+          </AnimatePresence>
+          <div className="absolute inset-0 bg-black/40 backdrop-blur-[1px]" />
         </div>
         
         <div className="relative z-10 max-w-5xl mx-auto px-4 text-center text-white">
@@ -60,7 +92,7 @@ export default function Home() {
       {/* Highlight Section */}
       <section className="py-20 bg-white">
         <div className="max-w-7xl mx-auto px-4">
-          <div className="bg-gradient-to-r from-orange-600 to-orange-400 rounded-3xl overflow-hidden shadow-2xl flex flex-col lg:flex-row">
+          <div className="bg-gradient-to-r from-primary to-secondary rounded-3xl overflow-hidden shadow-2xl flex flex-col lg:flex-row">
             <div className="lg:w-1/2 p-8 md:p-16 text-white flex flex-col justify-center">
               <div className="inline-block bg-white/20 backdrop-blur-sm px-4 py-1 rounded-full text-sm font-bold mb-6 tracking-wider uppercase">
                 {t('featured.badge')}
@@ -69,21 +101,21 @@ export default function Home() {
                 🌿 {t('featured.title')}
               </h2>
               <div className="flex items-center gap-3 mb-8 text-xl font-medium bg-black/10 p-4 rounded-xl border border-white/10">
-                <Calendar className="text-orange-200" />
+                <Calendar className="text-orange-100" />
                 <span>{t('featured.date')}</span>
               </div>
               
               <ul className="space-y-4 mb-10">
                 {(t('featured.bullets', { returnObjects: true }) as string[]).map((item, i) => (
                   <li key={i} className="flex items-start gap-3">
-                    <CheckCircle2 className="text-orange-200 mt-1 flex-shrink-0" />
+                    <CheckCircle2 className="text-orange-100 mt-1 flex-shrink-0" />
                     <span className="text-lg opacity-90">{item}</span>
                   </li>
                 ))}
               </ul>
               
               <div className="flex flex-wrap gap-4">
-                <Link to="/programs" className="bg-white text-orange-600 px-8 py-4 rounded-full font-bold hover:bg-orange-50 transition-colors shadow-lg">
+                <Link to="/programs" className="bg-white text-primary px-8 py-4 rounded-full font-bold hover:bg-orange-50 transition-colors shadow-lg">
                   Learn More
                 </Link>
                 <a href="/brochure.pdf" download className="bg-transparent border-2 border-white text-white px-8 py-4 rounded-full font-bold hover:bg-white/10 transition-colors text-center">
@@ -104,18 +136,69 @@ export default function Home() {
       </section>
 
       {/* About Dr. Shakti (Moved to 3rd Section) */}
-      <section className="py-20 bg-slate-900 text-white overflow-hidden">
-        <div className="max-w-7xl mx-auto px-4">
+      <section className="py-24 bg-tertiary text-white relative overflow-hidden">
+        {/* Chakra Animation Background */}
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] opacity-10 pointer-events-none">
+          <motion.svg 
+            viewBox="0 0 200 200" 
+            className="w-full h-full"
+            animate={{ rotate: 360 }}
+            transition={{ duration: 60, repeat: Infinity, ease: "linear" }}
+          >
+            <circle cx="100" cy="100" r="80" fill="none" stroke="currentColor" strokeWidth="0.5" strokeDasharray="4 4" />
+            <circle cx="100" cy="100" r="60" fill="none" stroke="currentColor" strokeWidth="0.5" strokeDasharray="8 8" />
+            <circle cx="100" cy="100" r="40" fill="none" stroke="currentColor" strokeWidth="0.5" strokeDasharray="2 2" />
+            {[0, 45, 90, 135, 180, 225, 270, 315].map((angle) => (
+              <line 
+                key={angle}
+                x1="100" y1="100" 
+                x2={100 + 90 * Math.cos((angle * Math.PI) / 180)} 
+                y2={100 + 90 * Math.sin((angle * Math.PI) / 180)} 
+                stroke="currentColor" strokeWidth="0.2" 
+              />
+            ))}
+            <path d="M100 20 L110 40 L90 40 Z" fill="currentColor" transform="rotate(0 100 100)" />
+            <path d="M100 20 L110 40 L90 40 Z" fill="currentColor" transform="rotate(60 100 100)" />
+            <path d="M100 20 L110 40 L90 40 Z" fill="currentColor" transform="rotate(120 100 100)" />
+            <path d="M100 20 L110 40 L90 40 Z" fill="currentColor" transform="rotate(180 100 100)" />
+            <path d="M100 20 L110 40 L90 40 Z" fill="currentColor" transform="rotate(240 100 100)" />
+            <path d="M100 20 L110 40 L90 40 Z" fill="currentColor" transform="rotate(300 100 100)" />
+          </motion.svg>
+        </div>
+
+        <div className="max-w-7xl mx-auto px-4 relative z-10">
           <div className="flex flex-col lg:flex-row items-center gap-16">
             <div className="lg:w-1/2 relative">
               <div className="absolute -top-10 -left-10 w-40 h-40 bg-primary/20 rounded-full blur-3xl" />
-              <div className="absolute -bottom-10 -right-10 w-40 h-40 bg-orange-500/20 rounded-full blur-3xl" />
-              <img 
-                src={IMAGES.drShakti} 
-                alt="Dr. Shakti" 
-                className="relative z-10 rounded-3xl shadow-2xl border-2 border-white/10 w-full max-w-md mx-auto"
-                referrerPolicy="no-referrer"
-              />
+              <div className="absolute -bottom-10 -right-10 w-40 h-40 bg-secondary/20 rounded-full blur-3xl" />
+              
+              <div className="relative z-10 rounded-3xl shadow-2xl border-2 border-white/10 w-full h-[400px] md:h-[500px] overflow-hidden">
+                <AnimatePresence mode="wait">
+                  <motion.img
+                    key={currentImageIndex}
+                    src={drShaktiImages[currentImageIndex]}
+                    alt="Dr. Shakti"
+                    initial={{ opacity: 0, scale: 1.1 }}
+                    animate={{ opacity: 1, scale: 1 }}
+                    exit={{ opacity: 0, scale: 0.95 }}
+                    transition={{ duration: 0.8, ease: "easeInOut" }}
+                    className="absolute inset-0 w-full h-full object-cover"
+                    referrerPolicy="no-referrer"
+                  />
+                </AnimatePresence>
+                
+                {/* Image Indicators */}
+                <div className="absolute bottom-6 left-1/2 -translate-x-1/2 flex gap-2 z-20">
+                  {drShaktiImages.map((_, i) => (
+                    <div 
+                      key={i} 
+                      className={`w-2 h-2 rounded-full transition-all duration-300 ${
+                        i === currentImageIndex ? "bg-white w-6" : "bg-white/40"
+                      }`}
+                    />
+                  ))}
+                </div>
+              </div>
             </div>
             <div className="lg:w-1/2">
               <h2 className="text-4xl md:text-5xl font-serif mb-8">Meet Dr. Shakti</h2>
@@ -155,7 +238,7 @@ export default function Home() {
 
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
             {(t('why.items', { returnObjects: true }) as any[]).map((item, i) => {
-              const icons = [<Heart className="text-orange-500" />, <Award className="text-orange-500" />, <Zap className="text-orange-500" />, <Shield className="text-orange-500" />];
+              const icons = [<Heart className="text-primary" />, <Award className="text-primary" />, <Zap className="text-primary" />, <Shield className="text-primary" />];
               return (
                 <div key={i} className="p-8 bg-orange-50 rounded-3xl border border-orange-100 hover:shadow-lg transition-shadow">
                   <div className="w-12 h-12 bg-white rounded-2xl flex items-center justify-center mb-6 shadow-sm">
@@ -213,7 +296,7 @@ export default function Home() {
       </section>
 
       {/* Retreats Preview */}
-      <section className="py-20 bg-white">
+      <section className="py-20 bg-slate-50">
         <div className="max-w-7xl mx-auto px-4">
           <div className="flex flex-col md:flex-row justify-between items-end mb-12 gap-6">
             <div>
@@ -256,29 +339,69 @@ export default function Home() {
       </section>
 
       {/* Personalized Yoga Therapy Section (New) */}
-      <section className="py-20 bg-white">
-        <div className="max-w-7xl mx-auto px-4">
+      <section className="py-24 bg-white relative overflow-hidden">
+        {/* Animated Background Elements for Highlight */}
+        <div className="absolute top-0 left-0 w-full h-full pointer-events-none">
+          <motion.div 
+            animate={{ 
+              scale: [1, 1.2, 1],
+              opacity: [0.1, 0.2, 0.1]
+            }}
+            transition={{ duration: 8, repeat: Infinity }}
+            className="absolute -top-24 -left-24 w-96 h-96 bg-primary/10 rounded-full blur-3xl"
+          />
+          <motion.div 
+            animate={{ 
+              scale: [1, 1.3, 1],
+              opacity: [0.1, 0.15, 0.1]
+            }}
+            transition={{ duration: 10, repeat: Infinity, delay: 1 }}
+            className="absolute -bottom-24 -right-24 w-96 h-96 bg-secondary/10 rounded-full blur-3xl"
+          />
+        </div>
+
+        <div className="max-w-7xl mx-auto px-4 relative z-10">
           <div className="flex flex-col lg:flex-row gap-16 items-center">
-            <div className="lg:w-1/2">
-              <div className="inline-block bg-orange-100 text-primary px-4 py-1 rounded-full text-sm font-bold mb-6">
+            <motion.div 
+              initial={{ opacity: 0, x: -50 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              className="lg:w-1/2 p-8 md:p-12 bg-orange-50/30 rounded-[3rem] border border-orange-100 shadow-inner relative"
+            >
+              <div className="absolute top-0 right-0 p-8">
+                <motion.div 
+                  animate={{ rotate: 360 }}
+                  transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
+                  className="w-16 h-16 border-2 border-dashed border-primary/20 rounded-full flex items-center justify-center"
+                >
+                  <Zap className="text-primary/30" size={24} />
+                </motion.div>
+              </div>
+
+              <div className="inline-block bg-primary text-white px-6 py-2 rounded-full text-sm font-bold mb-8 shadow-lg animate-pulse">
                 Available Online
               </div>
-              <h2 className="text-4xl md:text-6xl font-serif mb-6 leading-tight">
-                Personalized Yoga Therapy – Your Journey
+              <h2 className="text-4xl md:text-6xl font-serif mb-6 leading-tight text-slate-900">
+                Personalized Yoga Therapy – <span className="text-primary">Your Journey</span>
               </h2>
               <p className="text-xl text-primary font-medium mb-8">Tailored One-on-One Care</p>
               
               <div className="flex flex-wrap gap-4 mb-10">
-                {["1 hr", "$10", "Mae Sa", "Online", "Rishikesh"].map((tag, i) => (
+                {["1 hr", "Mae Sa", "Online", "Rishikesh"].map((tag, i) => (
                   <button key={i} className="px-4 py-2 border border-orange-200 rounded-lg text-slate-600 font-medium italic hover:bg-primary hover:text-white hover:border-primary transition-colors focus:bg-primary focus:text-white focus:border-primary">
                     {tag}
                   </button>
                 ))}
               </div>
 
-              <Link to="/reserve" className="btn-primary px-10 py-4 text-lg">
-                Register Now
-              </Link>
+              <div className="flex flex-col sm:flex-row gap-4">
+                <Link to="/reserve" className="btn-primary px-10 py-4 text-lg">
+                  Register Now
+                </Link>
+                <Link to="/reserve?trial=true" className="btn-outline border-primary text-primary hover:bg-primary hover:text-white px-10 py-4 text-lg">
+                  Book Free Trial
+                </Link>
+              </div>
 
               <div className="mt-12 pt-12 border-t border-orange-100">
                 <h3 className="text-2xl font-serif mb-4">Service Description</h3>
@@ -286,33 +409,69 @@ export default function Home() {
                   Experience a truly personalized yoga therapy class designed just for you. Each session is one-on-one, allowing us to focus entirely on your individual physical and mental condition. Whether you're struggling with back pain, weight gain, high stress or anxiety, or other lifestyle-related issues, our approach meets you where you are. Every body is unique, so we adapt the practice to your needs—taking into account your fitness level, any injuries or health concerns, and even your daily routine. This compassionate, customized care ensures you feel heard and supported at every step.
                 </p>
               </div>
-            </div>
+            </motion.div>
             
             <div className="lg:w-1/2 bg-orange-50/50 p-8 md:p-12 rounded-[3rem] border border-orange-100">
-              <h3 className="text-2xl font-serif mb-8">Upcoming Sessions</h3>
+              <h3 className="text-2xl font-serif mb-8">Healing Benefits</h3>
               <div className="space-y-6">
                 {[
-                  { day: "Tuesday, 31 Mar", time: "2:00 pm", duration: "1 hr", loc: "Mae Sa", instructor: "Doctor Shakti" },
-                  { day: "Wednesday, 1 Apr", time: "2:00 pm", duration: "1 hr", loc: "Mae Sa", instructor: "Doctor Shakti" },
-                  { day: "Thursday, 2 Apr", time: "2:00 pm", duration: "1 hr", loc: "Mae Sa", instructor: "Doctor Shakti" },
-                  { day: "Friday, 3 Apr", time: "2:00 pm", duration: "1 hr", loc: "Mae Sa", instructor: "Doctor Shakti" },
-                  { day: "Friday, 3 Apr", time: "2:00 pm", duration: "1 hr", loc: "Online", instructor: "Doctor Shakti" },
-                  { day: "Friday, 3 Apr", time: "2:00 pm", duration: "1 hr", loc: "Rishikesh", instructor: "Doctor Shakti" }
-                ].map((session, i) => (
-                  <div key={i} className="flex flex-col md:flex-row md:items-center justify-between p-4 bg-white rounded-2xl shadow-sm border border-orange-50">
-                    <div className="font-bold text-primary italic mb-2 md:mb-0">{session.day}</div>
-                    <div className="flex flex-col text-sm text-slate-500">
-                      <span>{session.time}</span>
-                      <span>{session.duration}</span>
+                  { title: "Physical Health", desc: "Improve flexibility, strength, and balance while addressing chronic pain." },
+                  { title: "Mental Clarity", desc: "Reduce stress, anxiety, and mental fatigue through mindful practice." },
+                  { title: "Emotional Balance", desc: "Find inner peace and emotional stability in a supportive environment." },
+                  { title: "Spiritual Growth", desc: "Connect with your deeper self through ancient Himalayan traditions." }
+                ].map((benefit, i) => (
+                  <div key={i} className="flex items-start gap-4 p-4 bg-white rounded-2xl shadow-sm border border-orange-50">
+                    <div className="w-10 h-10 bg-orange-100 rounded-full flex items-center justify-center text-primary font-bold">
+                      {i + 1}
                     </div>
-                    <div className="flex flex-col text-sm text-slate-500 text-right">
-                      <span className="flex items-center justify-end gap-1"><MapPin size={14} /> {session.loc}</span>
-                      <span>{session.instructor}</span>
+                    <div>
+                      <h4 className="font-bold text-slate-800">{benefit.title}</h4>
+                      <p className="text-sm text-slate-500">{benefit.desc}</p>
                     </div>
                   </div>
                 ))}
               </div>
-              <Link to="/book" className="block text-center w-full mt-8 text-primary font-bold hover:underline">Load all sessions</Link>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Ayurveda & Healing Section (New) */}
+      <section className="py-20 bg-orange-50/30">
+        <div className="max-w-7xl mx-auto px-4">
+          <div className="flex flex-col lg:flex-row-reverse gap-16 items-center">
+            <div className="lg:w-1/2">
+              <h2 className="text-4xl md:text-5xl font-serif mb-6">Ayurveda & Ancient Healing</h2>
+              <p className="text-lg text-slate-600 mb-8 leading-relaxed">
+                Experience the profound wisdom of Ayurveda, the "Science of Life." Our treatments are designed to balance your Doshas (Vata, Pitta, Kapha) and restore your body's natural equilibrium through authentic therapies, herbal remedies, and personalized diet plans.
+              </p>
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-10">
+                {[
+                  { title: "Panchakarma", desc: "Deep detoxification and rejuvenation" },
+                  { title: "Marma Therapy", desc: "Vital energy point stimulation" },
+                  { title: "Herbal Healing", desc: "Customized natural remedies" },
+                  { title: "Diet & Lifestyle", desc: "Sattvic living guidance" }
+                ].map((item, i) => (
+                  <div key={i} className="flex items-start gap-3">
+                    <CheckCircle2 className="text-primary mt-1" />
+                    <div>
+                      <h4 className="font-bold text-slate-800">{item.title}</h4>
+                      <p className="text-sm text-slate-500">{item.desc}</p>
+                    </div>
+                  </div>
+                ))}
+              </div>
+              <Link to="/programs" className="btn-primary">
+                Explore Healing Programs
+              </Link>
+            </div>
+            <div className="lg:w-1/2">
+              <img 
+                src={IMAGES.yoga4} 
+                alt="Ayurveda Healing" 
+                className="rounded-[3rem] shadow-2xl w-full h-[500px] object-cover"
+                referrerPolicy="no-referrer"
+              />
             </div>
           </div>
         </div>
@@ -379,25 +538,6 @@ export default function Home() {
               </div>
             ))}
           </div>
-        </div>
-      </section>
-
-      {/* Newsletter Subscription */}
-      <section className="py-20 bg-primary text-white">
-        <div className="max-w-4xl mx-auto px-4 text-center">
-          <h2 className="text-3xl md:text-4xl font-serif mb-4">Join Our Healing Community</h2>
-          <p className="text-orange-100 mb-8 text-lg">Subscribe to receive free wellness tips, guided meditations, and updates on upcoming retreats.</p>
-          <form className="flex flex-col sm:flex-row gap-4 max-w-2xl mx-auto" onSubmit={(e) => { e.preventDefault(); alert('Subscribed successfully!'); }}>
-            <input 
-              type="email" 
-              placeholder="Enter your email address" 
-              required
-              className="flex-grow px-6 py-4 rounded-full text-slate-900 focus:outline-none focus:ring-2 focus:ring-orange-300"
-            />
-            <button type="submit" className="bg-slate-900 text-white px-8 py-4 rounded-full font-bold hover:bg-slate-800 transition-colors whitespace-nowrap">
-              Subscribe Now
-            </button>
-          </form>
         </div>
       </section>
     </div>

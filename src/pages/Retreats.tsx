@@ -3,6 +3,7 @@ import { motion } from 'motion/react';
 import { CheckCircle2, ArrowRight, Wind, Heart, ShieldCheck, Activity, Zap } from 'lucide-react';
 import { IMAGES } from '../constants';
 import { Link } from 'react-router-dom';
+import PageHero from '../components/PageHero';
 
 const retreats = [
   {
@@ -27,7 +28,7 @@ const retreats = [
     icon: <ShieldCheck className="text-primary" />
   },
   {
-    title: "Diabetes Healing",
+    title: "Diabetes Treatment / Chronic Disease",
     img: IMAGES.yoga3,
     desc: "Integrated approach combining specific asanas, diet, and Ayurvedic support.",
     benefits: ["Blood sugar control", "Weight management", "Organ health", "Energy"],
@@ -44,15 +45,12 @@ const retreats = [
 
 export default function Retreats() {
   return (
-    <div className="pt-24 pb-20">
-      <div className="max-w-7xl mx-auto px-4">
-        <div className="text-center mb-16">
-          <h1 className="text-5xl md:text-6xl font-serif mb-6">Healing Retreats</h1>
-          <p className="text-xl text-slate-600 max-w-3xl mx-auto">
-            Our retreats are designed to provide deep therapeutic healing using the combined wisdom of Yoga and Ayurveda.
-          </p>
-        </div>
-
+    <div className="pb-20">
+      <PageHero 
+        title="Healing Retreats" 
+        subtitle="Experience deep therapeutic healing in the serene lap of the Himalayas."
+      />
+      <div className="max-w-7xl mx-auto px-4 mt-20">
         <div className="space-y-16">
           {retreats.map((retreat, i) => (
             <motion.div 
@@ -95,7 +93,7 @@ export default function Retreats() {
                   ))}
                 </div>
                 
-                <Link to="/contact#register" className="btn-primary inline-flex items-center gap-2">
+                <Link to="/reserve" className="btn-primary inline-flex items-center gap-2">
                   Register Now <ArrowRight size={18} />
                 </Link>
               </div>

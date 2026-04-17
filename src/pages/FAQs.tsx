@@ -2,6 +2,7 @@ import React from 'react';
 import { motion } from 'motion/react';
 import { ChevronDown } from 'lucide-react';
 import { useState } from 'react';
+import PageHero from '../components/PageHero';
 
 const faqs = [
   {
@@ -30,15 +31,12 @@ export default function FAQs() {
   const [openIndex, setOpenIndex] = useState<number | null>(0);
 
   return (
-    <div className="pt-24 pb-20">
-      <div className="max-w-3xl mx-auto px-4">
-        <div className="text-center mb-16">
-          <h1 className="text-5xl font-serif mb-6">Frequently Asked Questions</h1>
-          <p className="text-xl text-slate-600">
-            Everything you need to know about our programs and retreats.
-          </p>
-        </div>
-
+    <div className="pb-20">
+      <PageHero 
+        title="Frequently Asked Questions" 
+        subtitle="Everything you need to know about our programs and retreats."
+      />
+      <div className="max-w-3xl mx-auto px-4 mt-20">
         <div className="space-y-4">
           {faqs.map((faq, i) => (
             <div key={i} className="border border-orange-100 rounded-2xl overflow-hidden bg-white shadow-sm">

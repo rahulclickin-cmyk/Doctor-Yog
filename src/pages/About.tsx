@@ -2,15 +2,20 @@ import React from 'react';
 import { motion } from 'motion/react';
 import { IMAGES } from '../constants';
 import { Award, Users, Globe, CheckCircle2 } from 'lucide-react';
+import PageHero from '../components/PageHero';
 
 export default function About() {
   return (
-    <div className="pt-24 pb-20">
-      <div className="max-w-7xl mx-auto px-4">
-        {/* Hero Section */}
+    <div className="pb-20">
+      <PageHero 
+        title="About Dr. Shakti" 
+        subtitle="Bridging ancient Himalayan wisdom with modern therapeutic needs."
+      />
+      <div className="max-w-7xl mx-auto px-4 mt-20">
+        {/* Intro Section */}
         <div className="flex flex-col lg:flex-row items-center gap-16 mb-24">
           <div className="lg:w-1/2">
-            <h1 className="text-5xl md:text-6xl font-serif mb-8">About Dr. Shakti</h1>
+            <h2 className="text-4xl md:text-5xl font-serif mb-8">The Journey of Healing</h2>
             <p className="text-xl text-slate-600 mb-8 leading-relaxed">
               Dr. Shakti is a world-renowned expert in Yoga Therapy and Ayurveda with over 19 years of experience. Based in the spiritual heart of Rishikesh, he has dedicated his life to bridging ancient Himalayan wisdom with modern therapeutic needs.
             </p>
@@ -50,7 +55,7 @@ export default function About() {
         </div>
 
         {/* Experience Section */}
-        <div className="bg-slate-900 text-white p-12 md:p-20 rounded-[4rem] overflow-hidden relative">
+        <div className="bg-tertiary text-white p-12 md:p-20 rounded-[4rem] overflow-hidden relative">
           <div className="absolute top-0 right-0 w-96 h-96 bg-primary/20 rounded-full blur-3xl" />
           <div className="relative z-10">
             <h2 className="text-4xl font-serif mb-12 text-center">19+ Years of Transformation</h2>

@@ -2,6 +2,7 @@ import React from 'react';
 import { motion } from 'motion/react';
 import { IMAGES } from '../constants';
 import { Calendar, User, ArrowRight } from 'lucide-react';
+import PageHero from '../components/PageHero';
 
 const blogs = [
   {
@@ -29,15 +30,12 @@ const blogs = [
 
 export default function Blogs() {
   return (
-    <div className="pt-24 pb-20">
-      <div className="max-w-7xl mx-auto px-4">
-        <div className="text-center mb-16">
-          <h1 className="text-5xl font-serif mb-6">Blogs & Insights</h1>
-          <p className="text-xl text-slate-600 max-w-3xl mx-auto">
-            Deepen your understanding of holistic wellness through our latest articles.
-          </p>
-        </div>
-
+    <div className="pb-20">
+      <PageHero 
+        title="Blogs & Insights" 
+        subtitle="Deepen your understanding of holistic wellness through our latest articles."
+      />
+      <div className="max-w-7xl mx-auto px-4 mt-20">
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
           {blogs.map((blog, i) => (
             <motion.div 

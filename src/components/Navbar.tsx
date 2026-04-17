@@ -78,13 +78,6 @@ export default function Navbar() {
           <div className="bg-white p-1 rounded-xl shadow-sm transition-transform group-hover:scale-105">
             <img src={IMAGES.logo} alt="Doctor Yog" className="h-10 md:h-12 w-auto" referrerPolicy="no-referrer" />
           </div>
-          <div className={cn(
-            "flex flex-col leading-tight transition-colors",
-            scrolled ? "text-slate-800" : "text-white"
-          )}>
-            <span className="font-serif font-bold text-lg md:text-xl tracking-tight">Doctor Yog</span>
-            <span className="text-[10px] uppercase tracking-[0.2em] font-medium opacity-80">Holistic Wellness</span>
-          </div>
         </Link>
 
         {/* Desktop Nav */}
@@ -254,7 +247,6 @@ export default function Navbar() {
             <div className="p-6 flex items-center justify-between border-b border-orange-50">
               <Link to="/" className="flex items-center gap-2">
                 <img src={IMAGES.logo} alt="Doctor Yog" className="h-10 w-auto" referrerPolicy="no-referrer" />
-                <span className="font-serif font-bold text-xl text-slate-800">Doctor Yog</span>
               </Link>
               <button 
                 onClick={() => setIsOpen(false)}

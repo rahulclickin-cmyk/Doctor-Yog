@@ -1,6 +1,7 @@
 import React from 'react';
 import { motion } from 'motion/react';
 import { IMAGES } from '../constants';
+import PageHero from '../components/PageHero';
 
 const galleryImages = [
   IMAGES.gallery1, IMAGES.gallery2, IMAGES.gallery3, IMAGES.gallery4,
@@ -10,15 +11,12 @@ const galleryImages = [
 
 export default function Gallery() {
   return (
-    <div className="pt-24 pb-20">
-      <div className="max-w-7xl mx-auto px-4">
-        <div className="text-center mb-16">
-          <h1 className="text-5xl md:text-6xl font-serif mb-6">Gallery</h1>
-          <p className="text-xl text-slate-600 max-w-3xl mx-auto">
-            Glimpses of healing, transformation, and serenity at Doctor Yog.
-          </p>
-        </div>
-
+    <div className="pb-20">
+      <PageHero 
+        title="Gallery" 
+        subtitle="Glimpses of healing, transformation, and serenity at Doctor Yog."
+      />
+      <div className="max-w-7xl mx-auto px-4 mt-20">
         <div className="columns-1 sm:columns-2 lg:columns-3 gap-6 space-y-6">
           {galleryImages.map((img, i) => (
             <motion.div 

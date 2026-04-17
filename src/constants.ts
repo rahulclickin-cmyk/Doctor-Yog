@@ -15,6 +15,8 @@ export const SOCIAL = {
 
 export const IMAGES = {
   hero: "https://darkslateblue-tarsier-292000.hostingersite.com/wp-content/uploads/2026/03/WhatsApp-Image-2026-03-23-at-20.32.22-1.jpeg",
+  hero2: "https://darkslateblue-tarsier-292000.hostingersite.com/wp-content/uploads/2026/03/WhatsApp-Image-2026-03-23-at-20.32.21-1.jpeg",
+  hero3: "https://darkslateblue-tarsier-292000.hostingersite.com/wp-content/uploads/2026/03/WhatsApp-Image-2026-03-23-at-20.32.19-1.jpeg",
   retreat1: "https://darkslateblue-tarsier-292000.hostingersite.com/wp-content/uploads/2026/03/WhatsApp-Image-2026-03-23-at-20.32.21-1.jpeg",
   retreat2: "https://darkslateblue-tarsier-292000.hostingersite.com/wp-content/uploads/2026/03/WhatsApp-Image-2026-03-23-at-20.32.19-1.jpeg",
   drShakti: "https://darkslateblue-tarsier-292000.hostingersite.com/wp-content/uploads/2026/03/WhatsApp-Image-2026-03-23-at-20.32.18Doctor-Yog.jpeg",
@@ -31,8 +33,22 @@ export const IMAGES = {
   gallery6: "https://darkslateblue-tarsier-292000.hostingersite.com/wp-content/uploads/2026/03/WhatsApp-Image-2026-03-23-at-20.32.26-1.jpeg",
   gallery7: "https://darkslateblue-tarsier-292000.hostingersite.com/wp-content/uploads/2026/03/WhatsApp-Image-2026-03-23-at-20.32.24-1.jpeg",
   gallery8: "https://darkslateblue-tarsier-292000.hostingersite.com/wp-content/uploads/2026/03/WhatsApp-Image-2026-03-23-at-20.32.23.jpeg",
-  logo: "https://darkslateblue-tarsier-292000.hostingersite.com/wp-content/uploads/2026/03/Doctor-Yog.png"
+  logo: "https://darkslateblue-tarsier-292000.hostingersite.com/wp-content/uploads/2026/03/Doctor-Yog-100-x-100-px.png",
+  poseTree: "https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?auto=format&fit=crop&q=80&w=800",
+  poseDog: "https://images.unsplash.com/photo-1506126613408-eca07ce68773?auto=format&fit=crop&q=80&w=800",
+  poseCobra: "https://images.unsplash.com/photo-1510894347713-fc3ad6cb0322?auto=format&fit=crop&q=80&w=800",
+  poseTriangle: "https://images.unsplash.com/photo-1575052814086-f385e2e2ad1b?auto=format&fit=crop&q=80&w=800",
+  poseSun: "https://images.unsplash.com/photo-1508672019048-805c876b67e2?auto=format&fit=crop&q=80&w=800",
+  poseCorpse: "https://images.unsplash.com/photo-1599447421416-3414500d18a5?auto=format&fit=crop&q=80&w=800"
 };
+
+export const HERO_SLIDES = [
+  IMAGES.hero,
+  IMAGES.hero2,
+  IMAGES.hero3,
+  IMAGES.gallery1,
+  IMAGES.gallery4
+];
 
 export const TESTIMONIALS = [
   {
@@ -71,6 +87,7 @@ export const YOGA_POSES = [
     sanskritName: "Vrikshasana",
     benefits: ["Improves balance", "Strengthens legs", "Calms the mind"],
     icon: TreePine,
+    image: IMAGES.poseTree,
     videoUrl: "https://www.youtube.com/watch?v=Dic293YNJI8"
   },
   {
@@ -78,6 +95,7 @@ export const YOGA_POSES = [
     sanskritName: "Adho Mukha Svanasana",
     benefits: ["Energizes body", "Stretches spine", "Relieves stress"],
     icon: Dog,
+    image: IMAGES.poseDog,
     videoUrl: "https://www.youtube.com/watch?v=EC7RGJ975iM"
   },
   {
@@ -85,6 +103,7 @@ export const YOGA_POSES = [
     sanskritName: "Bhujangasana",
     benefits: ["Strengthens spine", "Opens chest", "Improves digestion"],
     icon: Zap,
+    image: IMAGES.poseCobra,
     videoUrl: "https://www.youtube.com/watch?v=fOdrW7nf9gw"
   },
   {
@@ -92,6 +111,7 @@ export const YOGA_POSES = [
     sanskritName: "Trikonasana",
     benefits: ["Stretches legs", "Improves digestion", "Reduces anxiety"],
     icon: Triangle,
+    image: IMAGES.poseTriangle,
     videoUrl: "https://www.youtube.com/watch?v=upFVtuIgVDw"
   },
   {
@@ -99,6 +119,7 @@ export const YOGA_POSES = [
     sanskritName: "Surya Namaskar",
     benefits: ["Full body workout", "Improves flexibility", "Boosts immunity"],
     icon: Sun,
+    image: IMAGES.poseSun,
     videoUrl: "https://www.youtube.com/watch?v=1mOAShE0m2o"
   },
   {
@@ -106,6 +127,7 @@ export const YOGA_POSES = [
     sanskritName: "Savasana",
     benefits: ["Deep relaxation", "Lowers blood pressure", "Reduces fatigue"],
     icon: Moon,
+    image: IMAGES.poseCorpse,
     videoUrl: "https://www.youtube.com/watch?v=1bJwEw_k_0E"
   }
 ];

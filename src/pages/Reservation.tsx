@@ -5,6 +5,7 @@ import { useTranslation } from 'react-i18next';
 import { collection, addDoc, serverTimestamp } from 'firebase/firestore';
 import { db } from '../lib/firebase';
 import { handleFirestoreError, OperationType } from '../lib/firestoreUtils';
+import PageHero from '../components/PageHero';
 
 export default function Reservation() {
   const { t } = useTranslation();
@@ -43,21 +44,12 @@ export default function Reservation() {
   };
 
   return (
-    <div className="pt-24 pb-20 bg-orange-50/30 min-h-screen">
-      <div className="max-w-3xl mx-auto px-4">
-        <div className="text-center mb-12">
-          <motion.h1 
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            className="text-4xl md:text-5xl font-serif mb-4 text-slate-800"
-          >
-            Doctor Yog Reservation Form
-          </motion.h1>
-          <p className="text-lg text-slate-600">
-            Secure your spot for our upcoming programs and retreats.
-          </p>
-        </div>
-
+    <div className="pb-20 bg-orange-50/30 min-h-screen">
+      <PageHero 
+        title="Reservation Form" 
+        subtitle="Secure your spot for our upcoming programs and retreats."
+      />
+      <div className="max-w-3xl mx-auto px-4 mt-20">
         <motion.div 
           initial={{ opacity: 0, scale: 0.95 }}
           animate={{ opacity: 1, scale: 1 }}

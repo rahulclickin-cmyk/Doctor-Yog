@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { motion } from 'motion/react';
 import { Mail, Phone, MapPin, Clock, Calendar as CalendarIcon, ChevronLeft, ChevronRight, Send } from 'lucide-react';
 import { cn } from '../lib/utils';
+import PageHero from '../components/PageHero';
 
 export default function BookClass() {
   const [selectedDate, setSelectedDate] = useState<number | null>(null);
@@ -28,15 +29,12 @@ export default function BookClass() {
   };
 
   return (
-    <div className="pt-24 pb-20">
-      <div className="max-w-7xl mx-auto px-4">
-        <div className="text-center mb-16">
-          <h1 className="text-5xl md:text-6xl font-serif mb-6">Book a Class</h1>
-          <p className="text-xl text-slate-600 max-w-3xl mx-auto">
-            Reserve your spot for our transformative sessions and retreats.
-          </p>
-        </div>
-
+    <div className="pb-20">
+      <PageHero 
+        title="Book a Class" 
+        subtitle="Reserve your spot for our transformative sessions and retreats."
+      />
+      <div className="max-w-7xl mx-auto px-4 mt-20">
         <div className="grid lg:grid-cols-2 gap-12 items-start">
           {/* Left: Service Info */}
           <div className="space-y-8">

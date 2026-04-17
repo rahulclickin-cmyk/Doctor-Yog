@@ -4,6 +4,7 @@ import { CheckCircle2, ChevronDown, Calendar, Users, GraduationCap, Euro } from 
 import { IMAGES, CONTACT } from '../constants';
 import { Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
+import PageHero from '../components/PageHero';
 
 const curriculum = [
   { day: "Day 1-2", title: "Foundations of Yoga Therapy", content: "Introduction to healing science, history of yoga therapy, and basic anatomical principles." },
@@ -89,21 +90,12 @@ export default function Programs() {
   ];
 
   return (
-    <div className="pt-24 pb-20 bg-slate-50">
-      <div className="max-w-7xl mx-auto px-4">
-        {/* Header */}
-        <div className="text-center mb-16">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-          >
-            <h1 className="text-5xl md:text-6xl font-serif mb-6">Our Training Programs</h1>
-            <p className="text-xl text-slate-600 max-w-3xl mx-auto">
-              Professional certification courses rooted in authentic Himalayan wisdom and modern therapeutic science.
-            </p>
-          </motion.div>
-        </div>
-
+    <div className="pb-20 bg-slate-50">
+      <PageHero 
+        title="Our Training Programs" 
+        subtitle="Professional certification courses rooted in authentic Himalayan wisdom and modern therapeutic science."
+      />
+      <div className="max-w-7xl mx-auto px-4 mt-20">
         {/* Programs Grid */}
         <div className="grid md:grid-cols-2 gap-8">
           {programs.map((program, i) => (
