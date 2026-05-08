@@ -45,15 +45,12 @@ const resources = {
         title: "Healing Library",
         subtitle: "Explore the therapeutic benefits of authentic yoga asanas.",
         items: [
-          { name: "Tree Pose", benefits: ["Improves balance", "Strengthens legs", "Calms the mind"] },
-          { name: "Downward Dog", benefits: ["Energizes body", "Stretches spine", "Relieves stress"] },
-          { name: "Cobra Pose", benefits: ["Strengthens spine", "Opens chest", "Improves digestion"] },
-          { name: "Triangle Pose", benefits: ["Stretches legs", "Improves digestion", "Reduces anxiety"] },
-          { name: "Sun Salutation", benefits: ["Full body workout", "Improves flexibility", "Boosts immunity"] },
-          { name: "Corpse Pose", benefits: ["Deep relaxation", "Lowers blood pressure", "Reduces fatigue"] },
-          { name: "Parvat Asan", benefits: ["Improves posture", "Strengthens shoulders", "Enhances focus"] },
+          { name: "Anjane Asan", benefits: ["Opens hips", "Stretches chest", "Improves balance"] },
+          { name: "Bak Asana", benefits: ["Strengthens arms", "Balances core", "Increases focus"] },
+          { name: "Chakra Asana", benefits: ["Flexible spine", "Strengthens lungs", "Energizes body"] },
           { name: "Padangustha Asan", benefits: ["Stretches hamstrings", "Relieves stress", "Improves digestion"] },
-          { name: "Warrior II", benefits: ["Strengthens legs", "Increases stamina", "Improves balance"] }
+          { name: "Parvat Asan", benefits: ["Improves posture", "Strengthens shoulders", "Enhances focus"] },
+          { name: "Veer Bhadra Asana", benefits: ["Strong legs", "Boosts stamina", "Better coordination"] }
         ]
       },
       common: {
@@ -187,15 +184,12 @@ const resources = {
         title: "उपचार पुस्तकालय",
         subtitle: "प्रामाणिक योग आसनों के चिकित्सीय लाभों का अन्वेषण करें।",
         items: [
-          { name: "वृक्षासन (Tree Pose)", benefits: ["संतुलन में सुधार करता है", "पैरों को मजबूत बनाता है", "मन को शांत करता है"] },
-          { name: "अधोमुख श्वानासन (Downward Dog)", benefits: ["शरीर को ऊर्जावान बनाता है", "रीढ़ को खींचता है", "तनाव से राहत देता है"] },
-          { name: "भुजंगासन (Cobra Pose)", benefits: ["रीढ़ को मजबूत बनाता है", "छाती खोलता है", "पाचन में सुधार करता है"] },
-          { name: "त्रिकोणासन (Triangle Pose)", benefits: ["पैरों को खींचता है", "पाचन में सुधार करता है", "चिंता कम करता है"] },
-          { name: "सूर्य नमस्कार (Sun Salutation)", benefits: ["पूरे शरीर का वर्कआउट", "लचीलापन बढ़ाता है", "रोग प्रतिरोधक क्षमता बढ़ाता है"] },
-          { name: "शवासन (Corpse Pose)", benefits: ["गहरा विश्राम", "रक्तचाप कम करता है", "थकान कम करता है"] },
-          { name: "पर्वतासन (Parvat Asan)", benefits: ["मुद्रा में सुधार करें", "कंधों को मजबूत करें", "एकाग्रता बढ़ाएं"] },
-          { name: "पादांगुष्ठासन (Padangustha Asan)", benefits: ["हैमस्ट्रिंग को स्ट्रेच करें", "तनाव दूर करें", "पाचन में सुधार करें"] },
-          { name: "वीरभद्रासन (Warrior II)", benefits: ["पैरों को मजबूत करें", "सहनशक्ति बढ़ाएं", "संतुलन में सुधार करें"] }
+          { name: "अंजनेय आसन (Anjane Asan)", benefits: ["कूल्हे खोलता है", "छाती को स्ट्रेच करता है", "संतुलन सुधारता है"] },
+          { name: "बकासन (Bak Asana)", benefits: ["हाथों को शक्ति देता है", "कोर बैलेंस", "एकाग्रता बढ़ाता है"] },
+          { name: "चक्रासन (Chakra Asana)", benefits: ["लचीली रीढ़", "फेफड़ों को मजबूत बनाता है", "ऊर्जा प्रदान करता है"] },
+          { name: "पादांगुष्ठासन (Padangustha Asan)", benefits: ["हैमस्ट्रिंग स्ट्रेच", "तनाव दूर", "पाचन सुधार"] },
+          { name: "पर्वतासन (Parvat Asan)", benefits: ["मुद्रा सुधार", "कंधे मजबूत", "एकाग्रता वृद्धि"] },
+          { name: "वीरभद्रासन (Veer Bhadra Asana)", benefits: ["मजबूत पैर", "सहनशक्ति", "बेहतर समन्वय"] }
         ]
       },
       common: {

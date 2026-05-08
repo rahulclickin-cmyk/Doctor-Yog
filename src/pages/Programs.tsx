@@ -39,7 +39,7 @@ export default function Programs() {
       desc: "11-day intensive program combining Yoga, Ayurveda, and Healing Science.",
       image: IMAGES.yoga1,
       duration: "11 Days",
-      price: getPrice(38000)
+      price: "460 Euro"
     },
     {
       id: 'ayurveda',

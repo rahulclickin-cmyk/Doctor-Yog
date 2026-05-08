@@ -40,9 +40,12 @@ export const IMAGES = {
   poseTriangle: "https://images.unsplash.com/photo-1575052814086-f385e2e2ad1b?auto=format&fit=crop&q=80&w=800",
   poseSun: "https://images.unsplash.com/photo-1508672019048-805c876b67e2?auto=format&fit=crop&q=80&w=800",
   poseCorpse: "https://images.unsplash.com/photo-1599447421416-3414500d18a5?auto=format&fit=crop&q=80&w=800",
-  poseParvat: "https://images.unsplash.com/photo-1601004890684-d8cbf643f5f2?auto=format&fit=crop&q=80&w=800",
-  posePadangustha: "https://images.unsplash.com/photo-1588282322631-47700021c38a?auto=format&fit=crop&q=80&w=800",
-  poseWarrior2: "https://images.unsplash.com/photo-1599901860904-17e6ed7083a0?auto=format&fit=crop&q=80&w=800"
+  poseAnjane: "https://drive.google.com/thumbnail?id=17yrBT6OfsHOpVUydEur1lz4oSqlzp98y&sz=w1000",
+  poseBak: "https://drive.google.com/thumbnail?id=158NnoEnlzAfq7__d_3JhKrvTe96Ja6yB&sz=w1000",
+  poseChakra: "https://drive.google.com/thumbnail?id=14waBT4gqQksBKPvJvdeaCcCAyl6M-4Xu&sz=w1000",
+  posePadangustha: "https://drive.google.com/thumbnail?id=1xdJldg_2pf-bLDno25DIuCh_ixq_liVs&sz=w1000",
+  poseParvat: "https://drive.google.com/thumbnail?id=1fVymYJohfmzRplUh9Mq630LpQXWr2CIC&sz=w1000",
+  poseVeerBhadra: "https://drive.google.com/thumbnail?id=1myBKu2XkcbzMfYSwUwbTJOAaf1LLHXp8&sz=w1000"
 };
 
 export const HERO_SLIDES = [
@@ -86,60 +89,28 @@ export const TESTIMONIALS = [
 
 export const YOGA_POSES = [
   {
-    name: "Tree Pose",
-    sanskritName: "Vrikshasana",
-    benefits: ["Improves balance", "Strengthens legs", "Calms the mind"],
+    name: "Anjane Asan",
+    sanskritName: "Anjaneyasana",
+    benefits: ["Opens hips", "Stretches chest", "Improves balance"],
     icon: TreePine,
-    image: IMAGES.poseTree,
-    videoUrl: "https://www.youtube.com/watch?v=Dic293YNJI8"
+    image: IMAGES.poseAnjane,
+    videoUrl: "https://www.youtube.com/watch?v=17yrBT6OfsH"
   },
   {
-    name: "Downward Dog",
-    sanskritName: "Adho Mukha Svanasana",
-    benefits: ["Energizes body", "Stretches spine", "Relieves stress"],
-    icon: Dog,
-    image: IMAGES.poseDog,
-    videoUrl: "https://www.youtube.com/watch?v=EC7RGJ975iM"
-  },
-  {
-    name: "Cobra Pose",
-    sanskritName: "Bhujangasana",
-    benefits: ["Strengthens spine", "Opens chest", "Improves digestion"],
+    name: "Bak Asana",
+    sanskritName: "Bakasana",
+    benefits: ["Strengthens arms", "Balances core", "Increases focus"],
     icon: Zap,
-    image: IMAGES.poseCobra,
-    videoUrl: "https://www.youtube.com/watch?v=fOdrW7nf9gw"
+    image: IMAGES.poseBak,
+    videoUrl: "https://www.youtube.com/watch?v=n6W_pWvV1_w"
   },
   {
-    name: "Triangle Pose",
-    sanskritName: "Trikonasana",
-    benefits: ["Stretches legs", "Improves digestion", "Reduces anxiety"],
-    icon: Triangle,
-    image: IMAGES.poseTriangle,
-    videoUrl: "https://www.youtube.com/watch?v=upFVtuIgVDw"
-  },
-  {
-    name: "Sun Salutation",
-    sanskritName: "Surya Namaskar",
-    benefits: ["Full body workout", "Improves flexibility", "Boosts immunity"],
+    name: "Chakra Asana",
+    sanskritName: "Chakrasana",
+    benefits: ["Flexible spine", "Strengthens lungs", "Energizes body"],
     icon: Sun,
-    image: IMAGES.poseSun,
-    videoUrl: "https://www.youtube.com/watch?v=1mOAShE0m2o"
-  },
-  {
-    name: "Corpse Pose",
-    sanskritName: "Savasana",
-    benefits: ["Deep relaxation", "Lowers blood pressure", "Reduces fatigue"],
-    icon: Moon,
-    image: IMAGES.poseCorpse,
-    videoUrl: "https://www.youtube.com/watch?v=1bJwEw_k_0E"
-  },
-  {
-    name: "Parvat Asan",
-    sanskritName: "Parvatasana",
-    benefits: ["Improves posture", "Strengthens shoulders", "Enhances focus"],
-    icon: TreePine,
-    image: IMAGES.poseParvat,
-    videoUrl: "https://www.youtube.com/watch?v=Dic293YNJI8"
+    image: IMAGES.poseChakra,
+    videoUrl: "https://www.youtube.com/watch?v=1a5_vVp9Xms"
   },
   {
     name: "Padangustha Asan",
@@ -150,11 +121,19 @@ export const YOGA_POSES = [
     videoUrl: "https://www.youtube.com/watch?v=EC7RGJ975iM"
   },
   {
-    name: "Warrior II",
-    sanskritName: "Virabhadrasana II",
-    benefits: ["Strengthens legs", "Increases stamina", "Improves balance"],
+    name: "Parvat Asan",
+    sanskritName: "Parvatasana",
+    benefits: ["Improves posture", "Strengthens shoulders", "Enhances focus"],
     icon: Triangle,
-    image: IMAGES.poseWarrior2,
+    image: IMAGES.poseParvat,
+    videoUrl: "https://www.youtube.com/watch?v=Dic293YNJI8"
+  },
+  {
+    name: "Veer Bhadra Asana",
+    sanskritName: "Virabhadrasana",
+    benefits: ["Strong legs", "Boosts stamina", "Better coordination"],
+    icon: Zap,
+    image: IMAGES.poseVeerBhadra,
     videoUrl: "https://www.youtube.com/watch?v=upFVtuIgVDw"
   }
 ];

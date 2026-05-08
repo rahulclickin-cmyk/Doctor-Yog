@@ -4,9 +4,12 @@ import { Phone, Calendar, ArrowRight, CheckCircle2, Award, Users, Globe, MapPin,
 import { useTranslation } from 'react-i18next';
 import { IMAGES, CONTACT, HERO_SLIDES } from '../constants';
 import { Link } from 'react-router-dom';
+import { cn } from '../lib/utils';
 import ScrollingAnnouncement from '../components/ScrollingAnnouncement';
 import TestimonialCarousel from '../components/TestimonialCarousel';
 import YogaPoses from '../components/YogaPoses';
+import { generateBrochure, BrochureData } from '../lib/pdf';
+import { YOGA_THERAPY_DATA } from '../data/programs';
 
 export default function Home() {
   const { t } = useTranslation();
@@ -36,6 +39,28 @@ export default function Home() {
     };
   }, [drShaktiImages.length]);
 
+  const handleDownload = () => {
+    const brochureData: BrochureData = {
+      title: YOGA_THERAPY_DATA.title,
+      subtitle: YOGA_THERAPY_DATA.subtitle,
+      doctorName: YOGA_THERAPY_DATA.doctorName,
+      date: YOGA_THERAPY_DATA.date,
+      description: YOGA_THERAPY_DATA.overview,
+      highlights: YOGA_THERAPY_DATA.highlights,
+      idealFor: YOGA_THERAPY_DATA.idealFor,
+      curriculum: YOGA_THERAPY_DATA.curriculum.map((c: any) => ({ title: c.title, topics: c.topics || [c.content] })),
+      schedule: YOGA_THERAPY_DATA.schedule,
+      dailyProgram: YOGA_THERAPY_DATA.dailyProgram,
+      outcomes: YOGA_THERAPY_DATA.outcomes,
+      fee: {
+        full: YOGA_THERAPY_DATA.price,
+        earlyBird: YOGA_THERAPY_DATA.earlyBird,
+        registration: YOGA_THERAPY_DATA.registrationFee
+      }
+    };
+    generateBrochure(brochureData);
+  };
+
   return (
     <div className="flex flex-col">
       {/* Hero Section */}
@@ -63,11 +88,20 @@ export default function Home() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
           >
-            <h1 className="text-5xl md:text-7xl font-serif mb-6 drop-shadow-lg">
-              {t('hero.title')}
+            <div className="flex justify-center mb-8">
+              <span className="bg-white/10 backdrop-blur-md border border-white/20 px-6 py-2 rounded-full text-xs md:text-sm font-bold tracking-[0.3em] uppercase text-white shadow-2xl">
+                {t('hero.subtitle')}
+              </span>
+            </div>
+            <h1 className="text-5xl md:text-8xl font-serif mb-10 leading-[1.1] tracking-tighter drop-shadow-2xl">
+              {t('hero.title').split(/\s*[–-—]\s*/).map((part, index) => (
+                <span key={index} className={cn("block", index === 1 && "text-2xl md:text-5xl font-light opacity-90 mt-4 tracking-normal font-sans")}>
+                  {part}
+                </span>
+              ))}
             </h1>
-            <p className="text-xl md:text-2xl font-light mb-10 text-orange-50 drop-shadow-md">
-              {t('hero.subtitle')}
+            <p className="text-lg md:text-2xl font-light mb-14 text-orange-50/90 drop-shadow-md max-w-3xl mx-auto leading-relaxed italic">
+              "{t('home.shaktiQuote')}"
             </p>
             <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
               <Link to="/reserve" className="btn-primary text-lg px-10">
@@ -115,12 +149,15 @@ export default function Home() {
               </ul>
               
               <div className="flex flex-wrap gap-4">
-                <Link to="/programs" className="bg-white text-primary px-8 py-4 rounded-full font-bold hover:bg-orange-50 transition-colors shadow-lg">
+                <Link to="/programs/yoga-therapy" className="bg-white text-primary px-8 py-4 rounded-full font-bold hover:bg-orange-50 transition-colors shadow-lg">
                   {t('common.learnMore')}
                 </Link>
-                <a href="/brochure.pdf" download className="bg-transparent border-2 border-white text-white px-8 py-4 rounded-full font-bold hover:bg-white/10 transition-colors text-center">
+                <button 
+                  onClick={handleDownload}
+                  className="bg-transparent border-2 border-white text-white px-8 py-4 rounded-full font-bold hover:bg-white/10 transition-colors text-center cursor-pointer"
+                >
                   {t('featured.brochure')}
-                </a>
+                </button>
               </div>
             </div>
             <div className="lg:w-1/2 relative min-h-[400px]">

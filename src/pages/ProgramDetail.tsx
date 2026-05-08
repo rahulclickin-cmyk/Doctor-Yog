@@ -1,34 +1,15 @@
 import React, { useState } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { motion, AnimatePresence } from 'motion/react';
-import { CheckCircle2, ChevronDown, Calendar, Users, GraduationCap, ArrowLeft, Clock, MapPin, Star } from 'lucide-react';
+import { CheckCircle2, ChevronDown, Calendar, Users, GraduationCap, ArrowLeft, Clock, MapPin, Star, Download } from 'lucide-react';
 import { IMAGES, CONTACT } from '../constants';
 import { cn } from '../lib/utils';
 import { useTranslation } from 'react-i18next';
+import { generateBrochure, BrochureData } from '../lib/pdf';
+import { YOGA_THERAPY_DATA } from '../data/programs';
 
 const programsData: Record<string, any> = {
-  'yoga-therapy': {
-    title: "Integrated Yoga Therapy Training",
-    subtitle: "A comprehensive 11-day program combining Yoga, Ayurveda, and Healing Science.",
-    image: IMAGES.yoga1,
-    duration: "11 Days",
-    price: "₹38,000",
-    earlyBird: "₹34,000",
-    overview: "This program is designed to bridge the gap between ancient healing wisdom and modern therapeutic needs. You will learn to diagnose the root cause of ailments and apply integrated healing methods.",
-    highlights: ["Yoga + Ayurveda", "Healing Science", "Root Cause Diagnosis", "Practical Therapy"],
-    curriculum: [
-      { day: "Day 1-2", title: "Foundations of Yoga Therapy", content: "Introduction to healing science, history of yoga therapy, and basic anatomical principles." },
-      { day: "Day 3-4", title: "Ayurvedic Diagnosis", content: "Learning Dosha analysis, face reading, and root cause identification through ancient methods." },
-      { day: "Day 5-6", title: "Marma & Acupressure", content: "Practical training in energy points, pressure techniques, and immediate relief methods." },
-      { day: "Day 7-8", title: "Disease-Specific Protocols", content: "Designing therapy plans for diabetes, hypertension, and chronic pain management." },
-      { day: "Day 9-10", title: "Practical Application", content: "Live case studies, student-led therapy sessions, and refinement of techniques." },
-      { day: "Day 11", title: "Certification & Closing", content: "Final assessment, certification ceremony, and integration of learning into professional practice." }
-    ],
-    testimonials: [
-      { name: "Dr. Anjali R.", role: "Medical Practitioner", text: "The integrated approach is truly scientific. I learned how to diagnose root causes rather than just treating symptoms.", img: "https://picsum.photos/seed/anjali/100/100" },
-      { name: "Mark T.", role: "Yoga Teacher", text: "Life-changing 11 days. Dr. Shakti's depth of knowledge in both Yoga and Ayurveda is incredible.", img: "https://picsum.photos/seed/mark/100/100" }
-    ]
-  },
+  'yoga-therapy': YOGA_THERAPY_DATA,
   'ayurveda': {
     title: "Ayurveda & Marma Science",
     subtitle: "Master the ancient art of Ayurvedic healing and vital energy points.",
@@ -135,6 +116,28 @@ export default function ProgramDetail() {
   
   const program = programsData[type || 'yoga-therapy'] || programsData['yoga-therapy'];
 
+  const handleDownload = () => {
+    const brochureData: BrochureData = {
+      title: program.title,
+      subtitle: program.subtitle,
+      doctorName: program.doctorName || "Dr. Shakti Vidyalankar",
+      date: program.date || "Multiple Dates",
+      description: program.overview,
+      highlights: program.highlights,
+      idealFor: program.idealFor || [],
+      curriculum: program.curriculum.map((c: any) => ({ title: c.title, topics: c.topics || [c.content] })),
+      schedule: program.schedule || [],
+      dailyProgram: program.dailyProgram || [],
+      outcomes: program.outcomes || [],
+      fee: {
+        full: program.price,
+        earlyBird: program.earlyBird,
+        registration: program.registrationFee || "N/A"
+      }
+    };
+    generateBrochure(brochureData);
+  };
+
   return (
     <div className="pt-24 pb-20 bg-white">
       <div className="max-w-7xl mx-auto px-4">
@@ -154,7 +157,7 @@ export default function ProgramDetail() {
               <Star size={14} fill="currentColor" />
               <span>{t('common.certified')}</span>
             </div>
-            <h1 className="text-4xl md:text-6xl font-serif mb-6 leading-tight">{program.title}</h1>
+            <h1 className="text-4xl md:text-5xl font-serif mb-6 leading-tight">{program.title}</h1>
             <p className="text-xl text-slate-600 mb-8 leading-relaxed italic border-l-4 border-primary/20 pl-6">
               "{program.subtitle}"
             </p>
@@ -171,14 +174,21 @@ export default function ProgramDetail() {
             </div>
 
             <div className="flex flex-col sm:flex-row gap-4">
-              <Link to="/reserve" className="btn-primary px-10 py-4 text-lg shadow-xl shadow-orange-200">
+              <Link to="/reserve" className="btn-primary px-8 py-4 text-lg shadow-xl shadow-orange-200">
                 {t('common.register')}
               </Link>
+              <button 
+                onClick={handleDownload}
+                className="btn-outline px-8 py-4 text-lg border-primary text-primary hover:bg-primary hover:text-white flex items-center justify-center gap-2"
+              >
+                <Download size={20} />
+                <span>Download Brochure</span>
+              </button>
               <a 
                 href={`https://wa.me/${CONTACT.whatsapp.replace('+', '')}`}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="btn-outline px-10 py-4 text-lg border-slate-200 text-slate-700 hover:bg-slate-50"
+                className="btn-outline px-8 py-4 text-lg border-slate-200 text-slate-700 hover:bg-slate-50"
               >
                 {t('common.whatsapp')}
               </a>
@@ -208,6 +218,20 @@ export default function ProgramDetail() {
               <p className="text-lg text-slate-600 leading-relaxed">
                 {program.overview}
               </p>
+              
+              {program.idealFor && (
+                <div className="mt-8">
+                  <h3 className="text-xl font-bold mb-4 text-slate-800">This program is ideal for:</h3>
+                  <div className="flex flex-wrap gap-3">
+                    {program.idealFor.map((item: string, i: number) => (
+                      <span key={i} className="bg-slate-100 text-slate-700 px-4 py-2 rounded-full text-sm font-medium border border-slate-200 uppercase tracking-tighter">
+                        {item}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+              )}
+
               <div className="grid sm:grid-cols-2 gap-4 mt-8">
                 {program.highlights.map((item: string, i: number) => (
                   <div key={i} className="flex items-center gap-3 p-4 bg-orange-50/50 rounded-2xl border border-orange-100">
@@ -218,37 +242,93 @@ export default function ProgramDetail() {
               </div>
             </section>
 
+            {program.outcomes && (
+              <section className="bg-slate-50 p-8 rounded-[2.5rem] border border-slate-100">
+                <h3 className="text-2xl font-serif mb-6 text-slate-800">Training Outcomes</h3>
+                <div className="grid md:grid-cols-2 gap-4">
+                  {program.outcomes.map((item: string, i: number) => (
+                    <div key={i} className="flex items-start gap-3">
+                      <CheckCircle2 className="text-primary mt-1 flex-shrink-0" size={18} />
+                      <span className="text-slate-600">{item}</span>
+                    </div>
+                  ))}
+                </div>
+              </section>
+            )}
+
             <section>
               <h2 className="text-3xl font-serif mb-8">{t('programs.structure')}</h2>
-              <div className="space-y-4">
-                {program.curriculum.map((item: any, i: number) => (
-                  <div key={i} className="border border-slate-100 rounded-2xl overflow-hidden bg-white shadow-sm hover:shadow-md transition-shadow">
-                    <button 
-                      onClick={() => setOpenIndex(openIndex === i ? null : i)}
-                      className="w-full flex items-center justify-between p-6 text-left"
-                    >
-                      <div className="flex items-center gap-4">
-                        <span className="bg-primary/10 text-primary font-bold px-3 py-1 rounded-lg text-sm">{item.day}</span>
-                        <span className="font-bold text-slate-800 text-lg">{item.title}</span>
+              
+              {program.schedule && program.schedule.length > 0 && (
+                <div className="mb-12">
+                  <h3 className="text-xl font-bold mb-6 text-slate-800 flex items-center gap-2">
+                    <Clock size={20} className="text-primary" />
+                    Daily Time Schedule
+                  </h3>
+                  <div className="bg-white border border-slate-100 rounded-3xl overflow-hidden shadow-sm">
+                    {program.schedule.map((item: any, i: number) => (
+                      <div key={i} className={cn("flex items-center p-4 border-b border-slate-50 last:border-0", i % 2 === 0 ? "bg-slate-50/30" : "bg-white")}>
+                        <span className="w-32 font-bold text-primary text-sm">{item.time}</span>
+                        <span className="text-slate-600 text-sm">{item.activity}</span>
                       </div>
-                      <ChevronDown className={cn("transition-transform duration-300 text-slate-400", openIndex === i && "rotate-180")} />
-                    </button>
-                    <AnimatePresence>
-                      {openIndex === i && (
-                        <motion.div 
-                          initial={{ height: 0, opacity: 0 }}
-                          animate={{ height: 'auto', opacity: 1 }}
-                          exit={{ height: 0, opacity: 0 }}
-                          className="overflow-hidden"
-                        >
-                          <div className="p-6 pt-0 text-slate-600 border-t border-slate-50 leading-relaxed">
-                            {item.content}
-                          </div>
-                        </motion.div>
-                      )}
-                    </AnimatePresence>
+                    ))}
                   </div>
-                ))}
+                </div>
+              )}
+
+              <div className="space-y-4">
+                <h3 className="text-xl font-bold mb-4 text-slate-800">11-Day Training Journey</h3>
+                {program.dailyProgram && program.dailyProgram.length > 0 ? (
+                  program.dailyProgram.map((item: any, i: number) => (
+                    <div key={i} className="border border-slate-100 rounded-2xl overflow-hidden bg-white shadow-sm hover:shadow-md transition-shadow">
+                      <div className="p-6">
+                        <div className="flex items-center gap-4 mb-2">
+                          <span className="bg-primary/10 text-primary font-bold px-3 py-1 rounded-lg text-sm">{item.day}</span>
+                          <span className="font-bold text-slate-800 text-lg">
+                            {program.curriculum[i]?.title || "Focus Area"}
+                          </span>
+                        </div>
+                        <ul className="space-y-1 ml-4 mt-4">
+                          {item.topics.map((topic: string, tid: number) => (
+                            <li key={tid} className="text-slate-600 text-sm flex items-start gap-2">
+                              <span className="text-primary mt-1.5 w-1 h-1 rounded-full bg-primary flex-shrink-0" />
+                              {topic}
+                            </li>
+                          ))}
+                        </ul>
+                      </div>
+                    </div>
+                  ))
+                ) : (
+                  program.curriculum.map((item: any, i: number) => (
+                    <div key={i} className="border border-slate-100 rounded-2xl overflow-hidden bg-white shadow-sm hover:shadow-md transition-shadow">
+                      <button 
+                        onClick={() => setOpenIndex(openIndex === i ? null : i)}
+                        className="w-full flex items-center justify-between p-6 text-left"
+                      >
+                        <div className="flex items-center gap-4">
+                          <span className="bg-primary/10 text-primary font-bold px-3 py-1 rounded-lg text-sm">{item.day}</span>
+                          <span className="font-bold text-slate-800 text-lg">{item.title}</span>
+                        </div>
+                        <ChevronDown className={cn("transition-transform duration-300 text-slate-400", openIndex === i && "rotate-180")} />
+                      </button>
+                      <AnimatePresence>
+                        {openIndex === i && (
+                          <motion.div 
+                            initial={{ height: 0, opacity: 0 }}
+                            animate={{ height: 'auto', opacity: 1 }}
+                            exit={{ height: 0, opacity: 0 }}
+                            className="overflow-hidden"
+                          >
+                            <div className="p-6 pt-0 text-slate-600 border-t border-slate-50 leading-relaxed">
+                              {item.content}
+                            </div>
+                          </motion.div>
+                        )}
+                      </AnimatePresence>
+                    </div>
+                  ))
+                )}
               </div>
             </section>
           </div>
@@ -267,7 +347,7 @@ export default function ProgramDetail() {
                 </div>
                 <div className="flex justify-between items-center">
                   <span className="text-slate-400">{t('programs.bookingFee')}</span>
-                  <span className="text-xl font-bold">₹9,000</span>
+                  <span className="text-xl font-bold">{program.registrationFee || "₹9,000"}</span>
                 </div>
               </div>
               
