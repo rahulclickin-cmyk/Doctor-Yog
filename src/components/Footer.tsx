@@ -1,9 +1,11 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 import { IMAGES, SOCIAL } from '../constants';
 import { Facebook, Instagram, Youtube, Mail, Phone, MapPin } from 'lucide-react';
 
 export default function Footer() {
+  const { t } = useTranslation();
   const socialLinks = [
     { Icon: Facebook, url: SOCIAL.facebook },
     { Icon: Instagram, url: SOCIAL.instagram },
@@ -20,7 +22,7 @@ export default function Footer() {
               <img src={IMAGES.logo} alt="Doctor Yog" className="h-12 w-auto brightness-0 invert" referrerPolicy="no-referrer" />
             </Link>
             <p className="text-slate-400 leading-relaxed">
-              Holistic Wellness Foundation rooted in the Himalayas. Ancient healing wisdom for modern life transformation.
+              {t('footer.aboutDesc')}
             </p>
             <div className="flex gap-4">
               {socialLinks.map(({ Icon, url }, i) => (
@@ -39,30 +41,30 @@ export default function Footer() {
 
           {/* Quick Links */}
           <div>
-            <h3 className="text-xl font-serif mb-6 border-b border-white/10 pb-2">Quick Links</h3>
+            <h3 className="text-xl font-serif mb-6 border-b border-white/10 pb-2">{t('footer.quickLinks')}</h3>
             <ul className="space-y-4 text-slate-400">
-              <li><Link to="/" className="hover:text-primary transition-colors">Home</Link></li>
-              <li><Link to="/retreats" className="hover:text-primary transition-colors">Retreats</Link></li>
-              <li><Link to="/about" className="hover:text-primary transition-colors">About Us</Link></li>
-              <li><Link to="/reserve" className="hover:text-primary transition-colors">Register Now</Link></li>
-              <li><Link to="/programs" className="hover:text-primary transition-colors">Programs</Link></li>
+              <li><Link to="/" className="hover:text-primary transition-colors">{t('nav.home')}</Link></li>
+              <li><Link to="/retreats" className="hover:text-primary transition-colors">{t('nav.retreats')}</Link></li>
+              <li><Link to="/about" className="hover:text-primary transition-colors">{t('nav.about')}</Link></li>
+              <li><Link to="/reserve" className="hover:text-primary transition-colors">{t('common.register')}</Link></li>
+              <li><Link to="/programs" className="hover:text-primary transition-colors">{t('nav.programs')}</Link></li>
             </ul>
           </div>
 
           {/* Programs */}
           <div>
-            <h3 className="text-xl font-serif mb-6 border-b border-white/10 pb-2">Programs</h3>
+            <h3 className="text-xl font-serif mb-6 border-b border-white/10 pb-2">{t('footer.programs')}</h3>
             <ul className="space-y-4 text-slate-400">
-              <li><Link to="/programs/classes" className="hover:text-primary transition-colors">Yoga Classes</Link></li>
-              <li><Link to="/programs/groups" className="hover:text-primary transition-colors">Group Healing</Link></li>
-              <li><Link to="/programs/members" className="hover:text-primary transition-colors">Membership</Link></li>
-              <li><Link to="/programs/events" className="hover:text-primary transition-colors">Upcoming Events</Link></li>
+              <li><Link to="/programs/yoga-therapy" className="hover:text-primary transition-colors">Yoga Therapy</Link></li>
+              <li><Link to="/programs/ayurveda" className="hover:text-primary transition-colors">Ayurveda Training</Link></li>
+              <li><Link to="/programs/detox" className="hover:text-primary transition-colors">Detox Healing</Link></li>
+              <li><Link to="/programs/100hr-ttc" className="hover:text-primary transition-colors">100 Hour TTC</Link></li>
             </ul>
           </div>
 
           {/* Contact */}
           <div>
-            <h3 className="text-xl font-serif mb-6 border-b border-white/10 pb-2">Contact Us</h3>
+            <h3 className="text-xl font-serif mb-6 border-b border-white/10 pb-2">{t('footer.contact')}</h3>
             <ul className="space-y-4 text-slate-400">
               <li className="flex items-start gap-3">
                 <MapPin className="text-primary mt-1 flex-shrink-0" size={18} />
@@ -82,11 +84,11 @@ export default function Footer() {
 
         {/* New Redesigned Newsletter Section */}
         <div className="mb-16 p-8 md:p-10 bg-[#F5E1C8] rounded-2xl text-black">
-          <h2 className="text-3xl md:text-4xl font-bold mb-8">Subscribe to get exclusive updates</h2>
+          <h2 className="text-3xl md:text-4xl font-bold mb-8">{t('footer.subscribe')}</h2>
           <form className="space-y-6" onSubmit={(e) => { e.preventDefault(); alert('Subscribed successfully!'); }}>
             <div className="flex flex-col md:flex-row items-end gap-6">
               <div className="flex-grow space-y-2">
-                <label className="text-sm font-medium block">Email *</label>
+                <label className="text-sm font-medium block">{t('footer.email')} *</label>
                 <input 
                   type="email" 
                   placeholder="e.g., email@example.com" 
@@ -95,18 +97,18 @@ export default function Footer() {
                 />
               </div>
               <button type="submit" className="bg-white text-black px-8 py-4 rounded-lg font-medium text-lg leading-tight hover:bg-white/90 transition-colors shadow-sm border border-black/5 min-w-[200px]">
-                Join Our Mailing<br />List
+                {t('footer.join')}
               </button>
             </div>
             <div className="flex items-center gap-3">
               <input type="checkbox" id="subscribe-check" className="w-5 h-5 rounded border-black/20 text-primary focus:ring-primary" required />
-              <label htmlFor="subscribe-check" className="text-sm md:text-base">I want to subscribe to your mailing list.</label>
+              <label htmlFor="subscribe-check" className="text-sm md:text-base">{t('footer.consent')}</label>
             </div>
           </form>
         </div>
 
         <div className="pt-8 border-t border-white/10 flex flex-col md:flex-row justify-between items-center gap-4 text-slate-500 text-sm">
-          <p>© {new Date().getFullYear()} DoctorYog Holistic Wellness Foundation. All rights reserved.</p>
+          <p>© {new Date().getFullYear()} DoctorYog Holistic Wellness Foundation. {t('footer.rights')}</p>
           <div className="flex flex-wrap justify-center gap-6">
             <Link to="/privacy-policy" className="hover:text-primary transition-colors">Privacy Policy</Link>
             <Link to="/terms-conditions" className="hover:text-primary transition-colors">Terms & Conditions</Link>

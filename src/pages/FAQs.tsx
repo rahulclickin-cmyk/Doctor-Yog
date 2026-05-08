@@ -19,7 +19,7 @@ const faqs = [
   },
   {
     q: "How do I book a spot in the training program?",
-    a: "You can book your spot by paying the initial booking amount of 100€ through our registration form. The remaining balance can be paid upon arrival or as per the early bird terms."
+    a: "You can book your spot by paying the initial booking amount of ₹9,000 through our registration form. The remaining balance can be paid upon arrival or as per the early bird terms."
   },
   {
     q: "Is the food provided during retreats?",

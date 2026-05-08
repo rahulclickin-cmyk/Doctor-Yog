@@ -39,7 +39,10 @@ export const IMAGES = {
   poseCobra: "https://images.unsplash.com/photo-1510894347713-fc3ad6cb0322?auto=format&fit=crop&q=80&w=800",
   poseTriangle: "https://images.unsplash.com/photo-1575052814086-f385e2e2ad1b?auto=format&fit=crop&q=80&w=800",
   poseSun: "https://images.unsplash.com/photo-1508672019048-805c876b67e2?auto=format&fit=crop&q=80&w=800",
-  poseCorpse: "https://images.unsplash.com/photo-1599447421416-3414500d18a5?auto=format&fit=crop&q=80&w=800"
+  poseCorpse: "https://images.unsplash.com/photo-1599447421416-3414500d18a5?auto=format&fit=crop&q=80&w=800",
+  poseParvat: "https://images.unsplash.com/photo-1601004890684-d8cbf643f5f2?auto=format&fit=crop&q=80&w=800",
+  posePadangustha: "https://images.unsplash.com/photo-1588282322631-47700021c38a?auto=format&fit=crop&q=80&w=800",
+  poseWarrior2: "https://images.unsplash.com/photo-1599901860904-17e6ed7083a0?auto=format&fit=crop&q=80&w=800"
 };
 
 export const HERO_SLIDES = [
@@ -129,5 +132,29 @@ export const YOGA_POSES = [
     icon: Moon,
     image: IMAGES.poseCorpse,
     videoUrl: "https://www.youtube.com/watch?v=1bJwEw_k_0E"
+  },
+  {
+    name: "Parvat Asan",
+    sanskritName: "Parvatasana",
+    benefits: ["Improves posture", "Strengthens shoulders", "Enhances focus"],
+    icon: TreePine,
+    image: IMAGES.poseParvat,
+    videoUrl: "https://www.youtube.com/watch?v=Dic293YNJI8"
+  },
+  {
+    name: "Padangustha Asan",
+    sanskritName: "Padangusthasana",
+    benefits: ["Stretches hamstrings", "Relieves stress", "Improves digestion"],
+    icon: Dog,
+    image: IMAGES.posePadangustha,
+    videoUrl: "https://www.youtube.com/watch?v=EC7RGJ975iM"
+  },
+  {
+    name: "Warrior II",
+    sanskritName: "Virabhadrasana II",
+    benefits: ["Strengthens legs", "Increases stamina", "Improves balance"],
+    icon: Triangle,
+    image: IMAGES.poseWarrior2,
+    videoUrl: "https://www.youtube.com/watch?v=upFVtuIgVDw"
   }
 ];

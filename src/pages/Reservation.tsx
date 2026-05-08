@@ -46,8 +46,8 @@ export default function Reservation() {
   return (
     <div className="pb-20 bg-orange-50/30 min-h-screen">
       <PageHero 
-        title="Reservation Form" 
-        subtitle="Secure your spot for our upcoming programs and retreats."
+        title={t('reservation.title')} 
+        subtitle={t('reservation.subtitle')}
       />
       <div className="max-w-3xl mx-auto px-4 mt-20">
         <motion.div 
@@ -60,15 +60,15 @@ export default function Reservation() {
               <div className="w-20 h-20 bg-green-100 text-green-600 rounded-full flex items-center justify-center mx-auto mb-6">
                 <CheckCircle2 size={40} />
               </div>
-              <h2 className="text-3xl font-serif mb-4">Reservation Received!</h2>
+              <h2 className="text-3xl font-serif mb-4">{t('reservation.success')}</h2>
               <p className="text-slate-600 mb-8">
-                Thank you for choosing Doctor Yog. We will contact you shortly to confirm your booking.
+                {t('reservation.successDesc')}
               </p>
               <button 
                 onClick={() => setStatus('idle')}
                 className="btn-primary px-8"
               >
-                Make Another Reservation
+                {t('reservation.another')}
               </button>
             </div>
           ) : (
@@ -189,7 +189,7 @@ export default function Reservation() {
                 ) : (
                   <>
                     <Send size={20} className="group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
-                    Submit Reservation
+                    {t('reservation.submit')}
                   </>
                 )}
               </button>

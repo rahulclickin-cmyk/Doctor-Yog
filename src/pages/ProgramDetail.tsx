@@ -4,6 +4,7 @@ import { motion, AnimatePresence } from 'motion/react';
 import { CheckCircle2, ChevronDown, Calendar, Users, GraduationCap, ArrowLeft, Clock, MapPin, Star } from 'lucide-react';
 import { IMAGES, CONTACT } from '../constants';
 import { cn } from '../lib/utils';
+import { useTranslation } from 'react-i18next';
 
 const programsData: Record<string, any> = {
   'yoga-therapy': {
@@ -11,8 +12,8 @@ const programsData: Record<string, any> = {
     subtitle: "A comprehensive 11-day program combining Yoga, Ayurveda, and Healing Science.",
     image: IMAGES.yoga1,
     duration: "11 Days",
-    price: "460€",
-    earlyBird: "400€",
+    price: "₹38,000",
+    earlyBird: "₹34,000",
     overview: "This program is designed to bridge the gap between ancient healing wisdom and modern therapeutic needs. You will learn to diagnose the root cause of ailments and apply integrated healing methods.",
     highlights: ["Yoga + Ayurveda", "Healing Science", "Root Cause Diagnosis", "Practical Therapy"],
     curriculum: [
@@ -33,8 +34,8 @@ const programsData: Record<string, any> = {
     subtitle: "Master the ancient art of Ayurvedic healing and vital energy points.",
     image: IMAGES.yoga2,
     duration: "7 Days",
-    price: "350€",
-    earlyBird: "300€",
+    price: "₹29,000",
+    earlyBird: "₹26,000",
     overview: "Deep dive into the world of Ayurveda. Learn how to balance the three Doshas and use Marma points to trigger the body's natural healing mechanisms.",
     highlights: ["Dosha Balancing", "Panchakarma Basics", "Marma Point Therapy", "Diet & Lifestyle"],
     curriculum: [
@@ -54,8 +55,8 @@ const programsData: Record<string, any> = {
     subtitle: "Purify your body and mind with traditional Himalayan detox methods.",
     image: IMAGES.retreat1,
     duration: "5 Days",
-    price: "280€",
-    earlyBird: "250€",
+    price: "₹23,000",
+    earlyBird: "₹20,500",
     overview: "A specialized program focused on internal purification. Using Shatkarma, herbal detox, and meditation to remove toxins (Ama) from the system.",
     highlights: ["Shatkarma Practice", "Herbal Cleansing", "Mind Detox", "Vitality Boost"],
     curriculum: [
@@ -74,8 +75,8 @@ const programsData: Record<string, any> = {
     subtitle: "Scientific yoga protocols for chronic pain and structural alignment.",
     image: IMAGES.yoga4,
     duration: "10 Days",
-    price: "420€",
-    earlyBird: "380€",
+    price: "₹35,000",
+    earlyBird: "₹31,500",
     overview: "Focus on structural issues like back pain, cervical issues, and joint problems. Learn how to use props and specific asanas for rehabilitation.",
     highlights: ["Spine Health", "Joint Mobility", "Alignment Correction", "Rehab Protocols"],
     curriculum: [
@@ -128,6 +129,7 @@ const programsData: Record<string, any> = {
 };
 
 export default function ProgramDetail() {
+  const { t } = useTranslation();
   const { type } = useParams();
   const [openIndex, setOpenIndex] = useState<number | null>(0);
   
@@ -139,7 +141,7 @@ export default function ProgramDetail() {
         {/* Back Button */}
         <Link to="/programs" className="inline-flex items-center gap-2 text-slate-500 hover:text-primary mb-8 transition-colors group">
           <ArrowLeft size={20} className="transition-transform group-hover:-translate-x-1" />
-          <span className="font-medium">Back to All Programs</span>
+          <span className="font-medium">{t('common.backToPrograms')}</span>
         </Link>
 
         {/* Hero Section */}
@@ -150,7 +152,7 @@ export default function ProgramDetail() {
           >
             <div className="inline-flex items-center gap-2 bg-orange-100 text-primary px-4 py-1 rounded-full text-sm font-bold mb-6">
               <Star size={14} fill="currentColor" />
-              <span>Certified Training</span>
+              <span>{t('common.certified')}</span>
             </div>
             <h1 className="text-4xl md:text-6xl font-serif mb-6 leading-tight">{program.title}</h1>
             <p className="text-xl text-slate-600 mb-8 leading-relaxed italic border-l-4 border-primary/20 pl-6">
@@ -170,7 +172,7 @@ export default function ProgramDetail() {
 
             <div className="flex flex-col sm:flex-row gap-4">
               <Link to="/reserve" className="btn-primary px-10 py-4 text-lg shadow-xl shadow-orange-200">
-                Register Now
+                {t('common.register')}
               </Link>
               <a 
                 href={`https://wa.me/${CONTACT.whatsapp.replace('+', '')}`}
@@ -178,7 +180,7 @@ export default function ProgramDetail() {
                 rel="noopener noreferrer"
                 className="btn-outline px-10 py-4 text-lg border-slate-200 text-slate-700 hover:bg-slate-50"
               >
-                Enquire on WhatsApp
+                {t('common.whatsapp')}
               </a>
             </div>
           </motion.div>
@@ -202,7 +204,7 @@ export default function ProgramDetail() {
         <div className="grid lg:grid-cols-3 gap-12 mb-20">
           <div className="lg:col-span-2 space-y-12">
             <section>
-              <h2 className="text-3xl font-serif mb-6">Program Overview</h2>
+              <h2 className="text-3xl font-serif mb-6">{t('programs.overview')}</h2>
               <p className="text-lg text-slate-600 leading-relaxed">
                 {program.overview}
               </p>
@@ -217,7 +219,7 @@ export default function ProgramDetail() {
             </section>
 
             <section>
-              <h2 className="text-3xl font-serif mb-8">Curriculum Structure</h2>
+              <h2 className="text-3xl font-serif mb-8">{t('programs.structure')}</h2>
               <div className="space-y-4">
                 {program.curriculum.map((item: any, i: number) => (
                   <div key={i} className="border border-slate-100 rounded-2xl overflow-hidden bg-white shadow-sm hover:shadow-md transition-shadow">
@@ -253,24 +255,24 @@ export default function ProgramDetail() {
 
           <aside className="space-y-8">
             <div className="bg-slate-900 text-white p-8 rounded-[2.5rem] shadow-2xl sticky top-28">
-              <h3 className="text-2xl font-serif mb-6">Course Investment</h3>
+              <h3 className="text-2xl font-serif mb-6">{t('programs.investment')}</h3>
               <div className="space-y-6 mb-8">
                 <div className="flex justify-between items-center pb-4 border-b border-white/10">
-                  <span className="text-slate-400">Full Price</span>
+                  <span className="text-slate-400">{t('programs.fullPrice')}</span>
                   <span className="text-3xl font-bold">{program.price}</span>
                 </div>
                 <div className="flex justify-between items-center pb-4 border-b border-white/10">
-                  <span className="text-primary font-bold">Early Bird</span>
+                  <span className="text-primary font-bold">{t('programs.earlyBird')}</span>
                   <span className="text-3xl font-bold text-primary">{program.earlyBird}</span>
                 </div>
                 <div className="flex justify-between items-center">
-                  <span className="text-slate-400">Booking Fee</span>
-                  <span className="text-xl font-bold">100€</span>
+                  <span className="text-slate-400">{t('programs.bookingFee')}</span>
+                  <span className="text-xl font-bold">₹9,000</span>
                 </div>
               </div>
               
               <Link to="/reserve" className="btn-primary w-full py-4 text-center block text-lg mb-6">
-                Reserve My Spot
+                {t('common.register')}
               </Link>
               
               <div className="space-y-4">
@@ -290,7 +292,7 @@ export default function ProgramDetail() {
         {/* Testimonials Section */}
         <section className="py-20 border-t border-slate-100">
           <div className="text-center mb-16">
-            <h2 className="text-4xl font-serif mb-4">Student Experiences</h2>
+            <h2 className="text-4xl font-serif mb-4">{t('programs.experiences')}</h2>
             <p className="text-lg text-slate-600 max-w-2xl mx-auto italic">
               "Hear from those who have walked this path of healing before you."
             </p>

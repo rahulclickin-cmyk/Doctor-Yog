@@ -3,6 +3,7 @@ import { motion } from 'motion/react';
 import { CheckCircle2, ArrowRight, Wind, Heart, ShieldCheck, Activity, Zap } from 'lucide-react';
 import { IMAGES } from '../constants';
 import { Link } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 import PageHero from '../components/PageHero';
 
 const retreats = [
@@ -44,6 +45,7 @@ const retreats = [
 ];
 
 export default function Retreats() {
+  const { t } = useTranslation();
   return (
     <div className="pb-20">
       <PageHero 
@@ -94,7 +96,7 @@ export default function Retreats() {
                 </div>
                 
                 <Link to="/reserve" className="btn-primary inline-flex items-center gap-2">
-                  Register Now <ArrowRight size={18} />
+                  {t('common.register')} <ArrowRight size={18} />
                 </Link>
               </div>
             </motion.div>

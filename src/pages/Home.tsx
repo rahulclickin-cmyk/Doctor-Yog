@@ -74,7 +74,7 @@ export default function Home() {
                 {t('hero.register')}
               </Link>
               <Link to="/contact" className="btn-outline border-white text-white hover:bg-white hover:text-primary text-lg px-10 flex items-center gap-2">
-                Contact Us
+                {t('common.contactUs')}
               </Link>
             </div>
           </motion.div>
@@ -116,7 +116,7 @@ export default function Home() {
               
               <div className="flex flex-wrap gap-4">
                 <Link to="/programs" className="bg-white text-primary px-8 py-4 rounded-full font-bold hover:bg-orange-50 transition-colors shadow-lg">
-                  Learn More
+                  {t('common.learnMore')}
                 </Link>
                 <a href="/brochure.pdf" download className="bg-transparent border-2 border-white text-white px-8 py-4 rounded-full font-bold hover:bg-white/10 transition-colors text-center">
                   {t('featured.brochure')}
@@ -201,27 +201,25 @@ export default function Home() {
               </div>
             </div>
             <div className="lg:w-1/2">
-              <h2 className="text-4xl md:text-5xl font-serif mb-8">Meet Dr. Shakti</h2>
+              <h2 className="text-4xl md:text-5xl font-serif mb-8">{t('home.shaktiTitle')}</h2>
               <p className="text-xl text-orange-100 mb-10 leading-relaxed italic">
-                "Healing is not just about curing a disease; it's about returning to your natural state of harmony."
+                "{t('home.shaktiQuote')}"
               </p>
               
               <div className="grid grid-cols-2 gap-8 mb-12">
-                {[
-                  { icon: <Award className="text-primary" />, label: "19+ years experience" },
-                  { icon: <Globe className="text-primary" />, label: "PhD Yoga" },
-                  { icon: <Users className="text-primary" />, label: "5000+ lives transformed" },
-                  { icon: <CheckCircle2 className="text-primary" />, label: "International training" }
-                ].map((stat, i) => (
-                  <div key={i} className="flex items-center gap-3">
-                    <div className="p-2 bg-white/5 rounded-lg">{stat.icon}</div>
-                    <span className="font-medium">{stat.label}</span>
-                  </div>
-                ))}
+                {(t('home.shaktiStats', { returnObjects: true }) as string[]).map((statLabel, i) => {
+                  const icons = [<Award className="text-primary" />, <Globe className="text-primary" />, <Users className="text-primary" />, <CheckCircle2 className="text-primary" />];
+                  return (
+                    <div key={i} className="flex items-center gap-3">
+                      <div className="p-2 bg-white/5 rounded-lg">{icons[i]}</div>
+                      <span className="font-medium">{statLabel}</span>
+                    </div>
+                  );
+                })}
               </div>
               
               <Link to="/about" className="btn-primary inline-block">
-                Know More About Dr. Shakti
+                {t('common.knowMore')}
               </Link>
             </div>
           </div>
@@ -379,12 +377,12 @@ export default function Home() {
               </div>
 
               <div className="inline-block bg-primary text-white px-6 py-2 rounded-full text-sm font-bold mb-8 shadow-lg animate-pulse">
-                Available Online
+                {t('home.availableOnline')}
               </div>
               <h2 className="text-4xl md:text-6xl font-serif mb-6 leading-tight text-slate-900">
-                Personalized Yoga Therapy – <span className="text-primary">Your Journey</span>
+                {t('home.therapyTitle')} – <span className="text-primary">{t('nav.home')}</span>
               </h2>
-              <p className="text-xl text-primary font-medium mb-8">Tailored One-on-One Care</p>
+              <p className="text-xl text-primary font-medium mb-8">{t('home.therapySubtitle')}</p>
               
               <div className="flex flex-wrap gap-4 mb-10">
                 {["1 hr", "Mae Sa", "Online", "Rishikesh"].map((tag, i) => (
@@ -396,30 +394,25 @@ export default function Home() {
 
               <div className="flex flex-col sm:flex-row gap-4">
                 <Link to="/reserve" className="btn-primary px-10 py-4 text-lg">
-                  Register Now
+                  {t('common.register')}
                 </Link>
                 <Link to="/reserve?trial=true" className="btn-outline border-primary text-primary hover:bg-primary hover:text-white px-10 py-4 text-lg">
-                  Book Free Trial
+                  {t('common.bookTrial')}
                 </Link>
               </div>
 
               <div className="mt-12 pt-12 border-t border-orange-100">
-                <h3 className="text-2xl font-serif mb-4">Service Description</h3>
+                <h3 className="text-2xl font-serif mb-4">{t('home.serviceDescTitle')}</h3>
                 <p className="text-slate-600 leading-relaxed">
-                  Experience a truly personalized yoga therapy class designed just for you. Each session is one-on-one, allowing us to focus entirely on your individual physical and mental condition. Whether you're struggling with back pain, weight gain, high stress or anxiety, or other lifestyle-related issues, our approach meets you where you are. Every body is unique, so we adapt the practice to your needs—taking into account your fitness level, any injuries or health concerns, and even your daily routine. This compassionate, customized care ensures you feel heard and supported at every step.
+                  {t('home.serviceDesc')}
                 </p>
               </div>
             </motion.div>
             
             <div className="lg:w-1/2 bg-orange-50/50 p-8 md:p-12 rounded-[3rem] border border-orange-100">
-              <h3 className="text-2xl font-serif mb-8">Healing Benefits</h3>
+              <h3 className="text-2xl font-serif mb-8">{t('home.benefitsTitle')}</h3>
               <div className="space-y-6">
-                {[
-                  { title: "Physical Health", desc: "Improve flexibility, strength, and balance while addressing chronic pain." },
-                  { title: "Mental Clarity", desc: "Reduce stress, anxiety, and mental fatigue through mindful practice." },
-                  { title: "Emotional Balance", desc: "Find inner peace and emotional stability in a supportive environment." },
-                  { title: "Spiritual Growth", desc: "Connect with your deeper self through ancient Himalayan traditions." }
-                ].map((benefit, i) => (
+                {(t('home.benefits', { returnObjects: true }) as any[]).map((benefit, i) => (
                   <div key={i} className="flex items-start gap-4 p-4 bg-white rounded-2xl shadow-sm border border-orange-50">
                     <div className="w-10 h-10 bg-orange-100 rounded-full flex items-center justify-center text-primary font-bold">
                       {i + 1}
@@ -441,17 +434,12 @@ export default function Home() {
         <div className="max-w-7xl mx-auto px-4">
           <div className="flex flex-col lg:flex-row-reverse gap-16 items-center">
             <div className="lg:w-1/2">
-              <h2 className="text-4xl md:text-5xl font-serif mb-6">Ayurveda & Ancient Healing</h2>
+              <h2 className="text-4xl md:text-5xl font-serif mb-6">{t('home.ayurvedaTitle')}</h2>
               <p className="text-lg text-slate-600 mb-8 leading-relaxed">
-                Experience the profound wisdom of Ayurveda, the "Science of Life." Our treatments are designed to balance your Doshas (Vata, Pitta, Kapha) and restore your body's natural equilibrium through authentic therapies, herbal remedies, and personalized diet plans.
+                {t('home.ayurvedaDesc')}
               </p>
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-10">
-                {[
-                  { title: "Panchakarma", desc: "Deep detoxification and rejuvenation" },
-                  { title: "Marma Therapy", desc: "Vital energy point stimulation" },
-                  { title: "Herbal Healing", desc: "Customized natural remedies" },
-                  { title: "Diet & Lifestyle", desc: "Sattvic living guidance" }
-                ].map((item, i) => (
+                {(t('home.ayurvedaItems', { returnObjects: true }) as any[]).map((item, i) => (
                   <div key={i} className="flex items-start gap-3">
                     <CheckCircle2 className="text-primary mt-1" />
                     <div>
@@ -462,7 +450,7 @@ export default function Home() {
                 ))}
               </div>
               <Link to="/programs" className="btn-primary">
-                Explore Healing Programs
+                {t('common.viewDetails')}
               </Link>
             </div>
             <div className="lg:w-1/2">
@@ -488,9 +476,9 @@ export default function Home() {
               <img src={IMAGES.gallery4} alt="Nature" className="rounded-2xl shadow-lg h-64 w-full object-cover" referrerPolicy="no-referrer" />
             </div>
             <div className="order-1 lg:order-2">
-              <h2 className="text-4xl md:text-5xl font-serif mb-6">Experience the Healing Power of the Himalayas</h2>
+              <h2 className="text-4xl md:text-5xl font-serif mb-6">{t('home.himalayasTitle')}</h2>
               <p className="text-lg text-slate-600 mb-8 leading-relaxed">
-                Rishikesh is not just a location; it's a spiritual energy center. At Doctor Yog, we harness this natural vibration to accelerate your healing process. Our foundation provides a sanctuary where the sound of the Ganges and the fresh mountain air become part of your therapy.
+                {t('home.himalayasDesc')}
               </p>
               <div className="space-y-4 mb-10">
                 {[
@@ -506,7 +494,7 @@ export default function Home() {
                 ))}
               </div>
               <Link to="/reserve" className="btn-primary inline-block">
-                Plan Your Visit
+                {t('hero.register')}
               </Link>
             </div>
           </div>
@@ -521,22 +509,20 @@ export default function Home() {
       <section className="py-20 bg-white">
         <div className="max-w-7xl mx-auto px-4">
           <div className="text-center mb-16">
-            <h2 className="text-4xl md:text-5xl font-serif mb-4">Who Is This Program For?</h2>
-            <p className="text-lg text-slate-600 max-w-2xl mx-auto">Our teachings are designed to meet you exactly where you are on your journey.</p>
+            <h2 className="text-4xl md:text-5xl font-serif mb-4">{t('home.whoTitle')}</h2>
+            <p className="text-lg text-slate-600 max-w-2xl mx-auto">{t('home.whoSubtitle')}</p>
           </div>
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-            {[
-              { title: "Beginners", desc: "Start your journey with a strong, safe foundation in authentic yoga.", icon: "🌱" },
-              { title: "Yoga Teachers", desc: "Deepen your knowledge of therapy, anatomy, and ancient texts.", icon: "🧘‍♀️" },
-              { title: "Lifestyle Change", desc: "Overcome chronic stress, poor habits, and find lasting balance.", icon: "⚖️" },
-              { title: "Spiritual Seekers", desc: "Advance your practice through deep meditation and philosophy.", icon: "✨" }
-            ].map((item, i) => (
-              <div key={i} className="p-8 bg-orange-50 rounded-3xl border border-orange-100 text-center hover:-translate-y-2 transition-transform">
-                <div className="text-5xl mb-4">{item.icon}</div>
-                <h3 className="text-xl font-bold mb-3">{item.title}</h3>
-                <p className="text-slate-600 text-sm">{item.desc}</p>
-              </div>
-            ))}
+            {(t('home.whoItems', { returnObjects: true }) as any[]).map((item, i) => {
+              const icons = ["🌱", "🧘‍♀️", "⚖️", "✨"];
+              return (
+                <div key={i} className="p-8 bg-orange-50 rounded-3xl border border-orange-100 text-center hover:-translate-y-2 transition-transform">
+                  <div className="text-5xl mb-4">{icons[i]}</div>
+                  <h3 className="text-xl font-bold mb-3">{item.title}</h3>
+                  <p className="text-slate-600 text-sm">{item.desc}</p>
+                </div>
+              );
+            })}
           </div>
         </div>
       </section>

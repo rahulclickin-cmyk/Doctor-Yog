@@ -26,16 +26,10 @@ const schedule = [
 ];
 
 export default function Programs() {
-  const { i18n } = useTranslation();
+  const { t, i18n } = useTranslation();
   
   const getPrice = (baseINR: number) => {
-    // Simple mock conversion for demonstration
-    if (i18n.language === 'en') {
-      return `$${Math.round(baseINR / 83)}`;
-    } else if (i18n.language === 'es') {
-      return `€${Math.round(baseINR / 90)}`;
-    }
-    return `₹${baseINR}`;
+    return `₹${baseINR.toLocaleString('en-IN')}`;
   };
 
   const programs = [
@@ -92,8 +86,8 @@ export default function Programs() {
   return (
     <div className="pb-20 bg-slate-50">
       <PageHero 
-        title="Our Training Programs" 
-        subtitle="Professional certification courses rooted in authentic Himalayan wisdom and modern therapeutic science."
+        title={t('programs.title')} 
+        subtitle={t('programs.subtitle')}
       />
       <div className="max-w-7xl mx-auto px-4 mt-20">
         {/* Programs Grid */}
@@ -127,14 +121,14 @@ export default function Programs() {
                   </p>
                   <div className="flex items-center justify-between mt-auto">
                     <div>
-                      <span className="text-sm text-slate-400 block uppercase tracking-tighter">Starting from</span>
+                      <span className="text-sm text-slate-400 block uppercase tracking-tighter">{t('common.startingFrom')}</span>
                       <span className="text-2xl font-bold text-slate-800">{program.price}</span>
                     </div>
                     <Link 
                       to={`/programs/${program.id}`}
                       className="bg-primary text-white px-8 py-3 rounded-full font-bold hover:bg-orange-600 transition-colors shadow-lg shadow-orange-100"
                     >
-                      View Details
+                      {t('common.viewDetails')}
                     </Link>
                   </div>
                 </div>
@@ -147,19 +141,19 @@ export default function Programs() {
         <div className="mt-20 bg-slate-900 rounded-[3rem] p-12 text-center text-white relative overflow-hidden">
           <div className="absolute top-0 right-0 w-64 h-64 bg-primary/20 rounded-full blur-3xl -mr-32 -mt-32" />
           <div className="relative z-10">
-            <h2 className="text-3xl md:text-4xl font-serif mb-6">Not sure which program is right for you?</h2>
+            <h2 className="text-3xl md:text-4xl font-serif mb-6">{t('programs.notSureTitle')}</h2>
             <p className="text-lg text-slate-400 mb-10 max-w-2xl mx-auto">
-              Our experts can help you choose the best path based on your goals and experience level.
+              {t('programs.notSureDesc')}
             </p>
             <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-              <Link to="/contact" className="btn-primary px-10">Contact Us</Link>
+              <Link to="/contact" className="btn-primary px-10">{t('common.contactUs')}</Link>
               <a 
                 href={`https://wa.me/${CONTACT.whatsapp.replace('+', '')}`}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="btn-outline border-white text-white hover:bg-white hover:text-slate-900 px-10"
               >
-                Talk to an Expert
+                {t('programs.talkExpert')}
               </a>
             </div>
           </div>
