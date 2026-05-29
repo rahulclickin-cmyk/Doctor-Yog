@@ -20,7 +20,7 @@ export interface BrochureData {
 }
 
 export const generateBrochure = (data: BrochureData) => {
-  const doc = jsPDF();
+  const doc = new jsPDF();
   let y = 20;
   const margin = 20;
   const pageWidth = doc.internal.pageSize.getWidth();

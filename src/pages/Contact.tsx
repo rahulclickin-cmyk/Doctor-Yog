@@ -46,6 +46,22 @@ export default function Contact() {
         createdAt: serverTimestamp()
       });
 
+      // Submit to Google Sheet via API Route
+      try {
+        await fetch('/api/reserve', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify({
+            ...formData,
+            formType: 'Contact Inquiry'
+          })
+        });
+      } catch (sheetErr) {
+        console.error('Error forwarding to Google Sheets:', sheetErr);
+      }
+
       setStatus('success');
       setFormData({
         firstName: '',

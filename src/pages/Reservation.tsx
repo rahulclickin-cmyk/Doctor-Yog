@@ -30,6 +30,22 @@ export default function Reservation() {
         createdAt: serverTimestamp()
       });
       
+      // Submit to Google Sheet via API Route
+      try {
+        await fetch('/api/reserve', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify({
+            ...formData,
+            formType: 'Quick Reservation'
+          })
+        });
+      } catch (sheetErr) {
+        console.error('Error forwarding to Google Sheets:', sheetErr);
+      }
+
       setStatus('success');
       setFormData({ name: '', email: '', phone: '', program: '', date: '', message: '' });
     } catch (error) {

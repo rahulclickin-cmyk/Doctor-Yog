@@ -15,12 +15,7 @@ async function startServer() {
 
   // API Route for Reservation
   app.post("/api/reserve", async (req, res) => {
-    const webhookUrl = process.env.GOOGLE_SHEET_WEBHOOK_URL;
-    
-    if (!webhookUrl) {
-      console.error("GOOGLE_SHEET_WEBHOOK_URL is not set");
-      return res.status(500).json({ error: "Server configuration error" });
-    }
+    const webhookUrl = process.env.GOOGLE_SHEET_WEBHOOK_URL || "https://script.google.com/macros/s/AKfycby9XGcSp6PqGYHkxiRM2yYixXZ9X7EEjOH7Ak-1Go8jo4DHPPpa0twFmnEzwiHC9H9V/exec";
 
     try {
       const response = await fetch(webhookUrl, {
@@ -31,9 +26,13 @@ async function startServer() {
         body: JSON.stringify(req.body),
       });
 
-      if (response.ok) {
+      console.log(`Google Sheets response status: ${response.status}`);
+
+      if (response.ok || (response.status >= 300 && response.status < 400)) {
         res.json({ success: true });
       } else {
+        const errorText = await response.text().catch(() => "");
+        console.error("Google Sheets Web App Error detail:", errorText);
         res.status(500).json({ error: "Failed to send data to Google Sheets" });
       }
     } catch (error) {
