@@ -17,22 +17,34 @@ async function startServer() {
   app.post("/api/reserve", async (req, res) => {
     const webhookUrl = process.env.GOOGLE_SHEET_WEBHOOK_URL || "https://script.google.com/macros/s/AKfycby9XGcSp6PqGYHkxiRM2yYixXZ9X7EEjOH7Ak-1Go8jo4DHPPpa0twFmnEzwiHC9H9V/exec";
 
+    console.log("--- Google Sheet Submission ---");
+    console.log(`Target Webhook URL: ${webhookUrl}`);
+    console.log("Payload:", JSON.stringify(req.body, null, 2));
+
     try {
       const response = await fetch(webhookUrl, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
+          "Accept": "application/json",
+          "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36"
         },
         body: JSON.stringify(req.body),
+        redirect: "follow"
       });
 
-      console.log(`Google Sheets response status: ${response.status}`);
+      console.log(`Google Sheets response status code: ${response.status}`);
+      console.log(`Google Sheets response ok: ${response.ok}`);
 
+      const responseText = await response.text().catch(() => "");
+      console.log("Google Sheets response body:", responseText);
+
+      // Apps Script Web Apps when successful return 302 redirects which fetch automatically follows, 
+      // yielding the content of the Web App (often JSON or HTML) and a 200 OK status from the redirected URL
       if (response.ok || (response.status >= 300 && response.status < 400)) {
         res.json({ success: true });
       } else {
-        const errorText = await response.text().catch(() => "");
-        console.error("Google Sheets Web App Error detail:", errorText);
+        console.error("Google Sheets Web App Error detail:", responseText);
         res.status(500).json({ error: "Failed to send data to Google Sheets" });
       }
     } catch (error) {
