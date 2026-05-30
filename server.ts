@@ -15,7 +15,7 @@ async function startServer() {
 
   // API Route for Reservation
   app.post("/api/reserve", async (req, res) => {
-    const webhookUrl = process.env.GOOGLE_SHEET_WEBHOOK_URL || "https://script.google.com/macros/s/AKfycby9XGcSp6PqGYHkxiRM2yYixXZ9X7EEjOH7Ak-1Go8jo4DHPPpa0twFmnEzwiHC9H9V/exec";
+    const webhookUrl = process.env.GOOGLE_SHEET_WEBHOOK_URL || "https://script.google.com/macros/s/AKfycbxeND2UykZZfSjBW4y7vCPkGm-mLpthQwuNn7VPnvClEBzhIB-u1HnucxlYUDGZVGyW/exec";
 
     console.log("--- Google Sheet Submission ---");
     console.log(`Target Webhook URL: ${webhookUrl}`);
