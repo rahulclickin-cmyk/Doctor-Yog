@@ -4,8 +4,8 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
-    "dev": "tsx server.ts",
-    "build": "vite build",
+    "dev": "tsx src/scripts/generate-sitemap.ts && tsx server.ts",
+    "build": "tsx src/scripts/generate-sitemap.ts && vite build",
     "preview": "vite preview",
     "clean": "rm -rf dist",
     "lint": "tsc --noEmit"

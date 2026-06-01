@@ -15,21 +15,77 @@ async function startServer() {
 
   // API Route for Reservation
   app.post("/api/reserve", async (req, res) => {
-    const webhookUrl = process.env.GOOGLE_SHEET_WEBHOOK_URL || "https://script.google.com/macros/s/AKfycbxeND2UykZZfSjBW4y7vCPkGm-mLpthQwuNn7VPnvClEBzhIB-u1HnucxlYUDGZVGyW/exec";
+    const defaultWebhook = "https://script.google.com/macros/s/AKfycbwOFwb9U4dxSZ9g2rV2jhcqfw9mI_QbpLvUekR4xJPOJ2gJVV2Wpjvg1_Zh9tpgM04I/exec";
+    const webhookUrl = process.env.GOOGLE_SHEET_WEBHOOK_URL || defaultWebhook;
+
+    const payload = req.body || {};
+    
+    // Normalize fields so they map cleanly to common Google Sheets columns/Google Apps Script variables
+    const formType = payload.formType || "Reservation";
+    const firstName = payload.firstName || "";
+    const lastName = payload.lastName || "";
+    const fullName = payload.name || `${firstName} ${lastName}`.trim();
+    const email = payload.email || "";
+    const rawPhone = payload.phone || payload.whatsapp || "";
+    const countryCode = payload.countryCode || "";
+    const phone = countryCode ? `${countryCode} ${rawPhone}`.trim() : rawPhone;
+    const gender = payload.gender || "";
+    const country = payload.country || "";
+    const program = payload.program || payload.retreatType || payload.retreat || "";
+    const date = payload.date || payload.arrivalDate || "";
+    const duration = payload.duration || payload.retreatDays || "";
+    const accommodation = payload.accommodation || "";
+    const message = payload.message || payload.comments || payload.healthComments || "";
+    const timestamp = new Date().toISOString();
+
+    const unifiedData = {
+      timestamp,
+      formType,
+      name: fullName,
+      firstName,
+      lastName,
+      email,
+      phone,
+      whatsapp: payload.whatsapp || "",
+      gender,
+      country,
+      program,
+      retreatType: payload.retreatType || "",
+      retreat: payload.retreat || "",
+      date,
+      arrivalDate: payload.arrivalDate || "",
+      duration,
+      retreatDays: payload.retreatDays || "",
+      accommodation,
+      message,
+      comments: payload.comments || "",
+      healthComments: payload.healthComments || "",
+      ...payload
+    };
 
     console.log("--- Google Sheet Submission ---");
     console.log(`Target Webhook URL: ${webhookUrl}`);
-    console.log("Payload:", JSON.stringify(req.body, null, 2));
+    console.log("Normalized Unified Data for Apps Script:", JSON.stringify(unifiedData, null, 2));
 
     try {
-      const response = await fetch(webhookUrl, {
+      // Append fields to URL query parameters to support e.parameter in standard Google Apps Script
+      const urlWithParams = new URL(webhookUrl);
+      Object.entries(unifiedData).forEach(([key, val]) => {
+        if (typeof val === "string" || typeof val === "number" || typeof val === "boolean") {
+          urlWithParams.searchParams.append(key, String(val));
+        }
+      });
+
+      console.log(`Sending to script with direct/fallback query parameters...`);
+
+      const response = await fetch(urlWithParams.toString(), {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
           "Accept": "application/json",
           "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36"
         },
-        body: JSON.stringify(req.body),
+        body: JSON.stringify(unifiedData),
         redirect: "follow"
       });
 
