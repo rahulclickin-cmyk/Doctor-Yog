@@ -6,11 +6,18 @@ import PageHero from '../components/PageHero';
 
 const blogs = [
   {
+    title: "The Science of Healing: Why Choose a Yoga Therapy Course in Rishikesh",
+    excerpt: "Discover how traditional Yoga Therapy, Ayurveda, and Marma Science combine under Dr. Shakti Vidyalankar to eliminate chronic pain and restore vitality.",
+    date: "June 1, 2026",
+    author: "Dr. Shakti Vidyalankar",
+    img: IMAGES.yoga1
+  },
+  {
     title: "Understanding the Root Cause of Modern Stress",
     excerpt: "How ancient Ayurvedic principles can help us navigate the complexities of 21st-century anxiety.",
     date: "March 15, 2026",
     author: "Dr. Shakti",
-    img: IMAGES.yoga1
+    img: IMAGES.yoga2
   },
   {
     title: "The Power of Dashkarma: Yogic Detox Explained",

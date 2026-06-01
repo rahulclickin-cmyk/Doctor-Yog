@@ -1,67 +1,53 @@
 # ROBOTS.TXT FOR DOCTOR YOG (HOLISTIC WELLNESS FOUNDATION, RISHIKESH)
-# Designed for Optimal Search Engine and Generative AI Discovery
+# Designed for Next.js/Vercel Frameworks with Specialized Crawler Management
 
-# 1. Global Crawler Directives (Main Search Engines)
-User-agent: *
+# 1. Directives for Googlebot (Optimized for maximum crawl speed with zero delay)
+User-agent: Googlebot
 Allow: /
-Allow: /about
-Allow: /programs
-Allow: /programs/*
-Allow: /retreats
-Allow: /contact
-Allow: /contact/faqs
-Allow: /contact/blogs
 Disallow: /api/
 Disallow: /admin/
+Disallow: /_next/
 Disallow: /private/
-Disallow: /*?*   # Block search/filter query parameters from duplicate crawl index
+Disallow: /*?*
 
-# 2. Let Major LLM & Generative Search Engines crawl high-quality textual pages
+# 2. Directives for all other crawlers (Applying standard 10-second Crawl-delay)
+User-agent: *
+Allow: /
+Disallow: /api/
+Disallow: /admin/
+Disallow: /_next/
+Disallow: /private/
+Disallow: /*?*
+Crawl-delay: 10
+
+# 3. Directives for major LLM & Generative AI search crawlers
 User-agent: Google-Extended
 Allow: /
-Allow: /about
-Allow: /programs
-Allow: /programs/*
-Allow: /retreats
-Allow: /contact
-Allow: /contact/faqs
-Allow: /contact/blogs
+Disallow: /api/
+Disallow: /admin/
+Disallow: /_next/
+Disallow: /private/
 
 User-agent: GPTBot
 Allow: /
-Allow: /about
-Allow: /programs
-Allow: /programs/*
-Allow: /retreats
-Allow: /contact
-Allow: /contact/faqs
-Allow: /contact/blogs
+Disallow: /api/
+Disallow: /admin/
+Disallow: /_next/
+Disallow: /private/
 
 User-agent: ClaudeBot
 Allow: /
-Allow: /about
-Allow: /programs
-Allow: /programs/*
-Allow: /retreats
-Allow: /contact
-Allow: /contact/faqs
-Allow: /contact/blogs
-
-User-agent: Claude-Web
-Allow: /
+Disallow: /api/
+Disallow: /admin/
+Disallow: /_next/
+Disallow: /private/
 
 User-agent: PerplexityBot
 Allow: /
-Allow: /about
-Allow: /programs
-Allow: /programs/*
-Allow: /retreats
-Allow: /contact
-Allow: /contact/faqs
-Allow: /contact/blogs
+Disallow: /api/
+Disallow: /admin/
+Disallow: /_next/
+Disallow: /private/
 
-User-agent: applebot-extended
-Allow: /
-
-# Sitemap Target
-Sitemap: https://doctor-yog.vercel.app/sitemap.xml
+# Sitemap Location
+Sitemap: https://www.doctoryog.com/sitemap.xml

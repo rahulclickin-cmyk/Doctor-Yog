@@ -17,10 +17,10 @@ export default function SEOMetaManager() {
       "@type": "HealthAndBeautyBusiness",
       "name": "Doctor Yog Holistic Wellness Foundation",
       "alternateName": "Doctor Yog",
-      "image": "https://img.youtube.com/vi/W7H3T9T8G_g/maxresdefault.jpg",
-      "logo": "https://img.youtube.com/vi/W7H3T9T8G_g/maxresdefault.jpg",
-      "@id": "https://doctor-yog.vercel.app/#localbusiness",
-      "url": "https://doctor-yog.vercel.app",
+      "image": "https://www.doctoryog.com/images/doctor-yog-og-image.jpg",
+      "logo": "https://www.doctoryog.com/images/doctor-yog-og-image.jpg",
+      "@id": "https://www.doctoryog.com/#localbusiness",
+      "url": "https://www.doctoryog.com",
       "telephone": "+919412056637",
       "priceRange": "$$",
       "founder": {
@@ -72,7 +72,7 @@ export default function SEOMetaManager() {
           {
             "@context": "https://schema.org",
             "@type": "WebSite",
-            "url": "https://doctor-yog.vercel.app",
+            "url": "https://www.doctoryog.com",
             "name": "Doctor Yog",
             "description": "Holistic Wellness Foundation in Rishikesh, Uttarakhand"
           }
@@ -102,37 +102,37 @@ export default function SEOMetaManager() {
             "@type": "ListItem",
             "position": 1,
             "name": "Integrated Yoga & Ayurveda Therapy Course (11 Days)",
-            "url": "https://doctor-yog.vercel.app/programs/yoga-therapy"
+            "url": "https://www.doctoryog.com/programs/yoga-therapy"
           },
           {
             "@type": "ListItem",
             "position": 2,
             "name": "7 Days Ayurveda & Marma Therapy Training (7 Days)",
-            "url": "https://doctor-yog.vercel.app/programs/ayurveda"
+            "url": "https://www.doctoryog.com/programs/ayurveda"
           },
           {
             "@type": "ListItem",
             "position": 3,
             "name": "Detox & Holistic Healing Retreat (5/10/14 Days)",
-            "url": "https://doctor-yog.vercel.app/programs/detox"
+            "url": "https://www.doctoryog.com/programs/detox"
           },
           {
             "@type": "ListItem",
             "position": 4,
             "name": "Therapeutic Pain Management Course (10 Days)",
-            "url": "https://doctor-yog.vercel.app/programs/pain-management"
+            "url": "https://www.doctoryog.com/programs/pain-management"
           },
           {
             "@type": "ListItem",
             "position": 5,
             "name": "100 Hour Yoga Teacher Training Course (11 Days)",
-            "url": "https://doctor-yog.vercel.app/programs/100hr-ttc"
+            "url": "https://www.doctoryog.com/programs/100hr-ttc"
           },
           {
             "@type": "ListItem",
             "position": 6,
             "name": "200 Hour Yoga Teacher Training Course (22 Days)",
-            "url": "https://doctor-yog.vercel.app/programs/200hr-ttc"
+            "url": "https://www.doctoryog.com/programs/200hr-ttc"
           }
         ]
       };
@@ -149,7 +149,7 @@ export default function SEOMetaManager() {
           "provider": {
             "@type": "Organization",
             "name": "Doctor Yog",
-            "sameAs": "https://doctor-yog.vercel.app"
+            "sameAs": "https://www.doctoryog.com"
           },
           "offers": [
             {
@@ -179,7 +179,7 @@ export default function SEOMetaManager() {
           "provider": {
             "@type": "Organization",
             "name": "Doctor Yog",
-            "sameAs": "https://doctor-yog.vercel.app"
+            "sameAs": "https://www.doctoryog.com"
           },
           "offers": {
             "@type": "Offer",
@@ -199,7 +199,7 @@ export default function SEOMetaManager() {
           "provider": {
             "@type": "Organization",
             "name": "Doctor Yog",
-            "sameAs": "https://doctor-yog.vercel.app"
+            "sameAs": "https://www.doctoryog.com"
           },
           "offers": [
             {
@@ -236,7 +236,7 @@ export default function SEOMetaManager() {
           "provider": {
             "@type": "Organization",
             "name": "Doctor Yog",
-            "sameAs": "https://doctor-yog.vercel.app"
+            "sameAs": "https://www.doctoryog.com"
           },
           "offers": {
             "@type": "Offer",
@@ -256,7 +256,7 @@ export default function SEOMetaManager() {
           "provider": {
             "@type": "Organization",
             "name": "Doctor Yog",
-            "sameAs": "https://doctor-yog.vercel.app"
+            "sameAs": "https://www.doctoryog.com"
           },
           "offers": [
             {
@@ -284,7 +284,7 @@ export default function SEOMetaManager() {
           "provider": {
             "@type": "Organization",
             "name": "Doctor Yog",
-            "sameAs": "https://doctor-yog.vercel.app"
+            "sameAs": "https://www.doctoryog.com"
           },
           "offers": [
             {
