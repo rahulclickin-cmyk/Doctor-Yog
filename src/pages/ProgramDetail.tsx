@@ -11,20 +11,21 @@ import { YOGA_THERAPY_DATA } from '../data/programs';
 const programsData: Record<string, any> = {
   'yoga-therapy': YOGA_THERAPY_DATA,
   'ayurveda': {
-    title: "Ayurveda & Marma Science",
-    subtitle: "Master the ancient art of Ayurvedic healing and vital energy points.",
+    title: "7 Days Ayurveda & Marma Therapy",
+    subtitle: "A complete practical training in body constitution, Tridosha harmony, and vital life energy channels.",
     image: IMAGES.yoga2,
     duration: "7 Days",
-    price: "₹29,000",
-    earlyBird: "₹26,000",
-    overview: "Deep dive into the world of Ayurveda. Learn how to balance the three Doshas and use Marma points to trigger the body's natural healing mechanisms.",
-    highlights: ["Dosha Balancing", "Panchakarma Basics", "Marma Point Therapy", "Diet & Lifestyle"],
+    price: "280 Euro (₹25,200)",
+    earlyBird: "Study manuals & material included",
+    overview: "Deeply explore the timeless foundations of Ayurveda: ‘The Science of Life.’ Identify Tridosha regulations, imbalances, and cure principles. This course covers traditional Ayurvedic nutrition, restorative cooking, and lifestyle dynamics to remain vibrant, healthy, and ageless. Additionally, you will master Marma Therapy: the ancient science of stimulating 107 vital energy key-centers where natural life-forces (Prana) converge, clearing severe metabolic blockages, promoting cell regeneration, relieving chronic body tension, and boosting immunity.",
+    highlights: ["Tridosha Balancing", "Ayurvedic Lifestyle & Care", "107 Marma Energy Points", "Hands-on Ayurvedic Cooking"],
     curriculum: [
-      { day: "Day 1", title: "Introduction to Ayurveda", content: "History, philosophy, and the concept of five elements." },
-      { day: "Day 2-3", title: "The Three Doshas", content: "Understanding Vata, Pitta, and Kapha in detail." },
-      { day: "Day 4-5", title: "Marma Science", content: "Locating and activating the 107 vital energy points." },
-      { day: "Day 6", title: "Ayurvedic Nutrition", content: "Food as medicine and seasonal lifestyle regimes." },
-      { day: "Day 7", title: "Integration", content: "Combining Ayurveda with daily life and professional practice." }
+      { day: "Day 1", title: "History & Introduction of Ayurveda", content: "Learn its history, root philosophies, the concept of the five great elements (Panch Mahabhutas), and daily wellness." },
+      { day: "Day 2-3", title: "Understanding of Tridosha", content: "Master Vata, Pitta, and Kapha characteristics. Understand how imbalanced Tridosha causes physical/mental disease conditions and symptoms." },
+      { day: "Day 4", title: "Food for Balancing Tridosha", content: "Learn to identify corresponding diets, metabolic parameters, using foods, therapeutic spices, and herbs as immediate medicine." },
+      { day: "Day 5", title: "Ayurveda Cooking", content: "Hands-on preparations for restorative, easily digestible Sattvic foods, herbal decoctions, and healing recipes." },
+      { day: "Day 6", title: "Ayurveda Lifestyle & Longevity", content: "Establishing a daily alignment routine (Dinacharya) and seasonal wisdom (Ritucharya) to stay healthy, clean, active, and young." },
+      { day: "Day 7", title: "Marma Point Stimulation & Healing", content: "Detailed anatomical layout of vital points. Stimulating energy pathways to trigger deep organic recovery, alleviate muscular stress, and stabilize nervous structures." }
     ],
     testimonials: [
       { name: "Priya S.", role: "Wellness Coach", text: "The Marma science module was a revelation. I can now help my clients with immediate pain relief techniques.", img: "https://picsum.photos/seed/priya/100/100" },
@@ -33,18 +34,18 @@ const programsData: Record<string, any> = {
   },
   'detox': {
     title: "Detox & Holistic Healing",
-    subtitle: "Purify your body and mind with traditional Himalayan detox methods.",
+    subtitle: "Purify your body and mind with our sacred 5, 10, or 14-day ancient purification methods.",
     image: IMAGES.retreat1,
-    duration: "5 Days",
-    price: "₹23,000",
-    earlyBird: "₹20,500",
-    overview: "A specialized program focused on internal purification. Using Shatkarma, herbal detox, and meditation to remove toxins (Ama) from the system.",
-    highlights: ["Shatkarma Practice", "Herbal Cleansing", "Mind Detox", "Vitality Boost"],
+    duration: "5 / 10 / 14 Days",
+    price: "5 Days: 200€ (₹18,000) | 10 Days: 400€ (₹36,000)",
+    earlyBird: "14 Days: 520€ (₹46,800)",
+    overview: "This intensive purification retreat focuses entirely on internal chemical and mental detoxification. Using ancient systems of Shatkarma, we safely guide you through physical alignments, acupressure diagnostics to cleanly purify your nervous and lymphatic channels, Marma Therapy, structural therapeutic yoga asana, targeted pranayama, daily calming meditation, and custom Ayurveda Herbs. The process concludes with traditional Indian Havan Therapy (sacred fire ceremony) for profound mental clarity and spiritual restart. This holistic system will bring immense rejuvenation into your body and mind, giving you longevity, strength, and vibrant lifeness.",
+    highlights: ["Shatkarma Purification", "Havan Therapy (Fire Ceremony)", "Acupressure & Nervous Cleansing", "5, 10, and 14 Days Plans Available"],
     curriculum: [
-      { day: "Day 1", title: "System Preparation", content: "Light diet and introduction to internal cleansing." },
-      { day: "Day 2-3", title: "Physical Detox", content: "Shatkarma techniques and Ayurvedic herbal support." },
-      { day: "Day 4", title: "Emotional Release", content: "Guided meditation and sound healing for mental clarity." },
-      { day: "Day 5", title: "Rejuvenation", content: "Building a post-detox lifestyle plan." }
+      { day: "Part 1", title: "Ancient Shatkarma & Nerve Purification", content: "Yogic body cleansing to eject deep-seated cellular toxins (Ama) and prepare vital systems." },
+      { day: "Part 2", title: "Body Alignment & Acupressure", content: "Therapeutic physical alignments and manual pressure points to immediately open blocked nerve channels." },
+      { day: "Part 3", title: "Marma stimulation & Herbol-nutrition", content: "Recharging vital energy junctions, consuming customized daily Ayurvedic Herbs, and restorative detox fasting." },
+      { day: "Part 4", title: "Havan Therapy & Mind Longevity", content: "Participate in classical Vedic Havan fire ceremonies. Healing breathing practices, deep meditation, and longevity lifestyle designs." }
     ],
     testimonials: [
       { name: "Sarah K.", role: "Retreat Participant", text: "I felt 10 years younger after the 5-day detox. The Shatkarma practices were intense but extremely effective.", img: "https://picsum.photos/seed/sarahk/100/100" },
@@ -53,18 +54,18 @@ const programsData: Record<string, any> = {
   },
   'pain-management': {
     title: "Therapeutic Pain Management",
-    subtitle: "Scientific yoga protocols for chronic pain and structural alignment.",
+    subtitle: "Naturally and scientifically cure chronic physical pains in a structured 10-day training.",
     image: IMAGES.yoga4,
     duration: "10 Days",
-    price: "₹35,000",
-    earlyBird: "₹31,500",
-    overview: "Focus on structural issues like back pain, cervical issues, and joint problems. Learn how to use props and specific asanas for rehabilitation.",
-    highlights: ["Spine Health", "Joint Mobility", "Alignment Correction", "Rehab Protocols"],
+    price: "Offline: 480 Euro (₹43,200)",
+    earlyBird: "Includes manual alignment guidance",
+    overview: "Eliminate stubborn joint, neck, back, and spinal pain without surgeries or pharmaceutical dependencies. We use an exceptionally powerful combination of structural body alignment diagnostics, targeted acupressure pressure maps, and Marma Therapy integrated with specialized Ayurvedic techniques to heal the body naturally. This course teaches how to release deep stress, re-educate poor postures, and restore fluid musculoskeletal mobility.",
+    highlights: ["Spine & Joint Realignment", "Nerve Acupressure Relief", "Marma Energy Reset", "10 Days Professional Therapy"],
     curriculum: [
-      { day: "Day 1-3", title: "Anatomy of Pain", content: "Understanding musculoskeletal issues and nervous system response." },
-      { day: "Day 4-6", title: "Corrective Asanas", content: "Modified postures for specific physical limitations." },
-      { day: "Day 7-9", title: "Therapy Design", content: "Creating long-term recovery plans for patients." },
-      { day: "Day 10", title: "Final Review", content: "Assessment and professional guidance." }
+      { day: "Day 1-3", title: "Anatomy of Musculoskeletal Pain", content: "Recognize structural deviations, nerve compressions, and spinal imbalances." },
+      { day: "Day 4-6", title: "Diagnostic Posture Alignment", content: "Modified restorative poses and alignment tools to reset pelvic and spinal balances." },
+      { day: "Day 7-9", title: "Acupressure & Marma Treatment Protocols", content: "Practical hands-on stimulation sequences to bring immediate organic pain relief and fluid joint recovery." },
+      { day: "Day 10", title: "Sustaining a Pain-Free Life", content: "Ayurvedic routines, self-therapy skills, and healthy postural habits for long-term health." }
     ],
     testimonials: [
       { name: "James W.", role: "Physiotherapist", text: "As a physiotherapist, I found the structural alignment protocols very useful for my practice.", img: "https://picsum.photos/seed/james/100/100" },
@@ -72,36 +73,36 @@ const programsData: Record<string, any> = {
     ]
   },
   '100hr-ttc': {
-    title: "100 Hour Yoga Teacher Training",
-    subtitle: "Foundational training in traditional Hatha and Ashtanga Vinyasa yoga.",
+    title: "100 Hour Yoga Teacher Training Course",
+    subtitle: "Foundational international training certificate in Hatha and Ashtanga Vinyasa yoga.",
     image: IMAGES.gallery2,
-    duration: "14 Days",
-    price: "₹45000",
-    earlyBird: "₹40000",
-    overview: "This 100-hour course is the first half of the 200-hour TTC. It is perfect for beginners who want to deepen their practice or those who cannot commit to a full 28-day course at once.",
-    highlights: ["Hatha Yoga", "Ashtanga Vinyasa", "Pranayama", "Meditation"],
+    duration: "11 Days",
+    price: "Offline: ₹55,000",
+    earlyBird: "Online: ₹37,000",
+    overview: "This foundational 100-hour professional course covers core Hatha Yoga alignments, sequencing mechanics, traditional Ashtanga Vinyasa, pranayama, and fundamental Vedic philosophies. Now perfectly compressed into an intensive 11-day curriculum, it is perfect for those beginning their teaching journey or practitioners who want to build a safe, robust daily practice.",
+    highlights: ["International Certification", "Traditional Hatha Alignments", "Ashtanga Vinyasa Flow", "11 Days Intensive Immersion"],
     curriculum: [
-      { day: "Week 1", title: "Foundations", content: "Introduction to Hatha Yoga, basic asanas, and alignment principles." },
-      { day: "Week 2", title: "Deepening Practice", content: "Introduction to Ashtanga Vinyasa, pranayama techniques, and basic philosophy." }
+      { day: "Days 1-5", title: "Hatha & Pose Geometry", content: "Deconstruct asana alignments, study skeletal posture safety, and practice foundational kriyas." },
+      { day: "Days 6-11", title: "Ashtanga Flow & Teaching Foundations", content: "Explore Ashtanga Vinyasa Primary Series sequencing, breathing techniques, and professional class instructions." }
     ],
     testimonials: [
       { name: "Anna S.", role: "Yoga Student", text: "A perfect introduction to authentic yoga. The teachers are incredibly knowledgeable.", img: "https://picsum.photos/seed/anna/100/100" }
     ]
   },
   '200hr-ttc': {
-    title: "200 Hour Yoga Teacher Training",
-    subtitle: "Comprehensive certification course covering asana, philosophy, anatomy, and teaching methodology.",
+    title: "200 Hour Yoga Teacher Training Course",
+    subtitle: "Highly comprehensive professional global certification over 22 intensive days.",
     image: IMAGES.gallery3,
-    duration: "28 Days",
-    price: "₹85000",
-    earlyBird: "₹75000",
-    overview: "A complete immersion into the yogic lifestyle. This Yoga Alliance certified course prepares you to teach yoga globally with confidence and deep understanding.",
-    highlights: ["Yoga Alliance Certified", "Anatomy & Physiology", "Teaching Methodology", "Yogic Philosophy"],
+    duration: "22 Days",
+    price: "Offline: ₹85,000",
+    earlyBird: "Online: ₹50,000",
+    overview: "Our primary flagship professional teacher certification is a deep physical, mental, and spiritual lifestyle immersion now optimized for 22 days. This comprehensive course prepares you to teach worldwide with complete authenticity, covering advanced postural alignment, therapeutic body anatomy, ancient scriptures (Patanjali’s Yoga Sutras & Hatha Yoga Pradipika), advanced pranayama systems, and expert adjustments.",
+    highlights: ["Yoga Alliance Global Registry", "Anatomy & Physiology Masterclass", "Asana Corrections & Adjustments", "Vedic Scriptural Readings"],
     curriculum: [
-      { day: "Week 1", title: "Foundations & Alignment", content: "Deep dive into Hatha Yoga asanas, alignment, and adjustments." },
-      { day: "Week 2", title: "Ashtanga & Anatomy", content: "Primary series of Ashtanga Vinyasa, functional anatomy, and physiology." },
-      { day: "Week 3", title: "Philosophy & Pranayama", content: "Patanjali Yoga Sutras, advanced pranayama, and meditation techniques." },
-      { day: "Week 4", title: "Teaching Methodology", content: "Practicum, class sequencing, and business of yoga." }
+      { day: "Week 1", title: "Asana Alignment & Anatomy Blueprint", content: "Break down biomechanics, posture adjustment keys, and skeletal system safety." },
+      { day: "Week 2", title: "Ashtanga Vinyasa & Prana Dynamics", content: "Advanced Primary Series, pranayama ratios, and energetic bandha stimulation." },
+      { day: "Week 3", title: "Yogic Philosophy & Scripture", content: "In-depth Patanjali Yoga Sutras, Hatha Yoga Pradipika, and Ayurvedic integrations." },
+      { day: "Week 4", title: "Teaching Practicums & Class Mechanics", content: "Student teaching trials, voice modulation, smart sequencing guides, and business of yoga." }
     ],
     testimonials: [
       { name: "Michael B.", role: "Certified Yoga Teacher", text: "This course completely transformed my life. I feel fully prepared to teach and share this ancient wisdom.", img: "https://picsum.photos/seed/michael/100/100" }

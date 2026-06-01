@@ -35,51 +35,51 @@ export default function Programs() {
   const programs = [
     {
       id: 'yoga-therapy',
-      title: "Integrated Yoga Therapy",
-      desc: "11-day intensive program combining Yoga, Ayurveda, and Healing Science.",
+      title: "Integrated Yoga & Ayurveda Therapy Course",
+      desc: "Intensive 11-day program combining Classical Yoga, Ayurveda, Marma Point Stimulation, and Acupressure for holistic healing and disease prevention.",
       image: IMAGES.yoga1,
       duration: "11 Days",
-      price: "460 Euro"
+      price: "Offline: 550€ (₹49,500) | Online: 370€ (₹33,000)"
     },
     {
       id: 'ayurveda',
-      title: "Ayurveda & Marma Science",
-      desc: "Master the ancient art of Ayurvedic healing and vital energy points.",
+      title: "7 Days Ayurveda & Marma Therapy",
+      desc: "Learn Tridosha rules, body imbalance diagnosis, Ayurvedic cooking/nutrition, daily routine lifestyle for longevity, and vital Marma point stimulation.",
       image: IMAGES.yoga2,
       duration: "7 Days",
-      price: getPrice(29000)
+      price: "280 Euro (₹25,200)"
     },
     {
       id: 'detox',
       title: "Detox & Holistic Healing",
-      desc: "Purify your body and mind with traditional Himalayan detox methods.",
+      desc: "Use ancient Shatkarma, detox diet, physical alignment, acupressure, Marma therapy, and sacred Havan fire ceremony to fully rejuvenate body & mind.",
       image: IMAGES.retreat1,
-      duration: "5 Days",
-      price: getPrice(23000)
+      duration: "5 / 10 / 14 Days",
+      price: "200€ (₹18k) / 400€ (₹36k) / 520€ (₹46.8k)"
     },
     {
       id: 'pain-management',
       title: "Therapeutic Pain Management",
-      desc: "Scientific yoga protocols for chronic pain and structural alignment.",
+      desc: "Heal chronic joint, spine, and muscle pain naturally under expert guidance using structural body alignment, acupressure, and Ayurveda techniques.",
       image: IMAGES.yoga4,
       duration: "10 Days",
-      price: getPrice(35000)
+      price: "Offline: 480 Euro (₹43,200)"
     },
     {
       id: '100hr-ttc',
-      title: "100 Hour Yoga Teacher Training",
-      desc: "Foundational training in traditional Hatha and Ashtanga Vinyasa yoga.",
+      title: "100 Hour Yoga Teacher Training Course",
+      desc: "Intense foundational training in traditional Hatha, Ashtanga Vinyasa, pranayama, and yogic philosophy.",
       image: IMAGES.gallery2,
-      duration: "14 Days",
-      price: getPrice(45000)
+      duration: "11 Days",
+      price: "Offline: ₹55,000 | Online: ₹37,000"
     },
     {
       id: '200hr-ttc',
-      title: "200 Hour Yoga Teacher Training",
-      desc: "Comprehensive certification course covering asana, philosophy, anatomy, and teaching methodology.",
+      title: "200 Hour Yoga Teacher Training Course",
+      desc: "Professional certification course covers deep asana alignment, anatomy, ancient textbooks, pranayama, and professional teaching methodology.",
       image: IMAGES.gallery3,
-      duration: "28 Days",
-      price: getPrice(85000)
+      duration: "22 Days",
+      price: "Offline: ₹85,000 | Online: ₹50,000"
     }
   ];
 

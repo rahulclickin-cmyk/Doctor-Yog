@@ -1,15 +1,15 @@
 import { IMAGES } from '../constants';
 
 export const YOGA_THERAPY_DATA = {
-  title: "Integrated Yoga Therapy, Ayurveda & Healing Therapies Training",
+  title: "Integrated Yoga & Ayurveda Therapy Course",
   subtitle: "Intensive 11-Day Training for Holistic Healing",
   doctorName: "Dr. Shakti Vidyalankar (Doctor Yog)",
   date: "10 April – 20 April",
   image: IMAGES.yoga1,
   duration: "11 Days",
-  price: "460 Euro",
-  earlyBird: "400 Euro (Before 20 March)",
-  registrationFee: "100 Euro",
+  price: "Offline: 550 Euro (with accommodation) / ₹49,500",
+  earlyBird: "Online: 370 Euro / ₹33,000",
+  registrationFee: "100 Euro (₹9,000) Booking Fee",
   overview: "This unique training program is designed for yoga teachers, therapists, healers, and health seekers who want to understand Yoga not only as exercise but as a complete healing science. The course integrates Classical Yoga Philosophy, Ayurveda, Marma Therapy, and Acupressure so that participants learn how to understand the root cause of diseases and apply practical healing techniques.",
   highlights: [
     "Classical Yoga philosophy and therapeutic application",
