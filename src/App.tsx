@@ -19,6 +19,7 @@ import Contact from './pages/Contact';
 import AIChatbot from './components/AIChatbot';
 import MobileBottomNav from './components/MobileBottomNav';
 import { ErrorBoundary } from './components/ErrorBoundary';
+import SEOMetaManager from './components/SEOMetaManager';
 
 function ScrollToTop() {
   const { pathname, hash } = useLocation();
@@ -42,6 +43,7 @@ export default function App() {
     <ErrorBoundary>
       <Router>
         <ScrollToTop />
+        <SEOMetaManager />
         <div className="min-h-screen flex flex-col pb-16 lg:pb-0">
           <Navbar />
           <main className="flex-grow">

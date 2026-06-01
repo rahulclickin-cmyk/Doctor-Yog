@@ -1,0 +1,67 @@
+# ROBOTS.TXT FOR DOCTOR YOG (HOLISTIC WELLNESS FOUNDATION, RISHIKESH)
+# Designed for Optimal Search Engine and Generative AI Discovery
+
+# 1. Global Crawler Directives (Main Search Engines)
+User-agent: *
+Allow: /
+Allow: /about
+Allow: /programs
+Allow: /programs/*
+Allow: /retreats
+Allow: /contact
+Allow: /contact/faqs
+Allow: /contact/blogs
+Disallow: /api/
+Disallow: /admin/
+Disallow: /private/
+Disallow: /*?*   # Block search/filter query parameters from duplicate crawl index
+
+# 2. Let Major LLM & Generative Search Engines crawl high-quality textual pages
+User-agent: Google-Extended
+Allow: /
+Allow: /about
+Allow: /programs
+Allow: /programs/*
+Allow: /retreats
+Allow: /contact
+Allow: /contact/faqs
+Allow: /contact/blogs
+
+User-agent: GPTBot
+Allow: /
+Allow: /about
+Allow: /programs
+Allow: /programs/*
+Allow: /retreats
+Allow: /contact
+Allow: /contact/faqs
+Allow: /contact/blogs
+
+User-agent: ClaudeBot
+Allow: /
+Allow: /about
+Allow: /programs
+Allow: /programs/*
+Allow: /retreats
+Allow: /contact
+Allow: /contact/faqs
+Allow: /contact/blogs
+
+User-agent: Claude-Web
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+Allow: /about
+Allow: /programs
+Allow: /programs/*
+Allow: /retreats
+Allow: /contact
+Allow: /contact/faqs
+Allow: /contact/blogs
+
+User-agent: applebot-extended
+Allow: /
+
+# Sitemap Target
+Sitemap: https://doctor-yog.vercel.app/sitemap.xml
